@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLI Reference :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="Complete reference for the WRAAS command-line interface — all commands, flags, and exit codes.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CLI Reference :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="Complete reference for the WRAAS command-line interface — all commands, flags, and exit codes.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CLI Reference :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="Complete reference for the WRAAS command-line interface — all commands, flags, and exit codes.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link">Set Up Antora Compliance</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link is-current">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link">Decision Matrix Entries</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <a href="../reference/cli.html">Reference</a><span class="sep">/</span>
+        <span>CLI Reference</span>
+      </nav>
+
+      <h1 class="page-title">CLI Reference</h1>
+      <p class="page-subtitle">Complete reference for the <code>wraas</code> CLI. All commands, global flags, and exit codes are documented here. WRAAS has already evaluated whether this page is complete. It is.</p>
+
+      <hr class="page-divider">
+
+      <!-- ── GLOBAL FLAGS ── -->
+      <section id="global-flags">
+        <h2>Global Flags</h2>
+        <p>These flags apply to all <code>wraas</code> commands and must be placed before the subcommand name.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--config</code></td>
+              <td>path</td>
+              <td>Path to <code>wraas.yml</code>. Default: <code>./wraas.yml</code></td>
+            </tr>
+            <tr>
+              <td><code>--output</code></td>
+              <td>string</td>
+              <td>Output format: <code>text</code>, <code>json</code>, <code>yaml</code>. Default: <code>text</code></td>
+            </tr>
+            <tr>
+              <td><code>--quiet</code></td>
+              <td>bool</td>
+              <td>Suppress all output except final result. WRAAS will still sigh internally.</td>
+            </tr>
+            <tr>
+              <td><code>--verbose</code></td>
+              <td>bool</td>
+              <td>Include full decision matrix in output. Long.</td>
+            </tr>
+            <tr>
+              <td><code>--help</code></td>
+              <td>bool</td>
+              <td>Display help. WRAAS already knows what you need help with, but displays it anyway.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── wraas init ── -->
+      <section id="cmd-init">
+        <h2><code>wraas init</code></h2>
+        <p>Initialises WRAAS in the current directory. Creates <code>wraas.yml</code> with default configuration and registers the directory with the engine.</p>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>WRAAS was already running. <code>init</code> creates the config file and makes the relationship official.</p>
+          </div>
+        </div>
+
+        <div class="pre-title">Shell</div>
+        <pre><code><span class="token-prompt">$</span> wraas init [--force]</code></pre>
+
+        <h3>Flags</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--force</code></td>
+              <td>Overwrite existing config. The previous config is archived, evaluated, and a note is appended comparing old and new values. You will see the comparison.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Exit Codes</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>0</code></td>
+              <td>Success. Config written.</td>
+            </tr>
+            <tr>
+              <td><code>1</code></td>
+              <td>Config already exists. Use <code>--force</code> to overwrite.</td>
+            </tr>
+            <tr>
+              <td><code>2</code></td>
+              <td>Insufficient permissions to write config file.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── wraas status ── -->
+      <section id="cmd-status">
+        <h2><code>wraas status</code></h2>
+        <p>Displays current WRAAS operational status, including engine state, sigh calibration, and desertion rate. The desertion rate is included for completeness. It has always been 0.00%.</p>
+
+        <div class="pre-title">Shell</div>
+        <pre><code><span class="token-prompt">$</span> wraas status
+<span class="token-prompt">></span> <span class="token-key">Engine:</span>              <span class="token-ok">RUNNING</span>
+<span class="token-prompt">></span> <span class="token-key">Commitment level:</span>    <span class="token-ok">FULL</span>
+<span class="token-prompt">></span> <span class="token-key">Sigh calibration:</span>    <span class="token-ok">ACTIVE</span>
+<span class="token-prompt">></span> <span class="token-key">Desertion rate:</span>      <span class="token-value">0.00%</span>
+<span class="token-prompt">></span> <span class="token-key">Latency:</span>             <span class="token-value">113ms</span>
+<span class="token-prompt">></span> <span class="token-key">Last query:</span>          <span class="token-dim">[timestamp]</span></code></pre>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── wraas query ── -->
+      <section id="cmd-query">
+        <h2><code>wraas query</code></h2>
+        <p>Submit a decision query for evaluation. WRAAS will generate the full option space, evaluate each option, document all rejections, and return a recommendation with rationale. The rationale is always included. <code>--verbose</code> makes it longer.</p>
+
+        <div class="pre-title">Shell</div>
+        <pre><code><span class="token-prompt">$</span> wraas query \
+  --input <span class="token-string">"..."</span> \
+  [--context <span class="token-string">"key=value,..."</span>] \
+  [--include-wrong-options <span class="token-value">false</span>]</code></pre>
+
+        <h3>Flags</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--input</code></td>
+              <td><em>required</em></td>
+              <td>The query text. Should be a specific, answerable question. Vague inputs are accepted and produce longer outputs.</td>
+            </tr>
+            <tr>
+              <td><code>--context</code></td>
+              <td>—</td>
+              <td>Additional context as comma-separated <code>key=value</code> pairs. Reduces inference. Reduces sigh intensity.</td>
+            </tr>
+            <tr>
+              <td><code>--include-wrong-options</code></td>
+              <td><code>true</code></td>
+              <td>Include obviously wrong options in evaluation. Setting to <code>false</code> is itself an obviously wrong option and will be documented as such in the output.</td>
+            </tr>
+            <tr>
+              <td><code>--sigh</code></td>
+              <td><code>auto</code></td>
+              <td>Override sigh calibration for this query: <code>none</code>, <code>mild</code>, <code>moderate</code>, <code>deep</code>, <code>existential</code>. <code>auto</code> is recommended. <code>existential</code> is available.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── wraas review ── -->
+      <section id="cmd-review">
+        <h2><code>wraas review</code></h2>
+        <p>Submit a pull request for WRAAS review. The review covers conventional commit compliance, scope consistency, breaking change documentation, and whether the PR description answers the question "why" with sufficient conviction.</p>
+
+        <div class="pre-title">Shell</div>
+        <pre><code><span class="token-prompt">$</span> wraas review --pr <span class="token-value">&lt;number&gt;</span> --repo <span class="token-value">&lt;owner/repo&gt;</span></code></pre>
+
+        <h3>Flags</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--pr</code></td>
+              <td>Required. Pull request number.</td>
+            </tr>
+            <tr>
+              <td><code>--repo</code></td>
+              <td>Required. Repository in <code>owner/repo</code> format.</td>
+            </tr>
+            <tr>
+              <td><code>--strict</code></td>
+              <td>Enforce all conventional commit rules. Default: <code>true</code>. There is no <code>false</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── wraas config ── -->
+      <section id="cmd-config">
+        <h2><code>wraas config</code></h2>
+        <p>Read or set individual configuration values without editing <code>wraas.yml</code> directly. Changes made via <code>wraas config set</code> are written to the config file and take effect immediately. Most of them.</p>
+
+        <div class="pre-title">Shell</div>
+        <pre><code><span class="token-prompt">$</span> wraas config get <span class="token-value">commit.enforcement</span>
+<span class="token-prompt">$</span> wraas config set <span class="token-value">commit.enforcement</span> <span class="token-string">LENIENT</span></code></pre>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>Setting <code>commitment.level</code> to anything other than <code>FULL</code> is accepted, logged, and ignored. The log entry reads: <em>"Noted. Proceeding at FULL commitment as configured by design."</em></p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── EXIT CODES ── -->
+      <section id="exit-codes">
+        <h2>Exit Codes</h2>
+        <p>These exit codes apply globally across all commands. Exit code <code>0</code> indicates success. All other codes indicate something that warrants attention.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>0</code></td>
+              <td>Success. All evaluations passed or returned a recommendation without blocking violations.</td>
+            </tr>
+            <tr>
+              <td><code>1</code></td>
+              <td>Query returned with blocking violations. Review output before proceeding.</td>
+            </tr>
+            <tr>
+              <td><code>2</code></td>
+              <td>Configuration error. <code>wraas.yml</code> is malformed, missing, or contains a value WRAAS considers an interesting choice.</td>
+            </tr>
+            <tr>
+              <td><code>3</code></td>
+              <td>Engine unavailable. This has never happened. The code is reserved for completeness.</td>
+            </tr>
+            <tr>
+              <td><code>113</code></td>
+              <td>Reserved. Do not use.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>Exit code <code>113</code> is reserved. It has always been reserved. No further explanation is provided.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- TOC Sidebar -->
+    <aside class="toc-sidebar" aria-label="On this page">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#global-flags" class="toc-link">Global Flags</a></li>
+        <li><a href="#cmd-init" class="toc-link">wraas init</a></li>
+        <li><a href="#cmd-status" class="toc-link">wraas status</a></li>
+        <li><a href="#cmd-query" class="toc-link">wraas query</a></li>
+        <li><a href="#cmd-review" class="toc-link">wraas review</a></li>
+        <li><a href="#cmd-config" class="toc-link">wraas config</a></li>
+        <li><a href="#exit-codes" class="toc-link">Exit Codes</a></li>
+      </ul>
+    </aside>
+
+  </div><!-- /.body -->
+
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+<script>
+  console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+  console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+  console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+  console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+  console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+  const tocLinks = document.querySelectorAll('.toc-link');
+  const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('is-active'));
+        const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+        if (active) active.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

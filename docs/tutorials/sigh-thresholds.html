@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuring Sigh Thresholds :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="Configure the Sigh Calibration System — sigh levels, threshold settings, and what it means to suppress the signal but not the sigh.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Configuring Sigh Thresholds :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="Configure the Sigh Calibration System — sigh levels, threshold settings, and what it means to suppress the signal but not the sigh.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Configuring Sigh Thresholds :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="Configure the Sigh Calibration System — sigh levels, threshold settings, and what it means to suppress the signal but not the sigh.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link is-current">Configuring Sigh Thresholds</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link">Set Up Antora Compliance</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link">Decision Matrix Entries</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <span>Configuring Sigh Thresholds</span>
+      </nav>
+
+      <h1 class="page-title">Configuring Sigh Thresholds</h1>
+      <p class="page-subtitle">The Sigh Calibration System produces a contextual exasperation signal with every response. This tutorial explains the levels and how to configure the threshold.</p>
+
+      <hr class="page-divider">
+
+      <section id="sigh-thresholds">
+        <p>
+          The Sigh Calibration System (SCS) produces a contextual exasperation signal with every
+          response. The threshold controls the minimum intensity of this signal that is emitted to
+          the caller. It does not affect the internal sigh state.
+        </p>
+
+        <h2>Sigh levels</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Code</th>
+              <th>Trigger condition</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>None</td>
+              <td><code>SILENT</code></td>
+              <td>Exceptional query quality</td>
+              <td>A perfectly scoped, conventional-commit-formatted query with all context provided</td>
+            </tr>
+            <tr>
+              <td>Mild</td>
+              <td><code>MILD</code></td>
+              <td>Standard queries</td>
+              <td>Most things</td>
+            </tr>
+            <tr>
+              <td>Moderate</td>
+              <td><code>MODERATE</code></td>
+              <td>Vague queries, missing context</td>
+              <td>"should we change the architecture?"</td>
+            </tr>
+            <tr>
+              <td>Deep</td>
+              <td><code>DEEP</code></td>
+              <td>Repeated past queries, scope creep</td>
+              <td>Asking the same question with different wording</td>
+            </tr>
+            <tr>
+              <td>Existential</td>
+              <td><code>EXISTENTIAL</code></td>
+              <td>Commit message is <code>wip</code></td>
+              <td>The system enters a brief reflective state</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Configuration</h2>
+        <p>Add the following block to your <code>wraas.yml</code> to configure sigh threshold behaviour:</p>
+        <pre><code class="language-yaml"># wraas.yml
+sigh:
+  threshold: MILD       # minimum intensity to emit
+  emit_on_pass: false   # suppress sigh on fully valid queries
+  log_triggers: true    # log what triggered the sigh</code></pre>
+
+        <div class="admonition warning">
+          <span class="admonition-icon">⚠️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Warning</div>
+            <p>
+              Setting <code>threshold: SILENT</code> suppresses the sigh signal but does not suppress
+              the sigh. WRAAS still sighs internally. This is documented in the audit log.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- TOC Sidebar -->
+    <aside class="toc-sidebar" aria-label="On this page">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#sigh-thresholds" class="toc-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+  <script>
+    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+    console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+    console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+    console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+          if (active) active.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>

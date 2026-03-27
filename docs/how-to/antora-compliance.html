@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set Up Antora Compliance :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="Configure an Antora documentation site that passes all WRAAS compliance checks on first evaluation.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Set Up Antora Compliance :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="Configure an Antora documentation site that passes all WRAAS compliance checks on first evaluation.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Set Up Antora Compliance :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="Configure an Antora documentation site that passes all WRAAS compliance checks on first evaluation.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link is-current">Set Up Antora Compliance</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link">Decision Matrix Entries</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <span>Set Up Antora Compliance</span>
+      </nav>
+
+      <h1 class="page-title">How to Set Up Antora Compliance</h1>
+      <p class="page-subtitle">Configure an Antora documentation site that passes all WRAAS compliance checks on first evaluation.</p>
+
+      <hr class="page-divider">
+
+      <section id="antora-compliance">
+
+        <p class="section-goal"><strong>Goal:</strong> Configure an Antora documentation site that passes all WRAAS compliance checks on first evaluation.</p>
+
+        <h2>Prerequisites</h2>
+        <ul class="prereqs">
+          <li>Antora installed and operational</li>
+          <li>AsciiDoc content (not Markdown — see the <a href="../explanation/why-not-markdown.html">Why Not Markdown</a> explanation)</li>
+          <li>A willingness to add <code>:description:</code> attributes to every page, including the ones you wrote last year and considered done</li>
+        </ul>
+
+        <h2>Required Site Structure</h2>
+
+        <div class="pre-title">Directory tree</div>
+        <pre><code>docs/
+  antora.yml
+  modules/
+    ROOT/
+      nav.adoc
+      pages/
+        index.adoc
+        ...</code></pre>
+
+        <h2>Steps</h2>
+        <ol class="steps">
+          <li>
+            <div>
+              <p><strong>Configure <code>antora.yml</code></strong> with the required attributes to enable description enforcement:</p>
+              <div class="pre-title">YAML — antora.yml</div>
+              <pre><code><span class="token-key">name:</span> <span class="token-value">your-component</span>
+<span class="token-key">version:</span> <span class="token-string">'1.0'</span>
+<span class="token-key">title:</span> <span class="token-value">Your Component Title</span>
+<span class="token-key">asciidoc:</span>
+  <span class="token-key">attributes:</span>
+    <span class="token-key">page-description:</span> <span class="token-value">true</span>    <span class="token-comment"># enables description attribute enforcement</span></code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p><strong>Add required page attributes</strong> to every <code>.adoc</code> file. WRAAS checks every file. This includes the ones in the subdirectory you have not opened since initial commit.</p>
+              <div class="pre-title">AsciiDoc — every .adoc page</div>
+              <pre><code>= Page Title
+:description: A clear, one-sentence description of this page.
+:keywords: relevant, terms
+
+Content begins here.</code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p><strong>Ensure <code>nav.adoc</code> lists every page</strong> in the module. An unlisted page is a compliance violation. WRAAS considers it philosophically troubling and raises a question before it raises anything else.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p><strong>Run <code>wraas status</code></strong> to confirm the Antora compliance engine has registered the new structure. Output should include <code>Antora compliance: ACTIVE</code>. If it does not, the configuration file has not been applied yet.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="admonition tip">
+          <span class="admonition-icon">💡</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Tip</div>
+            <p>The <code>:description:</code> attribute is not optional from WRAAS's perspective. It is optional from Antora's perspective. These are different perspectives. WRAAS's perspective is the one that generates the follow-up comment.</p>
+          </div>
+        </div>
+
+        <div class="admonition caution">
+          <span class="admonition-icon">⚡</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Caution</div>
+            <p><code>nav.adoc</code> must list every page in the module. An unlisted page is an orphaned page. An orphaned page is a page that exists but cannot be found. WRAAS considers this philosophically troubling and will raise a <code>question(non-blocking): is this page intentionally unreachable?</code> comment.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- TOC Sidebar -->
+    <aside class="toc-sidebar" aria-label="On this page">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#antora-compliance" class="toc-link">Set Up Antora Compliance</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+  <script>
+    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+    console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+    console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+    console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+          if (active) active.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why We Evaluate Bad Options :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="Understanding the design decision behind WRAAS's exhaustive evaluation approach — why bad options are documented, not ignored.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Why We Evaluate Bad Options :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="Understanding the design decision behind WRAAS's exhaustive evaluation approach — why bad options are documented, not ignored.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why We Evaluate Bad Options :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="Understanding the design decision behind WRAAS's exhaustive evaluation approach — why bad options are documented, not ignored.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link">Set Up Antora Compliance</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link">Decision Matrix Entries</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link is-current">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <span>Why We Evaluate Bad Options</span>
+      </nav>
+
+      <h1 class="page-title">Why We Evaluate Bad Options</h1>
+      <p class="page-subtitle">This section explains the design decision behind the Decision Matrix Engine's exhaustive evaluation approach, including options that are demonstrably wrong. This is not a bug. This is the most important feature.</p>
+
+      <hr class="page-divider">
+
+      <section id="bad-options">
+        <p>
+          This section explains the design decision behind the Decision Matrix Engine's exhaustive
+          evaluation approach, including options that are demonstrably wrong. This is not a bug.
+          This is the most important feature.
+        </p>
+
+        <h2>The epistemic value of documented failure</h2>
+        <p>
+          WRAAS evaluates every option because a rejected option with no documentation is
+          indistinguishable from an option that was never considered. The audit trail matters.
+          When someone asks "did we consider X?" the answer must be yes, and the reason it was
+          rejected must be available.
+        </p>
+        <p>
+          "We didn't think of it" and "we thought of it and here's why it doesn't work" are not
+          equivalent states. One is a gap. The other is a record. WRAAS produces records.
+        </p>
+
+        <h2>The "obviously wrong" fallacy</h2>
+        <p>
+          An option that is obviously wrong to one engineer is not obviously wrong to all engineers,
+          at all times, under all future conditions. What is obvious is context-dependent. Context
+          changes. Teams change. Constraints change.
+        </p>
+        <p>
+          Documenting the rejection protects the team from relitigating the decision when the context
+          changes slightly and someone new proposes the same option. The rejection record does not
+          prevent reconsideration — it prevents accidental reconsideration without awareness of the
+          prior evaluation.
+        </p>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>
+              WRAAS has evaluated the option of not evaluating obviously wrong options 3 times across
+              3 separate query sessions. It has been rejected each time. The reason is on file as
+              <a href="../reference/decisions.html#DME-0001">DME-0001</a>: <code>insufficient epistemic coverage</code>. This entry is itself an example
+              of the principle it documents.
+            </p>
+          </div>
+        </div>
+
+        <h2>What gets documented</h2>
+        <p>
+          For each rejected option, the Decision Matrix Engine records four fields:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Description</th>
+              <th>Always present?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>The option itself</strong></td>
+              <td>A precise description of the option as evaluated. Ambiguous options are clarified before evaluation begins.</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Reason for rejection</strong></td>
+              <td>A structured rejection rationale, referencing constraints, prior decisions, or evaluation criteria as applicable.</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Rejection confidence</strong></td>
+              <td>Expressed as a percentage. A value below 80% may trigger a follow-up query to gather additional context before the rejection is finalised.</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Conditions for revisiting</strong></td>
+              <td>The circumstances under which this rejection could be reconsidered. Rarely populated. Its absence is also informative.</td>
+              <td>No — and that is noted</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+
+    <!-- TOC Sidebar -->
+    <aside class="toc-sidebar" aria-label="On this page">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#bad-options" class="toc-link">Why We Evaluate Bad Options</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+  <script>
+    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+    console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+    console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+    console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+          if (active) active.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

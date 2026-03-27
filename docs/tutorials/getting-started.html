@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="Deploy WRAAS for the first time. By the end of this tutorial you will have a running instance, a verified connection, and a completed first query.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Getting Started :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="Deploy WRAAS for the first time. By the end of this tutorial you will have a running instance, a verified connection, and a completed first query.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Getting Started :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="Deploy WRAAS for the first time. By the end of this tutorial you will have a running instance, a verified connection, and a completed first query.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link is-current">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link">Set Up Antora Compliance</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link">Decision Matrix Entries</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <span>Getting Started</span>
+      </nav>
+
+      <h1 class="page-title">Getting Started</h1>
+      <p class="page-subtitle">Deploy WRAAS for the first time. By the end of this tutorial you will have a running instance, a verified connection, and a completed first query. WRAAS has already formed an opinion about your setup.</p>
+
+      <hr class="page-divider">
+
+      <section id="getting-started">
+        <p>
+          This tutorial walks you through deploying WRAAS for the first time. By the end, you will have
+          a running instance, a verified connection, and a completed first query. WRAAS will have already
+          formed an opinion about your setup.
+        </p>
+
+        <h2>Prerequisites</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Requirement</th>
+              <th>Version</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A software team</td>
+              <td>Any</td>
+              <td>At least one engineering decision must be pending</td>
+            </tr>
+            <tr>
+              <td>A codebase</td>
+              <td>Any</td>
+              <td>Commit history required. Quality: optional.</td>
+            </tr>
+            <tr>
+              <td>An original Romain</td>
+              <td>v1.3</td>
+              <td>For calibration baseline. Unavailable during PTO, which is never.</td>
+            </tr>
+            <tr>
+              <td>wraas CLI</td>
+              <td>v1.3</td>
+              <td>See installation below</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Installation</h2>
+        <p>Run the following command to initialise WRAAS in your environment:</p>
+        <pre><code>$ wraas init
+&gt; Scanning environment...
+&gt; Calibrating decision matrix...
+&gt; Loading sigh pattern corpus...
+&gt; WRAAS has been running since your last commit. You just didn't know.
+&gt; Status: READY</code></pre>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>
+              WRAAS does not require installation in the traditional sense. It was already evaluating
+              your repository before this tutorial began. <code>wraas init</code> is provided for
+              psychological comfort.
+            </p>
+          </div>
+        </div>
+
+        <h2>Verification</h2>
+        <p>Confirm that WRAAS is running correctly:</p>
+        <pre><code>$ wraas status
+&gt; Engine: RUNNING
+&gt; Commitment level: FULL
+&gt; Sigh calibration: ACTIVE (intensity: MILD)
+&gt; Desertion rate: 0.00%
+&gt; Last query: 3 minutes ago (you did not submit one — WRAAS anticipated it)
+&gt; Latency: 113ms</code></pre>
+      </section>
+
+    </main>
+
+    <!-- TOC Sidebar -->
+    <aside class="toc-sidebar" aria-label="On this page">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#getting-started" class="toc-link">Getting Started</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+  <script>
+    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+    console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+    console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+    console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+          if (active) active.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrate with GitHub Actions :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="Add github-slug-action and drawio-export-action to a workflow before WRAAS raises it as a suggestion(non-blocking) three sprints in a row.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Integrate with GitHub Actions :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="Add github-slug-action and drawio-export-action to a workflow before WRAAS raises it as a suggestion(non-blocking) three sprints in a row.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Integrate with GitHub Actions :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="Add github-slug-action and drawio-export-action to a workflow before WRAAS raises it as a suggestion(non-blocking) three sprints in a row.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link is-current">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link">Set Up Antora Compliance</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link">Decision Matrix Entries</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <span>Integrate with GitHub Actions</span>
+      </nav>
+
+      <h1 class="page-title">How to Integrate with GitHub Actions</h1>
+      <p class="page-subtitle">Add <code>github-slug-action</code> and <code>drawio-export-action</code> to a workflow before WRAAS raises it as a <code>suggestion(non-blocking)</code> three sprints in a row.</p>
+
+      <hr class="page-divider">
+
+      <section id="github-actions">
+
+        <p class="section-goal"><strong>Goal:</strong> Add <code>github-slug-action</code> and <code>drawio-export-action</code> to a workflow before WRAAS raises it as a <code>suggestion(non-blocking)</code> three sprints in a row.</p>
+
+        <h2>Prerequisites</h2>
+        <ul class="prereqs">
+          <li>A GitHub repository</li>
+          <li>At least one workflow file in <code>.github/workflows/</code></li>
+          <li>Awareness that your current approach is suboptimal (WRAAS has been aware for some time)</li>
+        </ul>
+
+        <h2>Add github-slug-action</h2>
+        <ol class="steps">
+          <li>
+            <div>
+              <p><strong>Add the action to your workflow:</strong></p>
+              <div class="pre-title">YAML — .github/workflows/your-workflow.yml</div>
+              <pre><code><span class="token-key">- name:</span> <span class="token-string">Expose git ref slug</span>
+  <span class="token-key">uses:</span> <span class="token-value">rlespinasse/github-slug-action@9e7def61550737ba68c62d34a32dd31792e3f429</span> <span class="token-comment"># v5.5.0</span></code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p><strong>Use the slug in downstream steps:</strong></p>
+              <div class="pre-title">YAML</div>
+              <pre><code><span class="token-key">- name:</span> <span class="token-string">Build Docker image</span>
+  <span class="token-key">run:</span> <span class="token-value">docker build -t myapp:${{ env.GITHUB_REF_SLUG }} .</span></code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p><strong>Remove the <code>echo "$GITHUB_REF" | sed ...</code> line you wrote in 2021.</strong> WRAAS has it highlighted. It has been highlighted since the commit was merged. The highlight is patient.</p>
+            </div>
+          </li>
+        </ol>
+
+        <h2>Add drawio-export-action</h2>
+        <ol class="steps">
+          <li>
+            <div>
+              <p><strong>Create a dedicated workflow file</strong> for diagram export:</p>
+              <div class="pre-title">YAML — .github/workflows/diagrams.yml</div>
+              <pre><code><span class="token-key">name:</span> <span class="token-string">Export diagrams</span>
+<span class="token-key">on:</span>
+  <span class="token-key">push:</span>
+    <span class="token-key">paths:</span> <span class="token-value">['**/*.drawio']</span>
+<span class="token-key">jobs:</span>
+  <span class="token-key">export:</span>
+    <span class="token-key">runs-on:</span> <span class="token-value">ubuntu-latest</span>
+    <span class="token-key">steps:</span>
+      <span class="token-key">- uses:</span> <span class="token-value">actions/checkout@v4</span>
+      <span class="token-key">- uses:</span> <span class="token-value">rlespinasse/drawio-export-action@b30c10f26bfba37646dda90f5078756729eb08d3</span> <span class="token-comment"># v2.46.0</span>
+        <span class="token-key">with:</span>
+          <span class="token-key">format:</span> <span class="token-value">svg</span>
+          <span class="token-key">output:</span> <span class="token-value">docs/diagrams</span>
+      <span class="token-key">- uses:</span> <span class="token-value">stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9</span> <span class="token-comment"># v7.1.0</span>
+        <span class="token-key">with:</span>
+          <span class="token-key">commit_message:</span> <span class="token-string">"chore(diagrams): export updated Draw.io diagrams"</span></code></pre>
+            </div>
+          </li>
+        </ol>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>The commit message in the example above is Conventional Commits compliant. This is not an accident.</p>
+          </div>
+        </div>
+
+        <div class="admonition tip">
+          <span class="admonition-icon">💡</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Pin actions to a commit SHA</div>
+            <p>
+              All action references in the examples above use a full commit SHA rather than a mutable tag.
+              WRAAS enforces this. A tag like <code>@v5</code> can be silently moved. A SHA cannot.
+              Pinning is supply chain hygiene. WRAAS has already raised a
+              <code>suggestion(blocking)</code> on every unpinned <code>uses:</code> reference in
+              your workflows. The suggestions have been queued since the workflows were committed.
+            </p>
+          </div>
+        </div>
+
+        <div class="admonition warning">
+          <span class="admonition-icon">⚠️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Warning</div>
+            <p>If you have a <code>.drawio</code> file and a manually-exported <code>.png</code> in the same directory, WRAAS has already detected the inconsistency. The detection happened before you opened this page. The suggestion is queued.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- TOC Sidebar -->
+    <aside class="toc-sidebar" aria-label="On this page">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#github-actions" class="toc-link">Integrate with GitHub Actions</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+  <script>
+    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+    console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+    console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+    console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+          if (active) active.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>

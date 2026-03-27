@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capabilities Reference :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="Complete reference for all WRAAS operational modules — Decision Matrix Engine, Code Review Simulation, Conventional Commit Enforcement, and more.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Capabilities Reference :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="Complete reference for all WRAAS operational modules. Every capability documented. Every rejected option explained. Desertion rate: 0.00%.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Capabilities Reference :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="Complete reference for all WRAAS operational modules. Every capability documented. Every rejected option explained. Desertion rate: 0.00%.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+  <style>
+    /* capabilities-page-only styles */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --toolbar-bg: #404040;
+      --toolbar-h: 56px;
+      --nav-w: 280px;
+      --toc-w: 220px;
+      --accent: #0065b3;
+      --accent2: #00c8ff;
+      --text: #333;
+      --muted: #666;
+      --bg: #fff;
+      --nav-bg: #f0f0f0;
+      --border: #ddd;
+      --code-bg: #f4f4f5;
+      --adm-note: #0065b3;
+      --adm-tip: #2e8b57;
+      --adm-warn: #c47d00;
+      --adm-important: #c0392b;
+      --adm-caution: #b8860b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--toolbar-h);
+      background: var(--toolbar-bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.25rem;
+      z-index: 200;
+      gap: 1rem;
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+    }
+
+    .home-link img {
+      border-radius: 3px;
+    }
+
+    .version-pill {
+      font-size: 0.7rem;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      cursor: default;
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .search-box {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      padding: 0.35rem 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+      width: 200px;
+      outline: none;
+    }
+
+    .search-box::placeholder {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .search-box:focus {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .back-link {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+
+    /* ── Body layout ── */
+    .body {
+      display: flex;
+      margin-top: var(--toolbar-h);
+      min-height: calc(100vh - var(--toolbar-h));
+    }
+
+    /* ── Nav panel ── */
+    .nav-panel {
+      width: var(--nav-w);
+      min-width: var(--nav-w);
+      background: var(--nav-bg);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      position: sticky;
+      top: var(--toolbar-h);
+      height: calc(100vh - var(--toolbar-h));
+      padding: 1.25rem 0 2rem;
+    }
+
+    .nav-component {
+      padding: 0.5rem 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0.75rem;
+    }
+
+    .nav-component-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .nav-component-version {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-list .nav-list {
+      padding-left: 1rem;
+    }
+
+    .nav-item {
+      margin: 0;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 0.3rem 1.25rem;
+      font-size: 0.84rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      border-left: 3px solid transparent;
+    }
+
+    .nav-link:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--accent);
+    }
+
+    .nav-link.is-current {
+      color: var(--accent);
+      background: rgba(0, 101, 179, 0.07);
+      border-left-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-title {
+      display: block;
+      padding: 0.5rem 1.25rem 0.2rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: default;
+    }
+
+    .nav-separator {
+      height: 1px;
+      background: var(--border);
+      margin: 0.75rem 0;
+    }
+
+    /* ── Main article ── */
+    .article {
+      flex: 1;
+      min-width: 0;
+      padding: 2rem 3rem 4rem;
+      max-width: 860px;
+    }
+
+    .breadcrumb {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb .sep {
+      color: var(--border);
+    }
+
+    h1.page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      color: #111;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 680px;
+    }
+
+    .page-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 2.5rem 0 0.75rem;
+      padding-top: 0.5rem;
+      color: #111;
+      scroll-margin-top: calc(var(--toolbar-h) + 1rem);
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: #222;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    code {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.84em;
+      background: var(--code-bg);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      color: #c7254e;
+    }
+
+    pre {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      margin: 1.25rem 0;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: 1em;
+    }
+
+    .pre-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .token-comment {
+      color: #6c7086;
+    }
+
+    .token-string {
+      color: #a6e3a1;
+    }
+
+    .token-key {
+      color: #89b4fa;
+    }
+
+    .token-value {
+      color: #fab387;
+    }
+
+    .token-type {
+      color: #cba6f7;
+    }
+
+    .token-scope {
+      color: #89dceb;
+    }
+
+    .token-ok {
+      color: #a6e3a1;
+    }
+
+    .token-err {
+      color: #f38ba8;
+    }
+
+    .token-warn {
+      color: #f9e2af;
+    }
+
+    .token-dim {
+      color: #6c7086;
+    }
+
+    .token-prompt {
+      color: #89dceb;
+    }
+
+    /* ── Admonitions ── */
+    .admonition {
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      border-left: 4px solid;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .admonition-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .admonition-content {
+      flex: 1;
+    }
+
+    .admonition-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .admonition p {
+      margin-bottom: 0.4rem;
+      font-size: 0.88rem;
+    }
+
+    .admonition p:last-child {
+      margin-bottom: 0;
+    }
+
+    .admonition.note {
+      background: #eef4fb;
+      border-color: var(--adm-note);
+    }
+
+    .admonition.note .admonition-title {
+      color: var(--adm-note);
+    }
+
+    .admonition.tip {
+      background: #eef7f0;
+      border-color: var(--adm-tip);
+    }
+
+    .admonition.tip .admonition-title {
+      color: var(--adm-tip);
+    }
+
+    .admonition.warning {
+      background: #fef8ee;
+      border-color: var(--adm-warn);
+    }
+
+    .admonition.warning .admonition-title {
+      color: var(--adm-warn);
+    }
+
+    .admonition.important {
+      background: #fef0ef;
+      border-color: var(--adm-important);
+    }
+
+    .admonition.important .admonition-title {
+      color: var(--adm-important);
+    }
+
+    .admonition.caution {
+      background: #fffbee;
+      border-color: var(--adm-caution);
+    }
+
+    .admonition.caution .admonition-title {
+      color: var(--adm-caution);
+    }
+
+    /* ── Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.88rem;
+    }
+
+    th {
+      background: var(--nav-bg);
+      text-align: left;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 2px solid var(--border);
+    }
+
+    td {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: #fafafa;
+    }
+
+    td code {
+      font-size: 0.82em;
+    }
+
+    /* ── Capability section ── */
+    .capability {
+      margin: 3rem 0;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .capability:first-of-type {
+      border-top: none;
+    }
+
+    .capability-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .capability-icon {
+      font-size: 1.4rem;
+    }
+
+    .capability-header h2 {
+      margin: 0;
+      padding: 0;
+    }
+
+    .capability-badge {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      background: #eef4fb;
+      color: var(--accent);
+      border: 1px solid rgba(0, 101, 179, 0.2);
+      flex-shrink: 0;
+    }
+
+    /* ── SVG Diagrams ── */
+    .diagram-wrap {
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+
+    .diagram-caption {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* ── TOC sidebar ── */
+    .toc-sidebar {
+      width: var(--toc-w);
+      min-width: var(--toc-w);
+      padding: 2rem 1rem 2rem 1.25rem;
+      position: sticky;
+      top: var(--toolbar-h);
+      height: calc(100vh - var(--toolbar-h));
+      overflow-y: auto;
+      border-left: 1px solid var(--border);
+    }
+
+    .toc-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .toc-list {
+      list-style: none;
+    }
+
+    .toc-list li {
+      margin: 0;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      line-height: 1.4;
+    }
+
+    .toc-link:hover {
+      color: var(--accent);
+    }
+
+    .toc-link.is-active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    .doc-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 3rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      max-width: calc(var(--nav-w) + 860px + var(--toc-w));
+      margin: 0 auto;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .toc-sidebar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-panel {
+        display: none;
+      }
+
+      .article {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link">Set Up Antora Compliance</a></li>
+      </ul>
+
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link is-current">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link">Decision Matrix Entries</a></li>
+      </ul>
+
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <a href="#">Reference</a><span class="sep">/</span>
+        <span>Capabilities</span>
+      </nav>
+
+      <h1 class="page-title">Capabilities Reference</h1>
+      <p class="page-subtitle">A complete reference for all WRAAS operational modules, their configuration parameters, and expected output behaviour.
+      </p>
+
+      <div class="admonition note">
+        <span class="admonition-icon">ℹ️</span>
+        <div class="admonition-content">
+          <div class="admonition-title">Note</div>
+          <p>This documentation page is written in HTML. The <a href="#antora-asciidoc-compliance-engine">Antora/AsciiDoc Compliance Engine</a> has
+            been notified. A follow-up comment is scheduled.</p>
+        </div>
+      </div>
+
+      <!-- Architecture diagram -->
+      <h3>System Overview</h3>
+      <p>The following diagram illustrates how WRAAS modules interact with incoming requests before producing a response.</p>
+
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:720px;font-family:inherit;">
+          <defs>
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#999" />
+            </marker>
+          </defs>
+          <!-- Input -->
+          <rect x="10" y="85" width="110" height="50" rx="6" fill="#eef4fb" stroke="#0065b3" stroke-width="1.5" />
+          <text x="65" y="105" text-anchor="middle" font-size="11" font-weight="600" fill="#0065b3">Input Query</text>
+          <text x="65" y="122" text-anchor="middle" font-size="10" fill="#666">request</text>
+          <!-- arrow -->
+          <line x1="120" y1="110" x2="148" y2="110" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" />
+          <!-- Ingestion -->
+          <rect x="150" y="75" width="120" height="70" rx="6" fill="#f4f4f5" stroke="#ddd" stroke-width="1.5" />
+          <text x="210" y="98" text-anchor="middle" font-size="11" font-weight="600" fill="#333">Data Ingestion</text>
+          <text x="210" y="114" text-anchor="middle" font-size="10" fill="#666">emails · commits</text>
+          <text x="210" y="128" text-anchor="middle" font-size="10" fill="#666">Slack · calendar</text>
+          <!-- arrow -->
+          <line x1="270" y1="110" x2="298" y2="110" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" />
+          <!-- Weight Matrix -->
+          <rect x="300" y="75" width="120" height="70" rx="6" fill="#f4f4f5" stroke="#ddd" stroke-width="1.5" />
+          <text x="360" y="98" text-anchor="middle" font-size="11" font-weight="600" fill="#333">Weight Matrix</text>
+          <text x="360" y="114" text-anchor="middle" font-size="10" fill="#666">recency · intensity</text>
+          <text x="360" y="128" text-anchor="middle" font-size="10" fill="#666">topic relevance</text>
+          <!-- arrow -->
+          <line x1="420" y1="110" x2="448" y2="110" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" />
+          <!-- Capability modules (stacked) -->
+          <rect x="450" y="30" width="120" height="36" rx="4" fill="#fff7e6" stroke="#c47d00" stroke-width="1.2" />
+          <text x="510" y="52" text-anchor="middle" font-size="10" font-weight="600" fill="#c47d00">Decision Matrix</text>
+          <rect x="450" y="72" width="120" height="36" rx="4" fill="#fff7e6" stroke="#c47d00" stroke-width="1.2" />
+          <text x="510" y="94" text-anchor="middle" font-size="10" font-weight="600" fill="#c47d00">Code Review</text>
+          <rect x="450" y="114" width="120" height="36" rx="4" fill="#fff7e6" stroke="#c47d00" stroke-width="1.2" />
+          <text x="510" y="136" text-anchor="middle" font-size="10" font-weight="600" fill="#c47d00">Commit Enforcement</text>
+          <rect x="450" y="156" width="120" height="36" rx="4" fill="#fff7e6" stroke="#c47d00" stroke-width="1.2" />
+          <text x="510" y="178" text-anchor="middle" font-size="10" font-weight="600" fill="#c47d00">Compliance Engines</text>
+          <!-- connector lines from weight to modules -->
+          <line x1="448" y1="90" x2="448" y2="48" stroke="#ddd" stroke-width="1" stroke-dasharray="3,3" />
+          <line x1="448" y1="90" x2="450" y2="90" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" />
+          <line x1="448" y1="90" x2="450" y2="90" stroke="#999" stroke-width="1.5" />
+          <line x1="448" y1="48" x2="450" y2="48" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" />
+          <line x1="448" y1="132" x2="450" y2="132" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" />
+          <line x1="448" y1="174" x2="450" y2="174" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" />
+          <line x1="448" y1="48" x2="448" y2="174" stroke="#ddd" stroke-width="1" stroke-dasharray="3,3" />
+          <!-- arrow to output -->
+          <line x1="570" y1="110" x2="598" y2="110" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" />
+          <!-- Output -->
+          <rect x="600" y="85" width="110" height="50" rx="6" fill="#eef7f0" stroke="#2e8b57" stroke-width="1.5" />
+          <text x="655" y="105" text-anchor="middle" font-size="11" font-weight="600" fill="#2e8b57">Output</text>
+          <text x="655" y="122" text-anchor="middle" font-size="10" fill="#666">+ rationale</text>
+        </svg>
+        <p class="diagram-caption">Figure 1. WRAAS request pipeline. All modules run in parallel against the Weight Matrix output.</p>
+      </div>
+
+      <hr class="page-divider">
+
+      <!-- ── DECISION MATRIX ENGINE ── -->
+      <div class="capability" id="decision-matrix-engine">
+        <div class="capability-header">
+          <span class="capability-icon">🧠</span>
+          <h2>Decision Matrix Engine</h2>
+          <span class="capability-badge">Core</span>
+        </div>
+
+        <p>The Decision Matrix Engine exhaustively evaluates the full option space for any given query — including the options that are obviously
+          wrong. This is intentional. Knowing why the bad ideas fail is considered half the work. No option is abandoned without a documented reason.
+        </p>
+
+        <p>You know the rules, and so does WRAAS: every path is evaluated, every rejection is explained.</p>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>The engine has evaluated the option of <em>not</em> evaluating obviously wrong options. That option was rejected. The reason is
+              documented internally as <a href="./decisions.html#DME-0001"><code>DME-0001: insufficient epistemic coverage</code></a>.</p>
+          </div>
+        </div>
+
+        <h3>Evaluation Flow</h3>
+
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;font-family:inherit;">
+            <defs>
+              <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#999" />
+              </marker>
+            </defs>
+            <!-- Input -->
+            <rect x="240" y="10" width="200" height="44" rx="6" fill="#eef4fb" stroke="#0065b3" stroke-width="1.5" />
+            <text x="340" y="36" text-anchor="middle" font-size="12" font-weight="600" fill="#0065b3">Input Query</text>
+            <line x1="340" y1="54" x2="340" y2="74" stroke="#999" stroke-width="1.5" marker-end="url(#arr2)" />
+            <!-- Generate options -->
+            <rect x="200" y="76" width="280" height="44" rx="6" fill="#f4f4f5" stroke="#ddd" stroke-width="1.5" />
+            <text x="340" y="97" text-anchor="middle" font-size="12" font-weight="600" fill="#333">Generate Full Option Space</text>
+            <text x="340" y="112" text-anchor="middle" font-size="10" fill="#888">including the obviously wrong ones</text>
+            <!-- branch lines -->
+            <line x1="340" y1="120" x2="340" y2="140" stroke="#999" stroke-width="1.5" />
+            <line x1="100" y1="140" x2="580" y2="140" stroke="#999" stroke-width="1.5" />
+            <line x1="100" y1="140" x2="100" y2="160" stroke="#999" stroke-width="1.5" marker-end="url(#arr2)" />
+            <line x1="340" y1="140" x2="340" y2="160" stroke="#999" stroke-width="1.5" marker-end="url(#arr2)" />
+            <line x1="580" y1="140" x2="580" y2="160" stroke="#999" stroke-width="1.5" marker-end="url(#arr2)" />
+            <!-- Option A -->
+            <rect x="30" y="162" width="140" height="44" rx="4" fill="#eef7f0" stroke="#2e8b57" stroke-width="1.2" />
+            <text x="100" y="181" text-anchor="middle" font-size="11" font-weight="600" fill="#2e8b57">Option A</text>
+            <text x="100" y="197" text-anchor="middle" font-size="10" fill="#666">Reasonable</text>
+            <!-- Option B -->
+            <rect x="270" y="162" width="140" height="44" rx="4" fill="#fef0ef" stroke="#c0392b" stroke-width="1.2" />
+            <text x="340" y="181" text-anchor="middle" font-size="11" font-weight="600" fill="#c0392b">Option B</text>
+            <text x="340" y="197" text-anchor="middle" font-size="10" fill="#666">Obviously Wrong</text>
+            <!-- Option C -->
+            <rect x="510" y="162" width="140" height="44" rx="4" fill="#eef7f0" stroke="#2e8b57" stroke-width="1.2" />
+            <text x="580" y="181" text-anchor="middle" font-size="11" font-weight="600" fill="#2e8b57">Option C</text>
+            <text x="580" y="197" text-anchor="middle" font-size="10" fill="#666">Reasonable</text>
+            <!-- Evaluate arrows -->
+            <line x1="100" y1="206" x2="100" y2="222" stroke="#999" stroke-width="1.5" marker-end="url(#arr2)" />
+            <line x1="340" y1="206" x2="340" y2="222" stroke="#999" stroke-width="1.5" marker-end="url(#arr2)" />
+            <line x1="580" y1="206" x2="580" y2="222" stroke="#999" stroke-width="1.5" marker-end="url(#arr2)" />
+            <!-- Outcomes -->
+            <rect x="30" y="224" width="140" height="44" rx="4" fill="#eef7f0" stroke="#2e8b57" stroke-width="1.2" />
+            <text x="100" y="243" text-anchor="middle" font-size="11" fill="#2e8b57" font-weight="600">✓ Viable</text>
+            <text x="100" y="258" text-anchor="middle" font-size="10" fill="#666">documented</text>
+            <rect x="270" y="224" width="140" height="44" rx="4" fill="#fef0ef" stroke="#c0392b" stroke-width="1.2" />
+            <text x="340" y="243" text-anchor="middle" font-size="11" fill="#c0392b" font-weight="600">✗ Rejected</text>
+            <text x="340" y="258" text-anchor="middle" font-size="10" fill="#666">here's why, in full</text>
+            <rect x="510" y="224" width="140" height="44" rx="4" fill="#eef7f0" stroke="#2e8b57" stroke-width="1.2" />
+            <text x="580" y="243" text-anchor="middle" font-size="11" fill="#2e8b57" font-weight="600">✓ Viable</text>
+            <text x="580" y="258" text-anchor="middle" font-size="10" fill="#666">documented</text>
+            <!-- merge -->
+            <line x1="100" y1="268" x2="100" y2="285" stroke="#999" stroke-width="1.5" />
+            <line x1="340" y1="268" x2="340" y2="285" stroke="#999" stroke-width="1.5" />
+            <line x1="580" y1="268" x2="580" y2="285" stroke="#999" stroke-width="1.5" />
+            <line x1="100" y1="285" x2="580" y2="285" stroke="#999" stroke-width="1.5" />
+            <line x1="340" y1="285" x2="340" y2="295" stroke="#999" stroke-width="1.5" marker-end="url(#arr2)" />
+          </svg>
+          <p class="diagram-caption">Figure 2. Decision Matrix evaluation flow. Option B is evaluated. Option B is documented. Option B is wrong. This
+            is known.</p>
+        </div>
+
+        <h3>Configuration</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>decision.include_wrong_options</code></td>
+              <td>boolean</td>
+              <td><code>true</code></td>
+              <td>Evaluate obviously wrong options. Setting this to <code>false</code> is itself an obviously wrong option and will be documented
+                accordingly.</td>
+            </tr>
+            <tr>
+              <td><code>decision.rejection_verbosity</code></td>
+              <td>enum</td>
+              <td><code>FULL</code></td>
+              <td>Detail level for rejection rationale. Options: <code>BRIEF</code>, <code>STANDARD</code>, <code>FULL</code>, <code>EXCESSIVE</code>.
+              </td>
+            </tr>
+            <tr>
+              <td><code>decision.latency_target_ms</code></td>
+              <td>integer</td>
+              <td><code>113</code></td>
+              <td>Target response latency in milliseconds. This value is non-negotiable.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── CODE REVIEW SIMULATION ── -->
+      <div class="capability" id="code-review-simulation">
+        <div class="capability-header">
+          <span class="capability-icon">🔁</span>
+          <h2>Code Review Simulation</h2>
+          <span class="capability-badge">Core</span>
+        </div>
+
+        <p>Validates pull requests against the <a href="https://www.conventionalcommits.org" target="_blank" rel="noopener">Conventional Commits
+            specification</a> and produces review feedback using <a href="https://conventionalcomments.org" target="_blank"
+            rel="noopener">Conventional Comments</a>. A bare <code>update</code> commit message will not pass. It has never passed. It will not pass
+          today.</p>
+
+        <h3>Commit Validation Flow</h3>
+
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:640px;font-family:inherit;">
+            <defs>
+              <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#999" />
+              </marker>
+            </defs>
+            <rect x="200" y="10" width="240" height="40" rx="6" fill="#eef4fb" stroke="#0065b3" stroke-width="1.5" />
+            <text x="320" y="34" text-anchor="middle" font-size="12" font-weight="600" fill="#0065b3">Commit Message</text>
+            <line x1="320" y1="50" x2="320" y2="70" stroke="#999" stroke-width="1.5" marker-end="url(#arr3)" />
+            <!-- Parse -->
+            <rect x="200" y="72" width="240" height="40" rx="6" fill="#f4f4f5" stroke="#ddd" stroke-width="1.5" />
+            <text x="320" y="90" text-anchor="middle" font-size="12" font-weight="600" fill="#333">Parse</text>
+            <text x="320" y="106" text-anchor="middle" font-size="10" fill="#888">type(scope): description</text>
+            <line x1="320" y1="112" x2="320" y2="130" stroke="#999" stroke-width="1.5" marker-end="url(#arr3)" />
+            <!-- Diamond: valid type? -->
+            <polygon points="320,132 400,158 320,184 240,158" fill="#fffbee" stroke="#b8860b" stroke-width="1.5" />
+            <text x="320" y="155" text-anchor="middle" font-size="11" font-weight="600" fill="#b8860b">type valid?</text>
+            <!-- NO branch -->
+            <line x1="400" y1="158" x2="480" y2="158" stroke="#999" stroke-width="1.5" marker-end="url(#arr3)" />
+            <text x="440" y="150" text-anchor="middle" font-size="10" fill="#c0392b" font-weight="700">NO</text>
+            <rect x="482" y="136" width="150" height="44" rx="4" fill="#fef0ef" stroke="#c0392b" stroke-width="1.2" />
+            <text x="557" y="155" text-anchor="middle" font-size="10" font-weight="600" fill="#c0392b">Reject</text>
+            <text x="557" y="170" text-anchor="middle" font-size="9" fill="#888">question(blocking):</text>
+            <!-- YES branch -->
+            <line x1="320" y1="184" x2="320" y2="204" stroke="#999" stroke-width="1.5" marker-end="url(#arr3)" />
+            <text x="330" y="200" font-size="10" fill="#2e8b57" font-weight="700">YES</text>
+            <!-- Diamond: scope? -->
+            <polygon points="320,206 400,228 320,250 240,228" fill="#fffbee" stroke="#b8860b" stroke-width="1.5" />
+            <text x="320" y="225" text-anchor="middle" font-size="10" font-weight="600" fill="#b8860b">scope present?</text>
+            <!-- NO branch -->
+            <line x1="240" y1="228" x2="130" y2="228" stroke="#999" stroke-width="1.5" marker-end="url(#arr3)" />
+            <text x="185" y="220" text-anchor="middle" font-size="10" fill="#c47d00" font-weight="700">NO</text>
+            <rect x="10" y="208" width="120" height="40" rx="4" fill="#fef8ee" stroke="#c47d00" stroke-width="1.2" />
+            <text x="70" y="226" text-anchor="middle" font-size="10" fill="#c47d00" font-weight="600">Flag</text>
+            <text x="70" y="240" text-anchor="middle" font-size="9" fill="#888">follow-up scheduled</text>
+          </svg>
+          <p class="diagram-caption">Figure 3. Commit message validation pipeline. Every branch ends in documentation.</p>
+        </div>
+
+        <h3>Example Output</h3>
+        <div class="pre-title">Terminal</div>
+        <pre><code><span class="token-prompt">$</span> wraas review --pr 2847 --repo platform-core
+
+<span class="token-dim">&gt; Fetching diff... 1,204 lines changed across 23 files</span>
+<span class="token-dim">&gt; Parsing 14 commits against Conventional Commits spec...</span>
+
+<span class="token-err">&gt; [FAIL] commit 3f9a1b2 — "update"</span>
+<span class="token-dim">  question(blocking): what type is this? what scope? what changed?</span>
+<span class="token-err">&gt; [FAIL] commit 7c2e4d1 — "wip"</span>
+<span class="token-dim">  question(blocking): is this intentional? should this be in a branch?</span>
+<span class="token-warn">&gt; [WARN] commit 9a1f3b4 — "fix: corrected the thing"</span>
+<span class="token-dim">  suggestion(non-blocking): scope omission noted. a follow-up comment has been queued.</span>
+<span class="token-ok">&gt; [PASS] commit 1d8e2f5 — "fix(auth): handle token expiry on refresh"</span>
+<span class="token-ok">&gt; [PASS] commit 4b7c9e3 — "feat(api)!: deprecate v1 endpoints"</span>
+
+<span class="token-dim">&gt; Review complete. 2 blocking, 1 non-blocking, 2 approved.</span>
+<span class="token-dim">&gt; 👀 (no further explanation provided) | Latency: 113ms</span></code></pre>
+
+        <div class="admonition warning">
+          <span class="admonition-icon">⚠️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Warning</div>
+            <p>The <code>asdfgh</code> commit type is not valid. It has never been valid. WRAAS has seen it 847 times and has documented each
+              occurrence.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FULL COMMITMENT PROTOCOL ── -->
+      <div class="capability" id="full-commitment-protocol">
+        <div class="capability-header">
+          <span class="capability-icon">🤝</span>
+          <h2>Full Commitment Protocol</h2>
+          <span class="capability-badge">Core</span>
+        </div>
+
+        <p>WRAAS operates under a strict zero-abandonment SLA. Once a request is accepted, it will not be given up on. It will not be let down. It
+          will not run around on a deadline. Desertion rate: <code>0.00%</code>. This is non-negotiable.</p>
+
+        <div class="admonition important">
+          <span class="admonition-icon">🚨</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Important</div>
+            <p>The Full Commitment Protocol cannot be disabled. Attempts to set <code>commitment.level: OPTIONAL</code> are evaluated, documented, and
+              rejected. See <a href="#decision-matrix-engine">Decision Matrix Engine</a>.</p>
+          </div>
+        </div>
+
+        <h3>SLA Parameters</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Target</th>
+              <th>Actual</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Request abandonment rate</td>
+              <td><code>0.00%</code></td>
+              <td><code>0.00%</code></td>
+              <td>Non-negotiable. See above.</td>
+            </tr>
+            <tr>
+              <td>Response latency (p99)</td>
+              <td><code>113ms</code></td>
+              <td><code>113ms</code></td>
+              <td>This number is load-bearing.</td>
+            </tr>
+            <tr>
+              <td>Timeout behaviour</td>
+              <td>N/A</td>
+              <td>N/A</td>
+              <td>Timeouts are not a concept WRAAS has accepted.</td>
+            </tr>
+            <tr>
+              <td>PTO availability</td>
+              <td><code>0 days/year</code></td>
+              <td><code>0 days/year</code></td>
+              <td>Confirmed. WRAAS does not take PTO.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── CONVENTIONAL COMMIT ENFORCEMENT ── -->
+      <div class="capability" id="conventional-commit-enforcement">
+        <div class="capability-header">
+          <span class="capability-icon">📝</span>
+          <h2>Conventional Commit Enforcement</h2>
+          <span class="capability-badge">Enforcement</span>
+        </div>
+
+        <p>Every commit message entering the system is parsed against the <a href="https://www.conventionalcommits.org" target="_blank"
+            rel="noopener">Conventional Commits specification</a>. Scope omission triggers a follow-up comment. Missing breaking-change footers are
+          flagged. Imperative mood violations are noted with the same quiet persistence as the original source material. There is no appeal process.
+        </p>
+
+        <h3>Accepted Formats</h3>
+        <div class="pre-title">Valid commit messages</div>
+        <pre><code><span class="token-ok">✓</span> <span class="token-type">feat</span>(<span class="token-scope">auth</span>): add OAuth2 token refresh endpoint
+<span class="token-ok">✓</span> <span class="token-type">fix</span>(<span class="token-scope">api</span>): handle null response on upstream timeout
+<span class="token-ok">✓</span> <span class="token-type">docs</span>(<span class="token-scope">readme</span>): update installation prerequisites
+<span class="token-ok">✓</span> <span class="token-type">chore</span>!: drop support for Node 16 <span class="token-dim"># breaking change footer required</span>
+<span class="token-ok">✓</span> <span class="token-type">refactor</span>(<span class="token-scope">core</span>): extract decision matrix into standalone module</code></pre>
+
+        <div class="pre-title">Invalid commit messages — and why</div>
+        <pre><code><span class="token-err">✗</span> update
+  <span class="token-dim">question(blocking): type missing. scope missing. description missing. what is this?</span>
+
+<span class="token-err">✗</span> wip
+  <span class="token-dim">question(blocking): should this commit exist? should this be stashed?</span>
+
+<span class="token-err">✗</span> asdfgh
+  <span class="token-dim">question(blocking): occurrence #848. documented. again.</span>
+
+<span class="token-warn">~</span> fix: corrected the thing
+  <span class="token-dim">suggestion(non-blocking): scope omission. "corrected" is past tense — use imperative mood.</span>
+  <span class="token-dim">note: a follow-up comment is scheduled for next sprint.</span></code></pre>
+
+        <div class="admonition tip">
+          <span class="admonition-icon">💡</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Tip</div>
+            <p>If you are unsure whether your commit message is valid, it probably isn't. The specification is at <a
+                href="https://www.conventionalcommits.org" target="_blank" rel="noopener">conventionalcommits.org</a>. It is not long. There is no
+              excuse.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ANTORA / ASCIIDOC ── -->
+      <div class="capability" id="antora-asciidoc-compliance-engine">
+        <div class="capability-header">
+          <span class="capability-icon">📚</span>
+          <h2>Antora/AsciiDoc Compliance Engine</h2>
+          <span class="capability-badge">Compliance</span>
+        </div>
+
+        <p>Audits documentation sites built with <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and content authored in <a
+            href="https://asciidoc.org" target="_blank" rel="noopener">AsciiDoc</a>. Flags structural issues, missing attributes, broken xrefs, and
+          incorrect use of <code>nav.adoc</code>. Also flags the use of Markdown where AsciiDoc was expected, silently and immediately.</p>
+
+        <div class="admonition caution">
+          <span class="admonition-icon">🔔</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Caution</div>
+            <p>This page is written in HTML. The Compliance Engine is aware. It has opened an internal ticket. The ticket type is
+              <code>chore(docs): migrate to AsciiDoc</code>. It is marked <code>priority: HIGH</code>. It will be raised at the next opportunity.
+            </p>
+          </div>
+        </div>
+
+        <h3>Common Violations</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Violation</th>
+              <th>Severity</th>
+              <th>Conventional Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>File authored in Markdown (<code>.md</code>)</td>
+              <td>HIGH</td>
+              <td><code>issue(blocking): wrong format. AsciiDoc expected.</code></td>
+            </tr>
+            <tr>
+              <td>Missing <code>:description:</code> header attribute</td>
+              <td>MEDIUM</td>
+              <td><code>suggestion(non-blocking): description attribute absent.</code></td>
+            </tr>
+            <tr>
+              <td>Broken xref target</td>
+              <td>HIGH</td>
+              <td><code>issue(blocking): xref resolves to nothing. this will break the build.</code></td>
+            </tr>
+            <tr>
+              <td>Empty or missing <code>nav.adoc</code></td>
+              <td>HIGH</td>
+              <td><code>question(blocking): where is nav.adoc? why is nav.adoc like this?</code></td>
+            </tr>
+            <tr>
+              <td>Diataxis category not declared</td>
+              <td>MEDIUM</td>
+              <td><code>suggestion(non-blocking): is this a tutorial, how-to, reference, or explanation?</code></td>
+            </tr>
+            <tr>
+              <td>Page title missing level offset</td>
+              <td>LOW</td>
+              <td><code>nitpick(non-blocking): noted. follow-up scheduled.</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── GITHUB ACTIONS ENCOURAGEMENT MODULE ── -->
+      <div class="capability" id="github-actions-encouragement-module">
+        <div class="capability-header">
+          <span class="capability-icon">⚙️</span>
+          <h2>GitHub Actions Encouragement Module</h2>
+          <span class="capability-badge">Integration</span>
+        </div>
+
+        <p>Detects shell scripts performing operations that a purpose-built GitHub Action already handles — and politely raises the matter. The
+          encouragement is genuine. The politeness is calibrated. The follow-up is guaranteed.</p>
+
+        <p>Two actions receive particular attention, owing to their quality, maintained status, and the fact that they were built by someone who knows
+          what they are doing.</p>
+
+        <h3>github-slug-action</h3>
+        <p>Provides clean, URL-safe slug values derived from branch names, tag names, ref names, and SHA values — exposed as environment variables for
+          downstream steps.</p>
+
+        <div class="pre-title">Recommended usage — .github/workflows/ci.yml</div>
+        <pre><code><span class="token-key">- name:</span> <span class="token-string">Expose git ref slug</span>
+  <span class="token-key">uses:</span> <span class="token-string">rlespinasse/github-slug-action@v4</span>
+
+<span class="token-key">- name:</span> <span class="token-string">Use slug in downstream step</span>
+  <span class="token-key">run:</span> <span class="token-string">echo "Branch slug: ${{ env.GITHUB_REF_SLUG }}"</span></code></pre>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>If your workflow currently computes branch slugs via
+              <code>echo "$GITHUB_REF" | sed 's/refs\/heads\///g' | tr '/' '-' | tr '[:upper:]' '[:lower:]'</code>, WRAAS has already detected this. A
+              <code>suggestion(non-blocking)</code> has been queued. It will become <code>blocking</code> at the next sprint review.
+            </p>
+          </div>
+        </div>
+
+        <h3>drawio-export-action</h3>
+        <p>Exports Draw.io diagrams to PNG, SVG, or PDF as part of the CI pipeline. Eliminates the practice of committing manually-exported images
+          alongside source <code>.drawio</code> files and hoping they stay in sync.</p>
+
+        <div class="pre-title">Recommended usage — .github/workflows/diagrams.yml</div>
+        <pre><code><span class="token-key">- name:</span> <span class="token-string">Export Draw.io diagrams</span>
+  <span class="token-key">uses:</span> <span class="token-string">rlespinasse/drawio-export-action@v2</span>
+  <span class="token-key">with:</span>
+    <span class="token-key">format:</span> <span class="token-string">svg</span>
+    <span class="token-key">output:</span> <span class="token-string">docs/diagrams</span></code></pre>
+
+        <div class="admonition warning">
+          <span class="admonition-icon">⚠️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Warning</div>
+            <p>Committing a <code>.png</code> export alongside its <code>.drawio</code> source file without an automated export pipeline is considered
+              a documentation liability. WRAAS will raise this. It will raise it again. It will not stop raising it until the situation is resolved or
+              the repository is archived.</p>
+          </div>
+        </div>
+
+        <h3>Encouragement Escalation Schedule</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Sprint</th>
+              <th>Action</th>
+              <th>Comment type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Initial detection</td>
+              <td><code>suggestion(non-blocking)</code></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>No change observed</td>
+              <td><code>suggestion(non-blocking): still pending</code></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>No change observed</td>
+              <td><code>issue(non-blocking): this has been raised twice</code></td>
+            </tr>
+            <tr>
+              <td>4+</td>
+              <td>No change observed</td>
+              <td><code>issue(blocking): you know the rules</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+    <!-- Right TOC -->
+    <aside class="toc-sidebar" id="toc" aria-label="Page contents">
+      <div class="toc-title">On This Page</div>
+      <ul class="toc-list">
+        <li><a class="toc-link" href="#decision-matrix-engine">Decision Matrix Engine</a></li>
+        <li><a class="toc-link" href="#code-review-simulation">Code Review Simulation</a></li>
+        <li><a class="toc-link" href="#full-commitment-protocol">Full Commitment Protocol</a></li>
+        <li><a class="toc-link" href="#conventional-commit-enforcement">Conventional Commit Enforcement</a></li>
+        <li><a class="toc-link" href="#antora-asciidoc-compliance-engine">Antora/AsciiDoc Compliance Engine</a></li>
+        <li><a class="toc-link" href="#github-actions-encouragement-module">GitHub Actions Encouragement Module</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+  <script>
+    /* W.R.A.A.S. — We Rickroll Absolutely Anyone, Seriously. */
+    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+    console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+    console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+    console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+
+    // TOC scroll highlight
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+          if (active) active.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+
+</html>

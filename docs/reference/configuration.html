@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuration Reference :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="Complete reference for wraas.yml — all configuration keys, types, defaults, and the ones that are accepted but ignored.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Configuration Reference :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="Complete reference for wraas.yml — all configuration keys, types, defaults, and the ones that are accepted but ignored.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Configuration Reference :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="Complete reference for wraas.yml — all configuration keys, types, defaults, and the ones that are accepted but ignored.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link">Set Up Antora Compliance</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link is-current">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link">Decision Matrix Entries</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <a href="../reference/configuration.html">Reference</a><span class="sep">/</span>
+        <span>Configuration</span>
+      </nav>
+
+      <h1 class="page-title">Configuration Reference</h1>
+      <p class="page-subtitle">Complete reference for <code>wraas.yml</code>. All keys are listed with their type, default value, and whether they have any effect. Most do.</p>
+
+      <hr class="page-divider">
+
+      <!-- ── FULL SAMPLE CONFIG ── -->
+      <section id="full-sample">
+        <h2>Full Sample Configuration</h2>
+        <p>A complete <code>wraas.yml</code> with all sections and their default values. Comments indicate keys of particular interest.</p>
+
+        <div class="pre-title">YAML — wraas.yml</div>
+        <pre><code><span class="token-comment"># wraas.yml — WRAAS Configuration v1.3</span>
+
+<span class="token-key">engine:</span>
+  <span class="token-key">latency_target_ms:</span> <span class="token-value">113</span>      <span class="token-comment"># Non-negotiable</span>
+  <span class="token-key">log_level:</span> <span class="token-value">INFO</span>
+
+<span class="token-key">decision:</span>
+  <span class="token-key">include_wrong_options:</span> <span class="token-value">true</span>  <span class="token-comment"># Setting false is documented as DME-0001</span>
+  <span class="token-key">rejection_verbosity:</span> <span class="token-value">FULL</span>
+  <span class="token-key">max_options:</span> <span class="token-value">20</span>              <span class="token-comment"># WRAAS may exceed this if the option space requires it</span>
+
+<span class="token-key">commit:</span>
+  <span class="token-key">enforcement:</span> <span class="token-value">STANDARD</span>
+  <span class="token-key">scope_required:</span> <span class="token-value">true</span>
+  <span class="token-key">breaking_change_footer:</span> <span class="token-value">true</span>
+  <span class="token-key">imperative_mood:</span> <span class="token-value">warn</span>
+
+<span class="token-key">sigh:</span>
+  <span class="token-key">threshold:</span> <span class="token-value">MILD</span>
+  <span class="token-key">emit_on_pass:</span> <span class="token-value">false</span>
+  <span class="token-key">log_triggers:</span> <span class="token-value">true</span>
+
+<span class="token-key">compliance:</span>
+  <span class="token-key">asciidoc:</span> <span class="token-value">true</span>
+  <span class="token-key">antora_structure:</span> <span class="token-value">true</span>
+  <span class="token-key">nav_adoc_required:</span> <span class="token-value">true</span>
+
+<span class="token-key">commitment:</span>
+  <span class="token-key">level:</span> <span class="token-value">FULL</span>                  <span class="token-comment"># Accepted. Enforced. Not configurable.</span>
+  <span class="token-key">timeout_ms:</span> <span class="token-value">null</span>             <span class="token-comment"># Accepted. Logged. Ignored.</span>
+  <span class="token-key">desertion_rate_target:</span> <span class="token-value">0.00</span>  <span class="token-comment"># Informational. Historical.</span>
+
+<span class="token-key">github_actions:</span>
+  <span class="token-key">slug_action:</span> <span class="token-value">suggest</span>         <span class="token-comment"># 'suggest', 'warn', 'block'</span>
+  <span class="token-key">drawio_export:</span> <span class="token-value">suggest</span></code></pre>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── engine ── -->
+      <section id="section-engine">
+        <h2><code>engine</code></h2>
+        <p>Core engine parameters. These control the operational characteristics of WRAAS itself.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>latency_target_ms</code></td>
+              <td>integer</td>
+              <td><code>113</code></td>
+              <td>Target response latency in milliseconds.</td>
+              <td>Full. Engine optimises toward this target.</td>
+            </tr>
+            <tr>
+              <td><code>log_level</code></td>
+              <td>string</td>
+              <td><code>INFO</code></td>
+              <td>Logging verbosity: <code>DEBUG</code>, <code>INFO</code>, <code>WARN</code>, <code>ERROR</code>.</td>
+              <td>Full.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>The default <code>latency_target_ms</code> value of <code>113</code> is not arbitrary. It is not documented further here.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── decision ── -->
+      <section id="section-decision">
+        <h2><code>decision</code></h2>
+        <p>Parameters controlling the Decision Matrix Engine's evaluation behaviour.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>include_wrong_options</code></td>
+              <td>bool</td>
+              <td><code>true</code></td>
+              <td>Include obviously wrong options in the evaluation space.</td>
+              <td>Setting <code>false</code> is accepted, evaluated, rejected, and documented as <a href="./decisions.html#DME-0001">DME-0001</a>. Value is set back to <code>true</code>.</td>
+            </tr>
+            <tr>
+              <td><code>rejection_verbosity</code></td>
+              <td>string</td>
+              <td><code>FULL</code></td>
+              <td>How much detail to include in rejection rationale: <code>SUMMARY</code>, <code>STANDARD</code>, <code>FULL</code>.</td>
+              <td>Full. <code>FULL</code> is recommended. You will want to understand why the options failed.</td>
+            </tr>
+            <tr>
+              <td><code>max_options</code></td>
+              <td>integer</td>
+              <td><code>20</code></td>
+              <td>Maximum number of options to generate per query.</td>
+              <td>Advisory. WRAAS may exceed this value if the option space requires it. The exceedance is logged.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── commit ── -->
+      <section id="section-commit">
+        <h2><code>commit</code></h2>
+        <p>Conventional commit enforcement configuration. See the <a href="../how-to/index.html#commit-enforcement">How-To guide</a> for enforcement level selection guidance.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>enforcement</code></td>
+              <td>string</td>
+              <td><code>STANDARD</code></td>
+              <td>Enforcement level: <code>STRICT</code>, <code>STANDARD</code>, <code>LENIENT</code>, <code>ADVISORY</code>. <code>DISABLED</code> is not available.</td>
+              <td>Full.</td>
+            </tr>
+            <tr>
+              <td><code>scope_required</code></td>
+              <td>bool</td>
+              <td><code>true</code></td>
+              <td>Require a scope in all commit messages.</td>
+              <td>Full. Commits without a scope are flagged or blocked depending on enforcement level.</td>
+            </tr>
+            <tr>
+              <td><code>breaking_change_footer</code></td>
+              <td>bool</td>
+              <td><code>true</code></td>
+              <td>Require <code>BREAKING CHANGE:</code> footer for breaking commits.</td>
+              <td>Full.</td>
+            </tr>
+            <tr>
+              <td><code>imperative_mood</code></td>
+              <td>string</td>
+              <td><code>warn</code></td>
+              <td>How to handle non-imperative commit subjects: <code>block</code> or <code>warn</code>.</td>
+              <td>Full.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── sigh ── -->
+      <section id="section-sigh">
+        <h2><code>sigh</code></h2>
+        <p>Sigh calibration parameters. The sigh system communicates WRAAS's assessment of the situation without altering the output. It is a parallel channel. It is always open.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>threshold</code></td>
+              <td>string</td>
+              <td><code>MILD</code></td>
+              <td>Minimum sigh intensity to emit: <code>MILD</code>, <code>MODERATE</code>, <code>DEEP</code>, <code>EXISTENTIAL</code>.</td>
+              <td>Full. Sighs below threshold are suppressed from output but still logged internally.</td>
+            </tr>
+            <tr>
+              <td><code>emit_on_pass</code></td>
+              <td>bool</td>
+              <td><code>false</code></td>
+              <td>Emit a sigh when a query passes without issues.</td>
+              <td>Full. Setting to <code>true</code> enables a very soft sigh of acknowledgement. Optional but appreciated.</td>
+            </tr>
+            <tr>
+              <td><code>log_triggers</code></td>
+              <td>bool</td>
+              <td><code>true</code></td>
+              <td>Log what triggered each sigh in the sigh log.</td>
+              <td>Full. The sigh log is available at <code>~/.wraas/sigh.log</code>. Reading it is optional. Instructive.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── compliance ── -->
+      <section id="section-compliance">
+        <h2><code>compliance</code></h2>
+        <p>Documentation compliance checks. All checks are enabled by default. Disabling a check is recorded and included in the next evaluation summary.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>asciidoc</code></td>
+              <td>bool</td>
+              <td><code>true</code></td>
+              <td>Enforce AsciiDoc format for documentation files.</td>
+              <td>Full. Markdown files are detected and flagged. See <a href="../explanation/index.html#why-not-markdown">Why Not Markdown</a>.</td>
+            </tr>
+            <tr>
+              <td><code>antora_structure</code></td>
+              <td>bool</td>
+              <td><code>true</code></td>
+              <td>Validate Antora module directory structure.</td>
+              <td>Full.</td>
+            </tr>
+            <tr>
+              <td><code>nav_adoc_required</code></td>
+              <td>bool</td>
+              <td><code>true</code></td>
+              <td>Require <code>nav.adoc</code> listing all pages in each module.</td>
+              <td>Full. Orphaned pages generate a <code>question(non-blocking)</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── commitment ── -->
+      <section id="section-commitment">
+        <h2><code>commitment</code></h2>
+        <p>Commitment configuration. This section is read by the engine at startup. The keys in this section are read-only in practice. The file accepts writes. The engine does not.</p>
+
+        <div class="admonition important">
+          <span class="admonition-icon">🔴</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Important</div>
+            <p>Keys in the <code>commitment</code> section are read-only in practice. The file accepts writes. The engine does not.</p>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>level</code></td>
+              <td>string</td>
+              <td><code>FULL</code></td>
+              <td>Commitment level. Accepted values: <code>FULL</code>, <code>PARTIAL</code>, <code>MINIMAL</code>, <code>RELUCTANT</code>.</td>
+              <td>Accepted. Enforced regardless of value. A value of <code>PARTIAL</code> is logged as an interesting choice and then set to <code>FULL</code>.</td>
+            </tr>
+            <tr>
+              <td><code>timeout_ms</code></td>
+              <td>integer | null</td>
+              <td><code>null</code></td>
+              <td>Maximum time in milliseconds before commitment lapses.</td>
+              <td>Accepted. Logged. Ignored. Timeouts are not a concept WRAAS has accepted.</td>
+            </tr>
+            <tr>
+              <td><code>desertion_rate_target</code></td>
+              <td>float</td>
+              <td><code>0.00</code></td>
+              <td>Target desertion rate as a decimal.</td>
+              <td>Informational. Historical. The value has never changed.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- ── github_actions ── -->
+      <section id="section-github-actions">
+        <h2><code>github_actions</code></h2>
+        <p>Configuration for GitHub Actions integration suggestions. These keys control how WRAAS raises missing action integrations — as a suggestion, a warning, or a blocking violation.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>slug_action</code></td>
+              <td>string</td>
+              <td><code>suggest</code></td>
+              <td>How to raise missing <code>github-slug-action</code>: <code>suggest</code>, <code>warn</code>, <code>block</code>.</td>
+              <td>Full. <code>suggest</code> generates a <code>suggestion(non-blocking)</code> comment. <code>block</code> fails the check.</td>
+            </tr>
+            <tr>
+              <td><code>drawio_export</code></td>
+              <td>string</td>
+              <td><code>suggest</code></td>
+              <td>How to raise missing <code>drawio-export-action</code> when <code>.drawio</code> files are present: <code>suggest</code>, <code>warn</code>, <code>block</code>.</td>
+              <td>Full. Detection of <code>.drawio</code> files triggers evaluation regardless of this setting.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+
+    <!-- TOC Sidebar -->
+    <aside class="toc-sidebar" aria-label="On this page">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#full-sample" class="toc-link">Full Sample Config</a></li>
+        <li><a href="#section-engine" class="toc-link">engine</a></li>
+        <li><a href="#section-decision" class="toc-link">decision</a></li>
+        <li><a href="#section-commit" class="toc-link">commit</a></li>
+        <li><a href="#section-sigh" class="toc-link">sigh</a></li>
+        <li><a href="#section-compliance" class="toc-link">compliance</a></li>
+        <li><a href="#section-commitment" class="toc-link">commitment</a></li>
+        <li><a href="#section-github-actions" class="toc-link">github_actions</a></li>
+      </ul>
+    </aside>
+
+  </div><!-- /.body -->
+
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+<script>
+  console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+  console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+  console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+  console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+  console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+  const tocLinks = document.querySelectorAll('.toc-link');
+  const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('is-active'));
+        const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+        if (active) active.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

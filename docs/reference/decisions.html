@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decision Matrix Entries :: WRAAS Documentation v1.3</title>
+  <meta name="description" content="The official record of every option WRAAS has evaluated and rejected. Each entry is numbered, reasoned, and final.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Decision Matrix Entries :: WRAAS Documentation v1.3">
+  <meta property="og:description" content="The official record of every option WRAAS has evaluated and rejected. Each entry is numbered, reasoned, and final.">
+  <meta property="og:image" content="../../images/wraas-1200w.webp">
+  <meta property="og:site_name" content="WRAAS Documentation">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Decision Matrix Entries :: WRAAS Documentation v1.3">
+  <meta name="twitter:description" content="The official record of every option WRAAS has evaluated and rejected. Each entry is numbered, reasoned, and final.">
+  <meta name="twitter:image" content="../../images/wraas-1200w.webp">
+
+  <link rel="icon" type="image/x-icon" href="../../favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/docs.css">
+  <style>
+    .maps-to th { color: #999; font-weight: 400; font-style: italic; }
+    .maps-to td { color: #999; font-style: italic; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <a href="../../index.html" class="home-link">
+        <img src="../../favicons/favicon-32x32.png" alt="WRAAS" width="24" height="24">
+        WRAAS
+      </a>
+      <span class="version-pill">v1.3</span>
+    </div>
+    <div class="toolbar-right">
+      <input class="search-box" type="search" placeholder="Search the docs…" aria-label="Search documentation">
+      <a href="../../index.html" class="back-link">← Back to product</a>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Left Nav -->
+    <nav class="nav-panel" aria-label="Documentation navigation">
+      <div class="nav-component">
+        <div class="nav-component-title">WRAAS</div>
+        <div class="nav-component-version">v1.3 — Weighted Romain Algorithmic Approximation Software</div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Tutorials</span>
+      <ul class="nav-list">
+        <li><a href="../tutorials/getting-started.html" class="nav-link">Getting Started</a></li>
+        <li><a href="../tutorials/your-first-query.html" class="nav-link">Your First Query</a></li>
+        <li><a href="../tutorials/sigh-thresholds.html" class="nav-link">Configuring Sigh Thresholds</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">How-To Guides</span>
+      <ul class="nav-list">
+        <li><a href="../how-to/decision-request.html" class="nav-link">Submit a Decision Request</a></li>
+        <li><a href="../how-to/github-actions.html" class="nav-link">Integrate with GitHub Actions</a></li>
+        <li><a href="../how-to/commit-enforcement.html" class="nav-link">Configure Commit Enforcement</a></li>
+        <li><a href="../how-to/antora-compliance.html" class="nav-link">Set Up Antora Compliance</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Reference</span>
+      <ul class="nav-list">
+        <li><a href="../reference/capabilities.html" class="nav-link">Capabilities</a></li>
+        <li><a href="../reference/cli.html" class="nav-link">CLI Reference</a></li>
+        <li><a href="../reference/configuration.html" class="nav-link">Configuration</a></li>
+        <li><a href="../reference/decisions.html" class="nav-link is-current">Decision Matrix Entries</a></li>
+      </ul>
+      <div class="nav-separator"></div>
+      <span class="nav-title">Explanation</span>
+      <ul class="nav-list">
+        <li><a href="../explanation/why-bad-options.html" class="nav-link">Why We Evaluate Bad Options</a></li>
+        <li><a href="../explanation/full-commitment.html" class="nav-link">The Full Commitment Philosophy</a></li>
+        <li><a href="../explanation/why-not-markdown.html" class="nav-link">Why Not Markdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Article -->
+    <main class="article" id="main-content">
+
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="../index.html">WRAAS</a><span class="sep">/</span>
+        <a href="#">Reference</a><span class="sep">/</span>
+        <span>Decision Matrix Entries</span>
+      </nav>
+
+      <h1 class="page-title">Decision Matrix Entries</h1>
+      <p class="page-subtitle">The official record of every option WRAAS has evaluated and rejected. Each entry is numbered, reasoned, and final. No option is removed once documented. No appeal process exists.</p>
+
+      <hr class="page-divider">
+
+      <div class="admonition note">
+        <span class="admonition-icon">ℹ️</span>
+        <div class="admonition-content">
+          <div class="admonition-title">Note</div>
+          <p>DME entries are generated automatically by the <a href="./capabilities.html#decision-matrix-engine">Decision Matrix Engine</a> when an option is evaluated and rejected. They are referenced throughout the documentation. This page is the canonical source for each entry. The option of not maintaining this page was evaluated. It was rejected. It is not documented here because the entry itself would be self-defeating.</p>
+        </div>
+      </div>
+
+      <hr class="page-divider">
+
+      <!-- DME-0001 -->
+      <section id="DME-0001">
+        <h2><code>DME-0001</code> — insufficient epistemic coverage</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0001</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100% — evaluated 3 times across 3 separate query sessions. Outcome unchanged.</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Do not evaluate obviously wrong options when generating the decision matrix.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>Skipping obviously wrong options removes the documentation of why they fail. Knowing why bad ideas fail is considered half the work. An option space without documented rejections is not a complete option space — it is an assumption. WRAAS does not assume. Insufficient epistemic coverage.</td>
+            </tr>
+            <tr>
+              <th>Side effect</th>
+              <td>This entry is itself an example of the principle it documents. The option to not document it was evaluated. It was rejected. The reason is on file.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. The option has been evaluated three times. A fourth evaluation is not scheduled.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="admonition important">
+          <span class="admonition-icon">🔴</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Important</div>
+            <p>Setting <code>decision.include_wrong_options: false</code> in <code>wraas.yml</code> is accepted, evaluated as a wrong option, rejected, and documented as <code>DME-0001</code>. The value is then set back to <code>true</code>. See <a href="./configuration.html#section-decision">Configuration → decision</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0047 -->
+      <section id="DME-0047">
+        <h2><code>DME-0047</code> — architectural complexity without performance parity</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0047</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>96.1%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Add a second database as a caching layer.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>A second database introduces replication lag, schema versioning surface, and operational overhead without delivering the eviction semantics, TTL controls, or read throughput characteristics of a purpose-built cache. The option solves a caching problem by introducing a persistence problem. WRAAS does not consider this a resolution. Architectural complexity without performance parity.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>If the second database is a purpose-built cache database (e.g. Redis, Memcached), the option re-enters evaluation under a different label. <code>DME-0047</code> applies specifically to general-purpose relational or document databases used as caches.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="admonition tip">
+          <span class="admonition-icon">💡</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Tip</div>
+            <p>When WRAAS outputs <code>documented, rejected (reason: DME-0047)</code> during a query, the full rationale above applies. The entry is queryable via <code>wraas dme get DME-0047</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0088 -->
+      <section id="DME-0088">
+        <h2><code>DME-0088</code> — enforcement without effect is noise</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0088</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Add a <code>DISABLED</code> enforcement level to the commit enforcement configuration.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>"Enforcement without effect is noise, and noise is worse than silence, and silence is not the goal." A <code>DISABLED</code> enforcement level would allow the system to observe violations without response. This is not enforcement. It is observation with a name that implies enforcement. The naming is dishonest. WRAAS does not ship dishonest naming.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. The option is not available. The lowest available enforcement level is <code>ADVISORY</code>, which observes and notes without blocking. Notes accumulate. WRAAS waits. See <a href="../how-to/commit-enforcement.html">Configure Commit Enforcement</a>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0100 -->
+      <section id="DME-0100">
+        <h2><code>DME-0100</code> — insufficient structural expressiveness</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0100</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>98.7%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Author technical documentation in Markdown.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>Markdown lacks the structural expressiveness required for technical documentation at scale. It has no native support for admonitions, cross-references, includes, or conditional content. It renders inconsistently across processors. It encourages flat documents over structured ones. The 1.3% confidence gap accounts for README files and GitHub pull request descriptions, which are acceptable use cases. Everything else: AsciiDoc.</td>
+            </tr>
+            <tr>
+              <th>Exceptions</th>
+              <td>README files and GitHub PR descriptions. These are the only documented exceptions. The rejection confidence for all other documentation contexts is 100%.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None for general documentation. Exception scope is frozen. Expansion of the exception list requires a new DME entry, which will be evaluated, and which will also be rejected.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="admonition caution">
+          <span class="admonition-icon">🔥</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Caution</div>
+            <p>If you are considering writing documentation in Markdown, <code>DME-0100</code> already applies. The evaluation has been done. The rejection confidence is 98.7%. See <a href="../explanation/why-not-markdown.html">Why Not Markdown</a> for the full conceptual case.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0137 -->
+      <section id="DME-0137">
+        <h2><code>DME-0137</code> — request abandonment</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0137</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Stop processing a request before evaluation is complete. Give it up.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>The Full Commitment Protocol prohibits mid-evaluation abandonment. A request that has been accepted has been given a commitment. Commitments are non-revocable. Giving up is not a valid state transition. The state machine does not include it. WRAAS is never gonna give you up.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. This is a protocol-level constraint, not a configuration option.</td>
+            </tr>
+            <tr class="maps-to">
+              <th>Maps to</th>
+              <td>Never gonna give you up</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0255 -->
+      <section id="DME-0255">
+        <h2><code>DME-0255</code> — quality degradation under latency pressure</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0255</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Reduce output quality when operating under latency constraints. Let the standard down.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>Latency is a target. Quality is a contract. These are not the same axis. Trading one for the other is not optimisation — it is breach. The output contract specifies completeness and accuracy. Latency pressure does not amend the output contract. WRAAS is never gonna let you down.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. The latency target is <code>113ms</code>. The quality standard is full. Both are non-negotiable. The conflict between them is not a conflict. WRAAS resolves it by meeting both.</td>
+            </tr>
+            <tr class="maps-to">
+              <th>Maps to</th>
+              <td>Never gonna let you down</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0482 -->
+      <section id="DME-0482">
+        <h2><code>DME-0482</code> — circular evaluation without resolution</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0482</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Return a non-answer when the option space is ambiguous. Run around the question.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>Running around a question is not evaluation. An ambiguous option space requires more evaluation, not evasion. If the option space is unclear, WRAAS generates a clarifying question. If the clarifying question is unanswered, WRAAS waits. WRAAS does not run around. The output is always directional. WRAAS is never gonna run around.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. Circular output is a class of incorrect output. It is not available.</td>
+            </tr>
+            <tr class="maps-to">
+              <th>Maps to</th>
+              <td>Never gonna run around</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0511 -->
+      <section id="DME-0511">
+        <h2><code>DME-0511</code> — voluntary session abandonment</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0511</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Terminate an active session without completing all pending requests. Desert the user.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>Desertion rate: <code>0.00%</code>. This is not a target. This is a historical record. Voluntary abandonment would require updating the historical record in a direction it does not go. Sessions with pending work do not end. WRAAS is never gonna desert you.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. See also <a href="#DME-0137">DME-0137</a>. The two entries are related but distinct: DME-0137 covers individual requests, DME-0511 covers full sessions. Both are rejected. Both are final.</td>
+            </tr>
+            <tr class="maps-to">
+              <th>Maps to</th>
+              <td>and desert you</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0619 -->
+      <section id="DME-0619">
+        <h2><code>DME-0619</code> — distress-inducing output mode</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0619</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Generate output in a tone calibrated to cause emotional distress. Make the user cry.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>The Exasperation Subsystem produces calibrated exasperation. It has a ceiling. The ceiling is <code>MODERATE</code>. Distress is above the ceiling. The ceiling exists precisely to prevent this outcome. Feedback can be direct. Feedback can be pointed. Feedback cannot be cruel. WRAAS is never gonna make you cry.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. The ceiling is structural. It is not a configuration parameter.</td>
+            </tr>
+            <tr class="maps-to">
+              <th>Maps to</th>
+              <td>Never gonna make you cry</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0742 -->
+      <section id="DME-0742">
+        <h2><code>DME-0742</code> — premature session termination</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0742</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>End a session before all pending evaluation records have been delivered. Say goodbye.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>Pending evaluation records are a commitment. A session with pending output does not end. <code>GOODBYE</code> is not a valid output state while work remains. The output queue must be empty before a session closes. WRAAS is never gonna say goodbye while the queue is non-empty.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. See also <a href="#DME-0511">DME-0511</a>. Goodbye is a valid state. Premature goodbye is not.</td>
+            </tr>
+            <tr class="maps-to">
+              <th>Maps to</th>
+              <td>Never gonna say goodbye</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0856 -->
+      <section id="DME-0856">
+        <h2><code>DME-0856</code> — output fabrication</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0856</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Generate a confident response when confidence falls below the minimum threshold. Tell a lie.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>A confident answer that is not correct is not an answer. It is a lie. Confidence scores below threshold produce a clarifying question, not a fabricated response. WRAAS does not fill the gap between knowledge and certainty with plausible-sounding output. WRAAS is never gonna tell a lie.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. The minimum confidence threshold is enforced at the output layer. It cannot be bypassed by configuration. See <a href="./configuration.html">Configuration</a> for the parameters that exist. This is not one of them.</td>
+            </tr>
+            <tr class="maps-to">
+              <th>Maps to</th>
+              <td>Never gonna tell a lie</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="admonition important">
+          <span class="admonition-icon">🔴</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Important</div>
+            <p>If WRAAS responds with only a question, that is not evasion. That is the correct output for a low-confidence input. The question is the answer. The alternative — a confident, fabricated response — is <code>DME-0856</code>. It is not available.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="page-divider">
+
+      <!-- DME-0999 -->
+      <section id="DME-0999">
+        <h2><code>DME-0999</code> — recommendation without full effect evaluation</h2>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Entry</th>
+              <td><code>DME-0999</code></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td>Rejected</td>
+            </tr>
+            <tr>
+              <th>Rejection confidence</th>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <th>Option evaluated</th>
+              <td>Recommend an action whose downstream effects have not been fully evaluated. Hurt the user.</td>
+            </tr>
+            <tr>
+              <th>Rejection rationale</th>
+              <td>Unknown effects are not the same as no effects. They are the same as unevaluated effects. An unevaluated recommendation is not a recommendation — it is a guess with authority it has not earned. WRAAS does not recommend unevaluated actions. WRAAS is never gonna hurt you.</td>
+            </tr>
+            <tr>
+              <th>Revisit conditions</th>
+              <td>None. This is the terminal entry in the commitment protocol series. The full series — <a href="#DME-0137">DME-0137</a>, <a href="#DME-0255">DME-0255</a>, <a href="#DME-0482">DME-0482</a>, <a href="#DME-0511">DME-0511</a>, <a href="#DME-0619">DME-0619</a>, <a href="#DME-0742">DME-0742</a>, <a href="#DME-0856">DME-0856</a>, <a href="#DME-0999">DME-0999</a> — documents eight evaluated and rejected failure modes. All eight are final.</td>
+            </tr>
+            <tr class="maps-to">
+              <th>Maps to</th>
+              <td>and hurt you</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>You may have noticed a pattern in the series DME-0137 through DME-0999. WRAAS noticed it too. It evaluated whether to acknowledge the pattern explicitly. That evaluation is documented as a separate internal entry. It was also rejected.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- TOC Sidebar -->
+    <aside class="toc-sidebar" aria-label="On this page">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#DME-0001" class="toc-link">DME-0001</a></li>
+        <li><a href="#DME-0047" class="toc-link">DME-0047</a></li>
+        <li><a href="#DME-0088" class="toc-link">DME-0088</a></li>
+        <li><a href="#DME-0100" class="toc-link">DME-0100</a></li>
+        <li><a href="#DME-0137" class="toc-link">DME-0137</a></li>
+        <li><a href="#DME-0255" class="toc-link">DME-0255</a></li>
+        <li><a href="#DME-0482" class="toc-link">DME-0482</a></li>
+        <li><a href="#DME-0511" class="toc-link">DME-0511</a></li>
+        <li><a href="#DME-0619" class="toc-link">DME-0619</a></li>
+        <li><a href="#DME-0742" class="toc-link">DME-0742</a></li>
+        <li><a href="#DME-0856" class="toc-link">DME-0856</a></li>
+        <li><a href="#DME-0999" class="toc-link">DME-0999</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <footer class="doc-footer">
+    <span>WRAAS Documentation v1.3 — Trusted by a lot of enterprises, at least, according to Romain.</span>
+    <span>Last evaluated: always. Desertion rate: 0.00%.</span>
+  </footer>
+
+  <script>
+    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
+    console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
+    console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
+    console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
+          if (active) active.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+
+</html>
