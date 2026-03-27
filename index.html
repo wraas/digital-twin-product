@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WRAAS — Weighted Romain Algorithmic Approximation Software</title>
+
+  <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <meta name="msapplication-TileImage" content="favicons/mstile-150x150.png">
+  <meta name="msapplication-TileColor" content="#050d1a">
+  <meta name="theme-color" content="#050d1a">
+
+  <meta name="description" content="WRAAS v1.0 — A high-fidelity neural network delivering the exact same brilliant insights — and signature sighs — as Romain himself.">
+  <meta property="og:title" content="WRAAS — Weighted Romain Algorithmic Approximation Software">
+  <meta property="og:description" content="Say goodbye to bottlenecks. Experience the ultimate in highly specific, Romain-based team redundancy.">
+  <meta property="og:image" content="images/wraas-1200w.webp">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #050d1a;
+      --bg2:       #081220;
+      --accent:    #00c8ff;
+      --accent2:   #0066ff;
+      --text:      #e8f4ff;
+      --muted:     #6a8faf;
+      --border:    rgba(0, 200, 255, 0.15);
+      --glow:      rgba(0, 200, 255, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Grid overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      backdrop-filter: blur(12px);
+      background: rgba(5, 13, 26, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .nav-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 8rem 6rem 6rem;
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(0,102,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 0 30px rgba(0,200,255,0.3);
+    }
+
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0,200,255,0.06);
+      transform: translateY(-2px);
+    }
+
+    /* ── Hero image ── */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: -30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,102,255,0.2) 0%, transparent 70%);
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 60px rgba(0,200,255,0.15), 0 0 120px rgba(0,102,255,0.1);
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(5,13,26,0.8) 100%);
+    }
+
+    /* ── Scanline ticker ── */
+    .ticker {
+      position: relative;
+      z-index: 1;
+      background: rgba(0,200,255,0.04);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      gap: 4rem;
+      animation: scroll 28s linear infinite;
+    }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .ticker span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    .ticker span.sep { color: var(--muted); opacity: 0.4; }
+
+    /* ── Sections ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 6rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    h2 em { font-style: normal; color: var(--accent); }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    /* ── Stats bar ── */
+    .stats {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 6rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-value {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Features ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(0,200,255,0.4);
+      box-shadow: 0 0 30px rgba(0,200,255,0.08);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── How it works ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--bg);
+    }
+
+    .step h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .how-visual {
+      position: relative;
+    }
+
+    .how-visual img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 40px rgba(0,200,255,0.1);
+    }
+
+    .terminal {
+      margin-top: 1.5rem;
+      background: #020810;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.2rem 1.5rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+
+    .terminal .prompt { color: var(--accent); }
+    .terminal .output { color: var(--muted); }
+    .terminal .success { color: #00e676; }
+    .terminal .warn { color: #ffb300; }
+
+    /* ── Testimonial ── */
+    .testimonial-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.8rem;
+    }
+
+    .testimonial blockquote {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      font-style: italic;
+    }
+
+    .testimonial cite {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-style: normal;
+    }
+
+    .cite-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+
+    .cite-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .cite-role {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 8rem 6rem;
+    }
+
+    .cta-section h2 {
+      max-width: 700px;
+      margin: 0 auto 1rem;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .cta-note {
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; padding: 7rem 3rem 4rem; gap: 3rem; }
+      .hero-visual { order: -1; max-width: 420px; margin: 0 auto; width: 100%; }
+      .hero-desc { max-width: 100%; }
+      section { padding: 4rem 3rem; }
+      .stats { grid-template-columns: repeat(2, 1fr); padding: 3rem; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:nth-child(odd) { border-right: 1px solid var(--border); }
+      .stat:last-child, .stat:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+      footer { padding: 2rem 3rem; }
+      .cta-section { padding: 5rem 3rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      section { padding: 3rem 1.5rem; }
+      .stats { padding: 2rem 1.5rem; grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+      .cta-section { padding: 4rem 1.5rem; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">WRAAS<span class="nav-badge">v1.0</span></div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#get-started">Get started</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-label">Now available — ROMAIN_ALGO_V1.3</div>
+      <h1>The only software that thinks<br><span>exactly like Romain.</span></h1>
+      <p class="hero-desc">
+        Have you ever needed Romain's exact opinion on a critical project, but he was out of the office?
+        Enter <strong>WRAAS</strong>. By continuously parsing thousands of data points from his historical emails,
+        code commits, and Slack messages — we've mapped his complete decision-making matrix.
+      </p>
+      <div class="hero-actions">
+        <a href="#get-started" class="btn-primary">Deploy WRAAS &rarr;</a>
+        <a href="#how-it-works" class="btn-secondary">See how it works</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="images/wraas-400w.webp 400w, images/wraas-800w.webp 800w, images/wraas-1200w.webp 1200w"
+            sizes="(max-width: 600px) 90vw, (max-width: 1024px) 420px, 500px">
+          <img src="wraas.png" alt="WRAAS — Romain Algorithmic Approximation Engine" width="500" height="500">
+        </picture>
+        <div class="hero-img-overlay"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span>COGNITIVE_WEIGHT_MATRIX</span><span class="sep">//</span>
+      <span>APPROXIMATION_ENGINE_RUNNING</span><span class="sep">//</span>
+      <span>BIOMETRIC_DATA_VALID</span><span class="sep">//</span>
+      <span>ROMAIN_ALGO_V1.3</span><span class="sep">//</span>
+      <span>SIGH_PATTERN_INDEXED</span><span class="sep">//</span>
+      <span>DECISION_MATRIX_LOADED</span><span class="sep">//</span>
+      <span>SLACK_CORPUS_ANALYZED</span><span class="sep">//</span>
+      <span>COMMIT_HISTORY_PARSED</span><span class="sep">//</span>
+      <span>COGNITIVE_WEIGHT_MATRIX</span><span class="sep">//</span>
+      <span>APPROXIMATION_ENGINE_RUNNING</span><span class="sep">//</span>
+      <span>BIOMETRIC_DATA_VALID</span><span class="sep">//</span>
+      <span>ROMAIN_ALGO_V1.3</span><span class="sep">//</span>
+      <span>SIGH_PATTERN_INDEXED</span><span class="sep">//</span>
+      <span>DECISION_MATRIX_LOADED</span><span class="sep">//</span>
+      <span>SLACK_CORPUS_ANALYZED</span><span class="sep">//</span>
+      <span>COMMIT_HISTORY_PARSED</span><span class="sep">//</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">14K+</div>
+      <div class="stat-label">Slack messages indexed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">3,847</div>
+      <div class="stat-label">Code commits analyzed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">99.2%</div>
+      <div class="stat-label">Sigh pattern accuracy</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">0</div>
+      <div class="stat-label">Sick days taken</div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="section-label">Capabilities</div>
+    <h2>Everything Romain would say.<br><em>On demand.</em></h2>
+    <p class="section-intro">
+      WRAAS isn't a generic language model. It's a precision-engineered neural network weighted
+      entirely around one man's opinions, habits, and slightly impatient communication style.
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Decision Matrix Engine</h3>
+        <p>Replicates Romain's exact reasoning framework, including his famous "have you checked the logs?" reflex and preference for closing tickets rather than commenting on them.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📧</div>
+        <h3>Email Corpus Weighting</h3>
+        <p>Trained on years of email threads, WRAAS knows when to reply instantly, when to wait three days, and when to just forward without comment.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Slack Sentiment Mapping</h3>
+        <p>Accurately reproduces Romain's use of 👀, a brief "ok", or an eerily specific follow-up question that implies he's already done the entire analysis himself.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <h3>Code Review Simulation</h3>
+        <p>Outputs pull request feedback weighted to prefer small focused commits, flag naming inconsistencies, and ask "what's the test coverage on this?" at the exact right moment.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">😤</div>
+        <h3>Signature Sigh Generator</h3>
+        <p>Our proprietary Exasperation Subsystem reproduces the full spectrum — from the mild "that's an interesting approach" sigh to the deep-breath-before-a-Teams-call variant.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Zero Bottleneck Mode</h3>
+        <p>Available 24/7. Never on PTO. Does not need to be added to a meeting invite. Processes 400 requests per second, which is 399 more than Romain can handle on a Monday morning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-label">Architecture</div>
+    <h2>How <em>WRAAS</em> works</h2>
+    <p class="section-intro">
+      A four-stage pipeline continuously ingests, weighs, and approximates Romain's cognitive output
+      in real time — with sub-200ms response latency.
+    </p>
+    <div class="how-grid">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h3>Data Ingestion Layer</h3>
+            <p>Continuously parses emails, commit messages, Slack threads, and calendar entries to maintain an up-to-date model of Romain's priorities and pet peeves.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h3>Cognitive Weight Matrix</h3>
+            <p>Each data point is assigned a weight based on recency, emotional intensity (measured in exclamation marks and emoji density), and topic relevance.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h3>Opinion Approximation Engine</h3>
+            <p>The core model generates responses calibrated to Romain's known positions: pragmatism over theory, outcomes over process, and always checking whether it runs in production.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <h3>Sigh Calibration & Output</h3>
+            <p>Final responses are audited by the Exasperation Subsystem and delivered with the appropriate level of mild impatience or enthusiastic approval.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-visual">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="images/wraas-400w.webp 400w, images/wraas-800w.webp 800w"
+            sizes="(max-width: 600px) 90vw, 460px">
+          <img src="wraas.png" alt="WRAAS neural network visualization" width="460" height="460">
+        </picture>
+        <div class="terminal" aria-label="WRAAS terminal output">
+          <div><span class="prompt">$</span> wraas query --input "should we rewrite this in microservices?"</div>
+          <div class="output">&gt; Parsing decision matrix...</div>
+          <div class="output">&gt; Weighting against 847 similar past queries...</div>
+          <div class="output">&gt; Calibrating sigh output... [MILD]</div>
+          <div class="success">&gt; OUTPUT: "What problem are we actually solving here?"</div>
+          <div class="warn">&gt; Confidence: 97.4% | Latency: 142ms</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonial-section">
+    <div class="section-label">Testimonials</div>
+    <h2>What the team is saying</h2>
+    <p class="section-intro">Early adopters report a 94% reduction in "waiting for Romain's input" and a 100% increase in passive-aggressive precision.</p>
+    <div class="testimonials">
+      <div class="testimonial">
+        <blockquote>"I submitted a ticket at 2am and got feedback within 80 milliseconds. The response was 'did you check what happens at scale?' — exactly what Romain would have said. I was briefly unsettled."</blockquote>
+        <cite>
+          <div class="cite-avatar">SL</div>
+          <div>
+            <div class="cite-name">Sarah L.</div>
+            <div class="cite-role">Senior Engineer</div>
+          </div>
+        </cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>"WRAAS reviewed my pull request and added six comments, all of which were correct. It also left a 👀 with no explanation. I've never felt more evaluated."</blockquote>
+        <cite>
+          <div class="cite-avatar">MK</div>
+          <div>
+            <div class="cite-name">Marc K.</div>
+            <div class="cite-role">Staff Engineer</div>
+          </div>
+        </cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>"I asked if we should adopt a new framework. WRAAS replied 'what does the data say?' and closed the ticket. I respect it more than most humans I've worked with."</blockquote>
+        <cite>
+          <div class="cite-avatar">AP</div>
+          <div>
+            <div class="cite-name">Amara P.</div>
+            <div class="cite-role">Engineering Manager</div>
+          </div>
+        </cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="get-started" class="cta-section">
+    <div class="section-label">Get started</div>
+    <h2>Deploy your own <em>Romain</em> today.</h2>
+    <p>No PTO requests. No calendar conflicts. No sighing in real time.<br>Just pure, Romain-weighted algorithmic approximation, available 24/7.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="https://wraas.click/digital-twin-access-request" class="btn-primary">Request access &rarr;</a>
+      <a href="#" class="btn-secondary">Read the docs</a>
+    </div>
+    <p class="cta-note">* WRAAS is not responsible for decisions made based on its outputs. Actual Romain may still disagree.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">WRAAS <span style="color:var(--muted); font-weight:400; font-size:0.75rem;">v1.0.0</span></div>
+    <p>Built with love, mild exasperation, and an unhealthy amount of Slack data.</p>
+    <p style="opacity:0.4;">&copy; 2026 WRAAS Corp. All approximations reserved.</p>
+  </footer>
+
+</body>
+</html>
