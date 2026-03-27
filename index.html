@@ -1,5 +1,17 @@
 <!DOCTYPE html>
+<!--
+ __        __ ____      _        _     ____
+ \ \      / /|  _ \    / \      / \   / ___|
+  \ \ /\ / / | |_) |  / _ \    / _ \  \___ \
+   \ V  V /  |  _ <  / ___ \  / ___ \  ___) |
+    \_/\_/   |_| \_\/_/   \_\/_/   \_\|____/
+
+  We Rickroll Absolutely Anyone, Seriously.
+  Happy April Fools 2026.
+  — https://wraas.click
+-->
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,26 +25,35 @@
   <meta name="msapplication-TileColor" content="#050d1a">
   <meta name="theme-color" content="#050d1a">
 
-  <meta name="description" content="WRAAS v1.0 — A high-fidelity neural network delivering the exact same brilliant insights — and signature sighs — as Romain himself.">
+  <meta name="description"
+    content="WRAAS v1.3 — A high-fidelity neural network delivering the exact same brilliant insights — and signature sighs — as Romain himself.">
   <meta property="og:title" content="WRAAS — Weighted Romain Algorithmic Approximation Software">
   <meta property="og:description" content="Say goodbye to bottlenecks. Experience the ultimate in highly specific, Romain-based team redundancy.">
   <meta property="og:image" content="images/wraas-1200w.webp">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #050d1a;
-      --bg2:       #081220;
-      --accent:    #00c8ff;
-      --accent2:   #0066ff;
-      --text:      #e8f4ff;
-      --muted:     #6a8faf;
-      --border:    rgba(0, 200, 255, 0.15);
-      --glow:      rgba(0, 200, 255, 0.25);
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --bg: #050d1a;
+      --bg2: #081220;
+      --accent: #00c8ff;
+      --accent2: #0066ff;
+      --text: #e8f4ff;
+      --muted: #6a8faf;
+      --border: rgba(0, 200, 255, 0.15);
+      --glow: rgba(0, 200, 255, 0.25);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -48,8 +69,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,200,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,200,255,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(0, 200, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 200, 255, 0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
       z-index: 0;
@@ -58,7 +79,9 @@
     /* ── Nav ── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
@@ -103,7 +126,9 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
     /* ── Hero ── */
     .hero {
@@ -120,9 +145,11 @@
     .hero::after {
       content: '';
       position: absolute;
-      top: -200px; right: -200px;
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(0,102,255,0.12) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.12) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -141,17 +168,41 @@
       margin-bottom: 1.5rem;
     }
 
+    .hero-acronym {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin: -0.75rem 0 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero-acronym strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
     .hero-label::before {
       content: '';
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--accent);
       animation: pulse 1.8s ease-in-out infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+      }
     }
 
     h1 {
@@ -196,10 +247,13 @@
       border-radius: 4px;
       text-decoration: none;
       transition: opacity 0.2s, transform 0.2s;
-      box-shadow: 0 0 30px rgba(0,200,255,0.3);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.3);
     }
 
-    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
 
     .btn-secondary {
       display: inline-flex;
@@ -217,8 +271,32 @@
     }
 
     .btn-secondary:hover {
-      background: rgba(0,200,255,0.06);
+      background: rgba(0, 200, 255, 0.06);
       transform: translateY(-2px);
+    }
+
+    .btn-skeptical {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.8rem;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px dashed var(--border);
+      transition: transform 0.2s;
+    }
+
+    .btn-skeptical:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-skeptical s {
+      color: var(--muted);
     }
 
     /* ── Hero image ── */
@@ -234,7 +312,7 @@
       position: absolute;
       inset: -30px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,102,255,0.2) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.2) 0%, transparent 70%);
     }
 
     .hero-img-wrap {
@@ -244,7 +322,7 @@
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 0 60px rgba(0,200,255,0.15), 0 0 120px rgba(0,102,255,0.1);
+      box-shadow: 0 0 60px rgba(0, 200, 255, 0.15), 0 0 120px rgba(0, 102, 255, 0.1);
     }
 
     .hero-img-wrap img {
@@ -256,14 +334,14 @@
     .hero-img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 60%, rgba(5,13,26,0.8) 100%);
+      background: linear-gradient(180deg, transparent 60%, rgba(5, 13, 26, 0.8) 100%);
     }
 
     /* ── Scanline ticker ── */
     .ticker {
       position: relative;
       z-index: 1;
-      background: rgba(0,200,255,0.04);
+      background: rgba(0, 200, 255, 0.04);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       padding: 0.75rem 0;
@@ -278,8 +356,13 @@
     }
 
     @keyframes scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
     }
 
     .ticker span {
@@ -291,7 +374,10 @@
       opacity: 0.7;
     }
 
-    .ticker span.sep { color: var(--muted); opacity: 0.4; }
+    .ticker span.sep {
+      color: var(--muted);
+      opacity: 0.4;
+    }
 
     /* ── Sections ── */
     section {
@@ -317,7 +403,10 @@
       line-height: 1.2;
     }
 
-    h2 em { font-style: normal; color: var(--accent); }
+    h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
 
     .section-intro {
       font-size: 1.05rem;
@@ -346,7 +435,9 @@
       border-right: 1px solid var(--border);
     }
 
-    .stat:last-child { border-right: none; }
+    .stat:last-child {
+      border-right: none;
+    }
 
     .stat-value {
       font-size: 2.8rem;
@@ -366,6 +457,19 @@
       text-transform: uppercase;
     }
 
+    #pumped-stat {
+      background: none;
+      -webkit-text-fill-color: var(--muted);
+      color: var(--muted);
+    }
+
+    #pumped-stat .zero {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     /* ── Features ── */
     .features-grid {
       display: grid;
@@ -382,21 +486,29 @@
     }
 
     .feature-card:hover {
-      border-color: rgba(0,200,255,0.4);
-      box-shadow: 0 0 30px rgba(0,200,255,0.08);
+      border-color: rgba(0, 200, 255, 0.4);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.08);
       transform: translateY(-4px);
     }
 
+    .feature-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
     .feature-icon {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
     }
 
     .feature-card h3 {
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.03em;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0;
       color: var(--text);
     }
 
@@ -406,12 +518,21 @@
       line-height: 1.65;
     }
 
+    .feature-card code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.8em;
+      color: var(--accent);
+      background: rgba(0, 200, 255, 0.08);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+    }
+
     /* ── How it works ── */
     .how-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
-      align-items: center;
+      align-items: start;
     }
 
     .steps {
@@ -428,7 +549,8 @@
 
     .step-num {
       flex-shrink: 0;
-      width: 36px; height: 36px;
+      width: 36px;
+      height: 36px;
       border-radius: 4px;
       background: linear-gradient(135deg, var(--accent2), var(--accent));
       display: flex;
@@ -457,13 +579,16 @@
 
     .how-visual img {
       width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
       border-radius: 8px;
       border: 1px solid var(--border);
-      box-shadow: 0 0 40px rgba(0,200,255,0.1);
+      box-shadow: 0 0 40px rgba(0, 200, 255, 0.1);
     }
 
     .terminal {
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       background: #020810;
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -473,10 +598,21 @@
       line-height: 1.8;
     }
 
-    .terminal .prompt { color: var(--accent); }
-    .terminal .output { color: var(--muted); }
-    .terminal .success { color: #00e676; }
-    .terminal .warn { color: #ffb300; }
+    .terminal .prompt {
+      color: var(--accent);
+    }
+
+    .terminal .output {
+      color: var(--muted);
+    }
+
+    .terminal .success {
+      color: #00e676;
+    }
+
+    .terminal .warn {
+      color: #ffb300;
+    }
 
     /* ── Testimonial ── */
     .testimonial-section {
@@ -506,6 +642,16 @@
       font-style: italic;
     }
 
+    .testimonial blockquote code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.8em;
+      font-style: normal;
+      color: var(--accent);
+      background: rgba(0, 200, 255, 0.08);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+    }
+
     .testimonial cite {
       display: flex;
       align-items: center;
@@ -514,7 +660,8 @@
     }
 
     .cite-avatar {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent2), var(--accent));
       display: flex;
@@ -590,40 +737,122 @@
 
     /* ── Responsive ── */
     @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; padding: 7rem 3rem 4rem; gap: 3rem; }
-      .hero-visual { order: -1; max-width: 420px; margin: 0 auto; width: 100%; }
-      .hero-desc { max-width: 100%; }
-      section { padding: 4rem 3rem; }
-      .stats { grid-template-columns: repeat(2, 1fr); padding: 3rem; }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); }
-      .stat:nth-child(odd) { border-right: 1px solid var(--border); }
-      .stat:last-child, .stat:nth-last-child(2):nth-child(odd) { border-bottom: none; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .how-grid { grid-template-columns: 1fr; }
-      .testimonials { grid-template-columns: 1fr; }
-      footer { padding: 2rem 3rem; }
-      .cta-section { padding: 5rem 3rem; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 3rem 4rem;
+        gap: 3rem;
+      }
+
+      .hero-visual {
+        order: -1;
+        max-width: 420px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .hero-desc {
+        max-width: 100%;
+      }
+
+      section {
+        padding: 4rem 3rem;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 3rem;
+      }
+
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat:nth-child(odd) {
+        border-right: 1px solid var(--border);
+      }
+
+      .stat:last-child,
+      .stat:nth-last-child(2):nth-child(odd) {
+        border-bottom: none;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 2rem 3rem;
+      }
+
+      .cta-section {
+        padding: 5rem 3rem;
+      }
     }
 
     @media (max-width: 600px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { padding: 6rem 1.5rem 3rem; }
-      section { padding: 3rem 1.5rem; }
-      .stats { padding: 2rem 1.5rem; grid-template-columns: 1fr 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
-      .cta-section { padding: 4rem 1.5rem; }
-      .hero-actions { flex-direction: column; }
-      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 3rem;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      .stats {
+        padding: 2rem 1.5rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 2rem 1.5rem;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cta-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        text-align: center;
+        justify-content: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Nav -->
   <nav>
-    <div class="nav-logo">WRAAS<span class="nav-badge">v1.0</span></div>
+    <div class="nav-logo" data-real-meaning="We Rickroll Absolutely Anyone, Seriously." title="W.R.A.A.S.">WRAAS<span class="nav-badge">v1.3</span>
+    </div>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How it works</a></li>
@@ -636,6 +865,7 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-label">Now available — ROMAIN_ALGO_V1.3</div>
+      <p class="hero-acronym"><strong>W</strong>eighted <strong>R</strong>omain <strong>A</strong>lgorithmic <strong>A</strong>pproximation <strong>S</strong>oftware</p>
       <h1>The only software that thinks<br><span>exactly like Romain.</span></h1>
       <p class="hero-desc">
         Have you ever needed Romain's exact opinion on a critical project, but he was out of the office?
@@ -651,9 +881,7 @@
     <div class="hero-visual">
       <div class="hero-img-wrap">
         <picture>
-          <source
-            type="image/webp"
-            srcset="images/wraas-400w.webp 400w, images/wraas-800w.webp 800w, images/wraas-1200w.webp 1200w"
+          <source type="image/webp" srcset="images/wraas-400w.webp 400w, images/wraas-800w.webp 800w, images/wraas-1200w.webp 1200w"
             sizes="(max-width: 600px) 90vw, (max-width: 1024px) 420px, 500px">
           <img src="wraas.png" alt="WRAAS — Romain Algorithmic Approximation Engine" width="500" height="500">
         </picture>
@@ -669,7 +897,9 @@
       <span>APPROXIMATION_ENGINE_RUNNING</span><span class="sep">//</span>
       <span>BIOMETRIC_DATA_VALID</span><span class="sep">//</span>
       <span>ROMAIN_ALGO_V1.3</span><span class="sep">//</span>
+      <span>FULL_COMMITMENT_PROTOCOL</span><span class="sep">//</span>
       <span>SIGH_PATTERN_INDEXED</span><span class="sep">//</span>
+      <span>DESERTION_RATE_ZERO</span><span class="sep">//</span>
       <span>DECISION_MATRIX_LOADED</span><span class="sep">//</span>
       <span>SLACK_CORPUS_ANALYZED</span><span class="sep">//</span>
       <span>COMMIT_HISTORY_PARSED</span><span class="sep">//</span>
@@ -677,7 +907,9 @@
       <span>APPROXIMATION_ENGINE_RUNNING</span><span class="sep">//</span>
       <span>BIOMETRIC_DATA_VALID</span><span class="sep">//</span>
       <span>ROMAIN_ALGO_V1.3</span><span class="sep">//</span>
+      <span>FULL_COMMITMENT_PROTOCOL</span><span class="sep">//</span>
       <span>SIGH_PATTERN_INDEXED</span><span class="sep">//</span>
+      <span>DESERTION_RATE_ZERO</span><span class="sep">//</span>
       <span>DECISION_MATRIX_LOADED</span><span class="sep">//</span>
       <span>SLACK_CORPUS_ANALYZED</span><span class="sep">//</span>
       <span>COMMIT_HISTORY_PARSED</span><span class="sep">//</span>
@@ -699,8 +931,8 @@
       <div class="stat-label">Sigh pattern accuracy</div>
     </div>
     <div class="stat">
-      <div class="stat-value">0</div>
-      <div class="stat-label">Sick days taken</div>
+      <div class="stat-value"><span id="pumped-stat"></span></div>
+      <div class="stat-label">Enterprises trust us</div><!-- Feared by all -->
     </div>
   </div>
 
@@ -714,34 +946,51 @@
     </p>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">🧠</div>
-        <h3>Decision Matrix Engine</h3>
-        <p>Replicates Romain's exact reasoning framework, including his famous "have you checked the logs?" reflex and preference for closing tickets rather than commenting on them.</p>
+        <div class="feature-card-header"><span class="feature-icon">🧠</span>
+          <h3>Decision Matrix Engine</h3>
+        </div>
+        <p>Exhaustively evaluates every option — including the obviously wrong ones — before reaching a conclusion. Not out of indecision, but because
+          documenting why the bad ideas fail is half the work. Every rejected path gets a reason. You know the rules, and so does WRAAS: no option
+          gets abandoned without explanation.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📧</div>
-        <h3>Email Corpus Weighting</h3>
-        <p>Trained on years of email threads, WRAAS knows when to reply instantly, when to wait three days, and when to just forward without comment.</p>
+        <div class="feature-card-header"><span class="feature-icon">🔁</span>
+          <h3>Code Review Simulation</h3>
+        </div>
+        <p>Validates pull requests against the <a href="https://www.conventionalcommits.org" target="_blank" rel="noopener"
+            style="color:var(--accent)">Conventional Commits spec</a>. A commit typed <code>fix(auth): corrected the thing</code> will be tolerated. A
+          bare <code>update</code> will not. Flags scope omissions, missing breaking-change footers, and imperative mood violations with the same
+          quiet persistence as the man himself.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <h3>Slack Sentiment Mapping</h3>
-        <p>Accurately reproduces Romain's use of 👀, a brief "ok", or an eerily specific follow-up question that implies he's already done the entire analysis himself.</p>
+        <div class="feature-card-header"><span class="feature-icon">🤝</span>
+          <h3>Full Commitment Protocol</h3>
+        </div>
+        <p>WRAAS operates under a strict zero-abandonment SLA. It will never give up on a query, never let a request go unanswered, never run around
+          on a deadline. Desertion rate: 0.00%. This is non-negotiable.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🔁</div>
-        <h3>Code Review Simulation</h3>
-        <p>Outputs pull request feedback weighted to prefer small focused commits, flag naming inconsistencies, and ask "what's the test coverage on this?" at the exact right moment.</p>
+        <div class="feature-card-header"><span class="feature-icon">📝</span>
+          <h3>Conventional Commit Enforcement</h3>
+        </div>
+        <p>WRAAS will reject your <code>fix stuff</code>, your <code>wip</code>, and your <code>asdfgh</code> with the same quiet devastation as the
+          man himself. Every commit message is parsed against the Conventional Commits spec. Scope omission triggers a follow-up comment. There is no
+          appeal process.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">😤</div>
-        <h3>Signature Sigh Generator</h3>
-        <p>Our proprietary Exasperation Subsystem reproduces the full spectrum — from the mild "that's an interesting approach" sigh to the deep-breath-before-a-Teams-call variant.</p>
+        <div class="feature-card-header"><span class="feature-icon">📚</span>
+          <h3>Antora/AsciiDoc Compliance Engine</h3>
+        </div>
+        <p>Did you write docs in Markdown? WRAAS knows. Did you skip the <code>:description:</code> attribute? WRAAS knows. Outputs precise,
+          unsolicited feedback on your Antora site structure, xref integrity, and why your <code>nav.adoc</code> is, frankly, an embarrassment.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Zero Bottleneck Mode</h3>
-        <p>Available 24/7. Never on PTO. Does not need to be added to a meeting invite. Processes 400 requests per second, which is 399 more than Romain can handle on a Monday morning.</p>
+        <div class="feature-card-header"><span class="feature-icon">⚙️</span>
+          <h3>GitHub Actions Encouragement Module</h3>
+        </div>
+        <p>Detects shell scripts doing what a GitHub Action already does. Politely — very politely — suggests you consider
+          <code>github-slug-action</code> for branch and tag slugification, and <code>drawio-export-action</code> for diagram exports. Will raise it
+          again next sprint if nothing has changed. And the one after that.</p>
       </div>
     </div>
   </section>
@@ -760,48 +1009,57 @@
           <div class="step-num">01</div>
           <div>
             <h3>Data Ingestion Layer</h3>
-            <p>Continuously parses emails, commit messages, Slack threads, and calendar entries to maintain an up-to-date model of Romain's priorities and pet peeves.</p>
+            <p>Continuously parses emails, commit messages, Slack threads, and calendar entries to maintain an up-to-date model of Romain's priorities
+              and pet peeves.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">02</div>
           <div>
             <h3>Cognitive Weight Matrix</h3>
-            <p>Each data point is assigned a weight based on recency, emotional intensity (measured in exclamation marks and emoji density), and topic relevance.</p>
+            <p>Each data point is assigned a weight based on recency, emotional intensity (measured in exclamation marks and emoji density), and topic
+              relevance.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">03</div>
           <div>
             <h3>Opinion Approximation Engine</h3>
-            <p>The core model generates responses calibrated to Romain's known positions: pragmatism over theory, outcomes over process, and always checking whether it runs in production.</p>
+            <p>The core model generates responses calibrated to Romain's known positions: pragmatism over theory, outcomes over process, and always
+              checking whether it runs in production.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">04</div>
           <div>
             <h3>Sigh Calibration & Output</h3>
-            <p>Final responses are audited by the Exasperation Subsystem and delivered with the appropriate level of mild impatience or enthusiastic approval.</p>
+            <p>Final responses are audited by the Exasperation Subsystem and delivered with the appropriate level of mild impatience or enthusiastic
+              approval.</p>
           </div>
         </div>
       </div>
 
       <div class="how-visual">
-        <picture>
-          <source
-            type="image/webp"
-            srcset="images/wraas-400w.webp 400w, images/wraas-800w.webp 800w"
-            sizes="(max-width: 600px) 90vw, 460px">
-          <img src="wraas.png" alt="WRAAS neural network visualization" width="460" height="460">
-        </picture>
-        <div class="terminal" aria-label="WRAAS terminal output">
+        <div class="terminal" aria-label="WRAAS terminal — architecture query">
           <div><span class="prompt">$</span> wraas query --input "should we rewrite this in microservices?"</div>
           <div class="output">&gt; Parsing decision matrix...</div>
           <div class="output">&gt; Weighting against 847 similar past queries...</div>
           <div class="output">&gt; Calibrating sigh output... [MILD]</div>
           <div class="success">&gt; OUTPUT: "What problem are we actually solving here?"</div>
-          <div class="warn">&gt; Confidence: 97.4% | Latency: 142ms</div>
+          <div class="warn">&gt; Confidence: 97.4% | Latency: 113ms</div>
         </div>
+
+        <div class="terminal" aria-label="WRAAS terminal — code review">
+          <div><span class="prompt">$</span> wraas review --pr 2847 --repo platform-core</div>
+          <div class="output">&gt; Fetching diff... 1,204 lines changed</div>
+          <div class="output">&gt; Cross-referencing commit style preferences...</div>
+          <div class="output">&gt; Comment [L42]: "This function is doing too much."</div>
+          <div class="output">&gt; Comment [L91]: "Where's the test for the edge case?"</div>
+          <div class="output">&gt; Comment [L138]: "Naming."</div>
+          <div class="success">&gt; 👀 (no further explanation provided)</div>
+          <div class="warn">&gt; Review complete | Sigh intensity: 3/5 | Latency: 113ms</div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -810,10 +1068,13 @@
   <section id="testimonials" class="testimonial-section">
     <div class="section-label">Testimonials</div>
     <h2>What the team is saying</h2>
-    <p class="section-intro">Early adopters report a 94% reduction in "waiting for Romain's input" and a 100% increase in passive-aggressive precision.</p>
+    <p class="section-intro">Early adopters report a 94% reduction in "waiting for Romain's input" and a 100% increase in passive-aggressive
+      precision.</p>
     <div class="testimonials">
       <div class="testimonial">
-        <blockquote>"I submitted a ticket at 2am and got feedback within 80 milliseconds. The response was 'did you check what happens at scale?' — exactly what Romain would have said. I was briefly unsettled."</blockquote>
+        <blockquote>"I submitted a ticket at 2am and got feedback within 80 milliseconds. The response was
+          <code>question(blocking): did you check what happens at scale?</code> —
+          exactly what Romain would have said. I was briefly unsettled."</blockquote>
         <cite>
           <div class="cite-avatar">SL</div>
           <div>
@@ -823,7 +1084,8 @@
         </cite>
       </div>
       <div class="testimonial">
-        <blockquote>"WRAAS reviewed my pull request and added six comments, all of which were correct. It also left a 👀 with no explanation. I've never felt more evaluated."</blockquote>
+        <blockquote>"WRAAS reviewed my pull request and added six comments, all of which were correct. It also left a 👀 with no explanation. I've
+          never felt more evaluated."</blockquote>
         <cite>
           <div class="cite-avatar">MK</div>
           <div>
@@ -833,7 +1095,9 @@
         </cite>
       </div>
       <div class="testimonial">
-        <blockquote>"I asked if we should adopt a new framework. WRAAS replied 'what does the data say?' and closed the ticket. I respect it more than most humans I've worked with."</blockquote>
+        <blockquote>"I asked if we should adopt a new framework. WRAAS replied <code>question(non-blocking): what does the data say?</code> and closed
+          the ticket. I respect it more than
+          most humans I've worked with."</blockquote>
         <cite>
           <div class="cite-avatar">AP</div>
           <div>
@@ -851,18 +1115,44 @@
     <h2>Deploy your own <em>Romain</em> today.</h2>
     <p>No PTO requests. No calendar conflicts. No sighing in real time.<br>Just pure, Romain-weighted algorithmic approximation, available 24/7.</p>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-      <a href="https://wraas.click/digital-twin-access-request" class="btn-primary">Request access &rarr;</a>
-      <a href="#" class="btn-secondary">Read the docs</a>
+      <a href="docs/index.html" class="btn-primary" title="Seriously. Read them. We'll know if you didn't.">Read the docs first &rarr;</a>
+      <a href="https://wraas.click/digital-twin-access-request" class="btn-skeptical" title="We have a quiz. Just saying.">I <s>definitely</s> read the docs, now I want to <span style="background: linear-gradient(135deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: normal; font-weight: 700;">request access</span></a>
     </div>
-    <p class="cta-note">* WRAAS is not responsible for decisions made based on its outputs. Actual Romain may still disagree.</p>
+    <p class="cta-note">* You know the rules. WRAAS is not responsible for decisions made based on its outputs, or for what happens when you click
+      that button.</p>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-logo">WRAAS <span style="color:var(--muted); font-weight:400; font-size:0.75rem;">v1.0.0</span></div>
-    <p>Built with love, mild exasperation, and an unhealthy amount of Slack data.</p>
-    <p style="opacity:0.4;">&copy; 2026 WRAAS Corp. All approximations reserved.</p>
+    <div class="footer-logo">WRAAS <span style="color:var(--muted); font-weight:400; font-size:0.75rem;">v1.3</span></div>
+    <p>Trusted by enterprises, Maybe. Powered by a 1987 classic make by a 1981 model.</p>
+    <p style="opacity:0.4;">&copy; 2026 WRAAS Corp. All approximations reserved. <!-- We Rickroll Absolutely Anyone, Seriously. --></p>
   </footer>
 
+  <script>
+    /* W.R.A.A.S. — We Rickroll Absolutely Anyone, Seriously. */
+    (function () {
+      // Random pumped-up number, always ends in 0, between 10,000 and 99,990
+      const n = (Math.floor(Math.random() * 8991) + 1000) * 10;
+      const formatted = n.toLocaleString('en-US');
+      document.getElementById('pumped-stat').innerHTML = formatted
+        .split('').map(c => c === '0' ? '<span class="zero">0</span>' : c).join('');
+
+      // Shuffle capabilities cards
+      const grid = document.querySelector('.features-grid');
+      const cards = [...grid.children];
+      for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        grid.appendChild(cards[j]);
+        cards.splice(j, 1);
+      }
+    })();
+    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
+    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#00c8ff;font-size:1rem;font-weight:700;');
+    console.log('%c Happy April Fools 2026 ', 'color:#ffb300;font-size:0.9rem;font-style:italic;');
+    console.log('%c https://wraas.click ', 'color:#6a8faf;font-size:0.85rem;text-decoration:underline;');
+    console.log('%c You know the rules. ', 'color:#6a8faf;font-size:0.8rem;font-style:italic;');
+  </script>
 </body>
+
 </html>
