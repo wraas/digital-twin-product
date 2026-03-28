@@ -31,7 +31,7 @@
   if (docsRead) {
     var btn = document.querySelector('.btn-skeptical');
     if (btn) {
-      btn.innerHTML = 'I <span class="gradient-text">actually</span> read the docs, so I can <span class="gradient-text">request access</span> now';
+      btn.innerHTML = 'I <span class="gradient-text">actually</span> read the docs, so I can <span class="gradient-text">request access</span>* now';
       btn.href = '#';
 
       var backdrop = document.getElementById('access-modal');
