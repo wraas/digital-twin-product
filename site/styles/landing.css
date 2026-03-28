@@ -911,6 +911,26 @@ h2 em {
   border-radius: 2px;
 }
 
+.modal-contact-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.modal-contact {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s;
+}
+
+.modal-contact:hover {
+  opacity: 0.8;
+}
+
 /* ── Footer ── */
 footer {
   position: relative;

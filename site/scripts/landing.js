@@ -93,6 +93,12 @@
             '<p>Current funding status:</p>' +
             '<span class="funding-status">Pre-seed — Estimated timeline: optimistic</span>' +
             '<p style="margin-top:1.5rem">In the meantime, WRAAS appreciates your patience. It has been noted. It has been evaluated. It has been filed.</p>' +
+            '<hr style="border:none;border-top:1px solid rgba(0,200,255,0.15);margin:1.5rem 0">' +
+            '<p style="font-size:0.82rem">Can\u2019t wait? You can contact the real Romain directly. Note: his availability window is shorter than the estimated funding timeline. Significantly.</p>' +
+            '<div class="modal-contact-links">' +
+              '<a href="https://github.com/rlespinasse" target="_blank" rel="noopener" class="modal-contact">GitHub &rarr;</a>' +
+              '<a href="https://www.linkedin.com/in/romain-lespinasse/" target="_blank" rel="noopener" class="modal-contact">LinkedIn &rarr;</a>' +
+            '</div>' +
           '</div>';
         backdrop.querySelector('.modal-close').focus();
       });
