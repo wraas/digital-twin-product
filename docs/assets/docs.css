@@ -20,7 +20,7 @@
   --accent: #0065b3;
   --accent2: #00c8ff;
   --text: #333;
-  --muted: #666;
+  --muted: #595959;
   --bg: #fff;
   --nav-bg: #f0f0f0;
   --border: #ddd;
@@ -34,6 +34,39 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 999;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: #fff;
+}
+
+/* ── Focus indicators ── */
+*:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 body {
@@ -698,10 +731,31 @@ ul.prereqs li::before {
 @media (max-width: 768px) {
   .nav-panel {
     display: none;
+    position: fixed;
+    top: var(--toolbar-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 150;
+    width: 100%;
+    min-width: 100%;
+    background: var(--nav-bg);
+  }
+
+  .nav-panel.is-open {
+    display: block;
   }
 
   .article {
     padding: 1.5rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .search-box {
+    display: none;
   }
 }
 
@@ -777,5 +831,47 @@ ul.prereqs li::before {
 @media (max-width: 768px) {
   .doc-card-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── Mobile menu toggle ── */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-open {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-close {
+  display: inline;
+}
+
+.nav-toggle[aria-expanded="false"] .nav-toggle-close {
+  display: none;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .doc-card,
+  .nav-link,
+  .toc-link {
+    transition: none;
   }
 }

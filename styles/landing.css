@@ -17,13 +17,44 @@
   --accent: #00c8ff;
   --accent2: #0066ff;
   --text: #e8f4ff;
-  --muted: #6a8faf;
+  --muted: #8aa8c4;
   --border: rgba(0, 200, 255, 0.15);
   --glow: rgba(0, 200, 255, 0.25);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 999;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Focus indicators ── */
+*:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 body {
@@ -830,6 +861,38 @@ footer p {
 
   .nav-links {
     display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(5, 13, 26, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    gap: 0;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+  }
+
+  .nav-toggle {
+    display: flex;
   }
 
   .hero {
@@ -867,5 +930,56 @@ footer p {
   .btn-secondary {
     text-align: center;
     justify-content: center;
+  }
+}
+
+/* ── Mobile menu toggle ── */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--accent);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-open {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-close {
+  display: inline;
+}
+
+.nav-toggle[aria-expanded="false"] .nav-toggle-close {
+  display: none;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ticker-inner {
+    animation: none;
+  }
+
+  .hero-label::before {
+    animation: none;
+  }
+
+  .feature-card,
+  .btn-primary,
+  .btn-secondary,
+  .btn-skeptical {
+    transition: none;
   }
 }

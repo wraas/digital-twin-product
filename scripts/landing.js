@@ -6,6 +6,24 @@
   document.getElementById('pumped-stat').innerHTML = formatted
     .split('').map(function (c) { return c === '0' ? '<span class="zero">0</span>' : c; }).join('');
 
+  // Mobile menu toggle
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('is-open');
+    });
+    // Close menu when clicking a nav link
+    menu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
+      }
+    });
+  }
+
   // Shuffle capabilities cards
   var grid = document.querySelector('.features-grid');
   var cards = [].slice.call(grid.children);

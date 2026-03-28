@@ -36,11 +36,17 @@
 
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Nav -->
-  <nav>
+  <nav aria-label="Main navigation">
     <div class="nav-logo" data-real-meaning="We Rickroll Absolutely Anyone, Seriously." title="W.R.A.A.S.">WRAAS<span class="nav-badge">v1.3</span>
     </div>
-    <ul class="nav-links">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+      <span class="nav-toggle-open" aria-hidden="true">&#9776;</span>
+      <span class="nav-toggle-close" aria-hidden="true">&#10005;</span>
+    </button>
+    <ul class="nav-links" id="nav-menu">
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How it works</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
@@ -49,6 +55,7 @@
   </nav>
 
   <!-- Hero -->
+  <main id="main-content">
   <section class="hero">
     <div class="hero-content">
       <div class="hero-label">Now available — ROMAIN_ALGO_V1.3</div>
@@ -319,6 +326,8 @@
     <p class="cta-note">* You know the rules. WRAAS is not responsible for decisions made based on its outputs, or for what happens when you click
       that button.</p>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer>

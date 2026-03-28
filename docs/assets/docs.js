@@ -5,6 +5,24 @@ console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-s
 console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
 console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
 
+// Mobile nav toggle
+var navToggle = document.querySelector('.nav-toggle');
+var navPanel = document.querySelector('.nav-panel');
+if (navToggle && navPanel) {
+  navToggle.addEventListener('click', function () {
+    var expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
+    navPanel.classList.toggle('is-open');
+  });
+  // Close nav when clicking a link
+  navPanel.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      navToggle.setAttribute('aria-expanded', 'false');
+      navPanel.classList.remove('is-open');
+    }
+  });
+}
+
 // TOC scroll highlight
 var tocLinks = document.querySelectorAll('.toc-link');
 var sections = [].slice.call(tocLinks).map(function (l) {
