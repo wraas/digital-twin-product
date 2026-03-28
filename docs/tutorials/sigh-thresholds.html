@@ -196,25 +196,6 @@ sigh:
     <span>Last evaluated: always. Desertion rate: 0.00%.</span>
   </footer>
 
-  <script>
-    console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');
-    console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#0065b3;font-size:1rem;font-weight:700;');
-    console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-style:italic;');
-    console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
-    console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
-
-    const tocLinks = document.querySelectorAll('.toc-link');
-    const sections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          tocLinks.forEach(l => l.classList.remove('is-active'));
-          const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
-          if (active) active.classList.add('is-active');
-        }
-      });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-    sections.forEach(s => observer.observe(s));
-  </script>
+  <script src="../assets/docs.js"></script>
 </body>
 </html>

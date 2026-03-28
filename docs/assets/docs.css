@@ -586,6 +586,30 @@ ul.prereqs li::before {
   flex-shrink: 0;
 }
 
+.capability-badge.badge-premium {
+  background: #fffbee;
+  color: #b8860b;
+  border: 1px solid rgba(184, 134, 11, 0.3);
+}
+
+.capability-badge.badge-community {
+  background: #e8f5ee;
+  color: #2e8b57;
+  border: 1px solid rgba(46, 139, 87, 0.3);
+}
+
+/* ── Decision matrix "maps to" row ── */
+.maps-to th {
+  color: #999;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.maps-to td {
+  color: #999;
+  font-style: italic;
+}
+
 /* ── SVG Diagrams ── */
 .diagram-wrap {
   margin: 1.5rem 0;
