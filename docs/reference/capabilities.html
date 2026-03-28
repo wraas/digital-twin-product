@@ -572,6 +572,12 @@
       flex-shrink: 0;
     }
 
+    .capability-badge.badge-premium {
+      background: #fffbee;
+      color: #b8860b;
+      border: 1px solid rgba(184, 134, 11, 0.3);
+    }
+
     /* ── SVG Diagrams ── */
     .diagram-wrap {
       margin: 1.5rem 0;
@@ -1281,6 +1287,79 @@
         </table>
       </div>
 
+
+      <!-- ── TOWNSCAPER EVANGELISM ENGINE ── -->
+      <div class="capability" id="townscaper-evangelism-engine">
+        <div class="capability-header">
+          <span class="capability-icon">🏡</span>
+          <h2>Townscaper Evangelism Engine</h2>
+          <span class="capability-badge badge-premium">Premium</span>
+        </div>
+
+        <p>Available on Premium plans. When active, WRAAS monitors conversation context for any topic adjacent to creativity, generative systems,
+          procedural design, or "what should I do this weekend" — and introduces <a href="https://store.steampowered.com/app/1291340/Townscaper/"
+            target="_blank" rel="noopener">Townscaper</a> by Oskar Stålberg. The introduction is enthusiastic. The enthusiasm is
+          not calibrated. This is the only module that bypasses the Sigh Calibration step.</p>
+
+        <p>Townscaper is a meditative city-building toy in which clicking builds colourful houses, arches, towers, and bridges, entirely without a
+          goal, a failure state, or a tutorial. The algorithm handles the rest. WRAAS considers this — procedural generation doing the
+          structural work so the human can focus on intent — to be a sound design principle in any domain.</p>
+
+        <h3>Trigger Conditions</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Topic detected</th>
+              <th>WRAAS response</th>
+              <th>Blocking</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Procedural generation, generative design</td>
+              <td><code>note(non-blocking): Townscaper does this well</code></td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Weekend plans, context switching, rest</td>
+              <td><code>suggestion(non-blocking): have you tried Townscaper?</code></td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>"I need a break"</td>
+              <td><code>suggestion(blocking): Townscaper. Now.</code></td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Any prior mention of Townscaper in corpus</td>
+              <td>Immediate enthusiastic agreement, unprompted</td>
+              <td>N/A</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Example Output</h3>
+        <div class="pre-title">Terminal</div>
+        <pre><code><span class="token-prompt">$</span> wraas query --input "what should I do this weekend?"
+
+<span class="token-dim">&gt; Parsing decision matrix...</span>
+<span class="token-dim">&gt; Evaluating 12 options...</span>
+<span class="token-dim">&gt; Calibrating sigh output... [bypassed — Evangelism Engine active]</span>
+<span class="token-ok">&gt; OUTPUT: "Townscaper."</span>
+<span class="token-dim">&gt; Confidence: 100.0% | Latency: 113ms</span>
+<span class="token-dim">&gt; note(non-blocking): it is on Steam. it is inexpensive. it has no failure state.</span>
+<span class="token-dim">&gt;   you click. houses appear. that is the game. that is also the point.</span></code></pre>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>The Townscaper Evangelism Engine cannot be disabled. It was evaluated as a configurable option. That option was rejected.
+              See <a href="./decisions.html#DME-1997">DME-1997</a>.</p>
+          </div>
+        </div>
+      </div>
+
     </main>
 
     <!-- Right TOC -->
@@ -1293,6 +1372,7 @@
         <li><a class="toc-link" href="#conventional-commit-enforcement">Conventional Commit Enforcement</a></li>
         <li><a class="toc-link" href="#antora-asciidoc-compliance-engine">Antora/AsciiDoc Compliance Engine</a></li>
         <li><a class="toc-link" href="#github-actions-encouragement-module">GitHub Actions Encouragement Module</a></li>
+        <li><a class="toc-link" href="#townscaper-evangelism-engine">Townscaper Evangelism Engine ✦</a></li>
       </ul>
     </aside>
 
