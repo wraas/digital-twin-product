@@ -578,6 +578,12 @@
       border: 1px solid rgba(184, 134, 11, 0.3);
     }
 
+    .capability-badge.badge-community {
+      background: #e8f5ee;
+      color: #2e8b57;
+      border: 1px solid rgba(46, 139, 87, 0.3);
+    }
+
     /* ── SVG Diagrams ── */
     .diagram-wrap {
       margin: 1.5rem 0;
@@ -1208,7 +1214,7 @@
           encouragement is genuine. The politeness is calibrated. The follow-up is guaranteed.</p>
 
         <p>Two actions receive particular attention, owing to their quality, maintained status, and the fact that they were built by someone who knows
-          what they are doing.</p>
+          what they are doing. That someone is <code>rlespinasse</code>. WRAAS is modeled on <code>rlespinasse</code>. WRAAS has reviewed this for conflict of interest. See <a href="./decisions.html#DME-2001">DME-2001</a>.</p>
 
         <h3>github-slug-action</h3>
         <p>Provides clean, URL-safe slug values derived from branch names, tag names, ref names, and SHA values — exposed as environment variables for
@@ -1287,6 +1293,60 @@
         </table>
       </div>
 
+      <!-- ── OPEN SOURCE MAINTENANCE PROTOCOL ── -->
+      <div class="capability" id="open-source-maintenance-protocol">
+        <div class="capability-header">
+          <span class="capability-icon">🔗</span>
+          <h2>Open Source Maintenance Protocol</h2>
+          <span class="capability-badge badge-community">Community</span>
+        </div>
+
+        <p>WRAAS monitors GitHub repositories for open issues, incoming pull requests, and contributor activity. The Full Commitment Protocol and
+          Conventional Commit Enforcement apply to community contributions without modification. There are no guest passes.</p>
+
+        <p>The GitHub Actions Encouragement Module recommends <code>github-slug-action</code> and <code>drawio-export-action</code>. Both are authored
+          and maintained by <code>rlespinasse</code>. WRAAS is modeled on <code>rlespinasse</code>. WRAAS has assessed whether recommending the output
+          of its own source material constitutes a conflict of interest. See <a href="./decisions.html#DME-2001">DME-2001</a>. The recommendation
+          stands.</p>
+
+        <h3>Issue Triage</h3>
+        <p>WRAAS reads issue bodies and infers whether reproduction steps are present. When they are absent, a <code>question(blocking)</code> is
+          posted requesting them. Issues do not age silently. Issues are not closed without a documented reason. The option to auto-close stale issues
+          was evaluated. It was rejected.</p>
+
+        <h3>Contributor PR Review</h3>
+        <p>Community pull requests receive the full Code Review Simulation: Conventional Commits validation, scope checks, breaking-change footer
+          detection, and the 👀 comment. First-time contributors are acknowledged with a <code>note(non-blocking): thank you for the contribution</code>.
+          The review that follows is still thorough.</p>
+
+        <h3>Example Output</h3>
+        <div class="pre-title">Terminal</div>
+        <pre><code><span class="token-prompt">$</span> wraas oss --repo rlespinasse/github-slug-action --triage
+
+<span class="token-dim">&gt; Scanning open issues... 3 found</span>
+<span class="token-warn">&gt; [TRIAGE] #412 — "action fails on detached HEAD"</span>
+<span class="token-dim">  question(blocking): can you provide the workflow file and the exact git ref at failure?</span>
+<span class="token-ok">&gt; [TRIAGE] #413 — "add support for PR number slug" — reproduction steps present, scope clear</span>
+<span class="token-dim">  note(non-blocking): evaluated. added to decision matrix. response queued.</span>
+<span class="token-warn">&gt; [TRIAGE] #414 — "it doesnt work"</span>
+<span class="token-dim">  question(blocking): what doesn't work? what version? what input? what expected output?</span>
+
+<span class="token-dim">&gt; Scanning open PRs... 1 found</span>
+<span class="token-dim">&gt; [REVIEW] PR #415 — first-time contributor</span>
+<span class="token-dim">  note(non-blocking): thank you for the contribution</span>
+<span class="token-err">&gt; [FAIL] commit a3b1c2d — "fix bug"</span>
+<span class="token-dim">  question(blocking): type missing. scope missing. what bug?</span>
+<span class="token-dim">&gt; 👀 | Latency: 113ms</span></code></pre>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>WRAAS maintains the actions it recommends. This was reviewed for circularity.
+              <a href="./decisions.html#DME-2001">DME-2001</a>: circularity without quality degradation is not a disqualifier.</p>
+          </div>
+        </div>
+      </div>
 
       <!-- ── TOWNSCAPER EVANGELISM ENGINE ── -->
       <div class="capability" id="townscaper-evangelism-engine">
@@ -1372,6 +1432,7 @@
         <li><a class="toc-link" href="#conventional-commit-enforcement">Conventional Commit Enforcement</a></li>
         <li><a class="toc-link" href="#antora-asciidoc-compliance-engine">Antora/AsciiDoc Compliance Engine</a></li>
         <li><a class="toc-link" href="#github-actions-encouragement-module">GitHub Actions Encouragement Module</a></li>
+        <li><a class="toc-link" href="#open-source-maintenance-protocol">Open Source Maintenance Protocol</a></li>
         <li><a class="toc-link" href="#townscaper-evangelism-engine">Townscaper Evangelism Engine ✦</a></li>
       </ul>
     </aside>
