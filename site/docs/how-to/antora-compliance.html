@@ -129,14 +129,14 @@
         <h2>Required Site Structure</h2>
 
         <div class="pre-title">Directory tree</div>
-        <pre><code>docs/
+        <pre><code><span class="token-key">docs/</span>
   antora.yml
-  modules/
-    ROOT/
+  <span class="token-key">modules/</span>
+    <span class="token-key">ROOT/</span>
       nav.adoc
-      pages/
+      <span class="token-key">pages/</span>
         index.adoc
-        ...</code></pre>
+        <span class="token-dim">...</span></code></pre>
 
         <h2>Steps</h2>
         <ol class="steps">
@@ -156,9 +156,9 @@
             <div>
               <p><strong>Add required page attributes</strong> to every <code>.adoc</code> file. WRAAS checks every file. This includes the ones in the subdirectory you have not opened since initial commit.</p>
               <div class="pre-title">AsciiDoc — every .adoc page</div>
-              <pre><code>= Page Title
-:description: A clear, one-sentence description of this page.
-:keywords: relevant, terms
+              <pre><code><span class="token-key">= Page Title</span>
+<span class="token-scope">:description:</span> <span class="token-string">A clear, one-sentence description of this page.</span>
+<span class="token-scope">:keywords:</span> <span class="token-string">relevant, terms</span>
 
 Content begins here.</code></pre>
             </div>

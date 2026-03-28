@@ -138,17 +138,18 @@
 
         <h2>Step 2: Submit</h2>
         <p>Use the <code>wraas query</code> command with the <code>--input</code> flag:</p>
-        <pre><code>$ wraas query --input "should we add a caching layer?"
+        <div class="pre-title">Terminal</div>
+        <pre><code><span class="token-prompt">$</span> wraas query --input <span class="token-string">"should we add a caching layer?"</span>
 
-&gt; Parsing decision matrix...
-&gt; Generating full option space (including obviously wrong ones)...
-&gt; Option A: add Redis — viable
-&gt; Option B: add a second database — documented, rejected (reason: DME-0047)
-&gt; Option C: add caching layer at the CDN edge — viable
-&gt; Option D: rewrite the entire service — documented, rejected (reason: DME-0001)
-&gt; Calibrating sigh output... [MILD]
-&gt; OUTPUT: "What are the cache invalidation requirements?"
-&gt; Confidence: 94.2% | Latency: 113ms</code></pre>
+<span class="token-dim">&gt;</span> Parsing decision matrix...
+<span class="token-dim">&gt;</span> Generating full option space (including obviously wrong ones)...
+<span class="token-dim">&gt;</span> Option A: add Redis — <span class="token-ok">viable</span>
+<span class="token-dim">&gt;</span> Option B: add a second database — <span class="token-err">documented, rejected</span> (reason: <span class="token-value">DME-0047</span>)
+<span class="token-dim">&gt;</span> Option C: add caching layer at the CDN edge — <span class="token-ok">viable</span>
+<span class="token-dim">&gt;</span> Option D: rewrite the entire service — <span class="token-err">documented, rejected</span> (reason: <span class="token-value">DME-0001</span>)
+<span class="token-dim">&gt;</span> Calibrating sigh output... [<span class="token-warn">MILD</span>]
+<span class="token-dim">&gt;</span> OUTPUT: <span class="token-string">"What are the cache invalidation requirements?"</span>
+<span class="token-dim">&gt;</span> Confidence: <span class="token-value">94.2%</span> | Latency: <span class="token-value">113ms</span></code></pre>
 
         <h2>Step 3: Interpret the output</h2>
         <p>

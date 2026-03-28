@@ -167,11 +167,12 @@
 
         <h2>Configuration</h2>
         <p>Add the following block to your <code>wraas.yml</code> to configure sigh threshold behaviour:</p>
-        <pre><code class="language-yaml"># wraas.yml
-sigh:
-  threshold: MILD       # minimum intensity to emit
-  emit_on_pass: false   # suppress sigh on fully valid queries
-  log_triggers: true    # log what triggered the sigh</code></pre>
+        <div class="pre-title">YAML — wraas.yml</div>
+        <pre><code><span class="token-comment"># wraas.yml</span>
+<span class="token-key">sigh:</span>
+  <span class="token-key">threshold:</span> <span class="token-value">MILD</span>       <span class="token-comment"># minimum intensity to emit</span>
+  <span class="token-key">emit_on_pass:</span> <span class="token-value">false</span>   <span class="token-comment"># suppress sigh on fully valid queries</span>
+  <span class="token-key">log_triggers:</span> <span class="token-value">true</span>    <span class="token-comment"># log what triggered the sigh</span></code></pre>
 
         <div class="admonition warning">
           <span class="admonition-icon">⚠️</span>
