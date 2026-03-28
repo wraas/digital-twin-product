@@ -336,12 +336,29 @@
       <div class="cta-actions">
         <a href="docs/reference/capabilities.html" class="btn-primary" title="Seriously. Read them. We'll know if you didn't.">Read the docs first
           &rarr;</a>
-        <a href="https://wraas.click/digital-twin-access-request" class="btn-skeptical" title="We have a quiz. Just saying.">I <s>definitely</s> read
-          the docs, now I want to <span class="gradient-text">request access</span></a>
+        <a href="https://wraas.click/digital-twin-access-request" class="btn-skeptical" title="We have a quiz. Just saying.">I <s>definitely</s> read the docs, I <span class="gradient-text">request access</span> now</a>
       </div>
       <p class="cta-note">* You know the rules. WRAAS is not responsible for decisions made based on its outputs, or for what happens when you click
         that button.</p>
     </section>
+
+    <!-- Access Request Modal -->
+    <div class="modal-backdrop" id="access-modal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-body" id="modal-body">
+          <div class="modal-icon">🔐</div>
+          <h2 id="modal-title">Access Request</h2>
+          <p class="modal-desc">WRAAS needs to verify you are not a competing approximation engine. Please provide a valid email address. It will be evaluated.</p>
+          <form id="access-form">
+            <label for="access-email" class="modal-label">Corporate email (personal emails will be judged)</label>
+            <input type="email" id="access-email" class="modal-input" placeholder="you@enterprise.com" required aria-required="true">
+            <button type="submit" class="modal-submit">Submit for evaluation &rarr;</button>
+          </form>
+          <p class="modal-fine-print">* Your email will be processed with the same thoroughness WRAAS applies to everything. No exceptions. No shortcuts.</p>
+        </div>
+      </div>
+    </div>
 
   </main>
 

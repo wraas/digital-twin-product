@@ -24,6 +24,81 @@
     });
   }
 
+  // Update CTA button if user has read the docs
+  var docsRead = false;
+  try { docsRead = localStorage.getItem('wraas-docs-read') === '1'; } catch (e) {}
+
+  if (docsRead) {
+    var btn = document.querySelector('.btn-skeptical');
+    if (btn) {
+      btn.innerHTML = 'I <span class="gradient-text">actually</span> read the docs, so I can <span class="gradient-text">request access</span> now';
+      btn.href = '#';
+
+      var backdrop = document.getElementById('access-modal');
+      var modal = backdrop.querySelector('.modal');
+      var closeBtn = backdrop.querySelector('.modal-close');
+      var form = document.getElementById('access-form');
+      var emailInput = document.getElementById('access-email');
+      var modalBody = document.getElementById('modal-body');
+      var previousFocus = null;
+
+      function openModal() {
+        previousFocus = document.activeElement;
+        backdrop.classList.add('is-open');
+        backdrop.setAttribute('aria-hidden', 'false');
+        emailInput.focus();
+      }
+
+      function closeModal() {
+        backdrop.classList.remove('is-open');
+        backdrop.setAttribute('aria-hidden', 'true');
+        if (previousFocus) previousFocus.focus();
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+
+      backdrop.addEventListener('click', function (e) {
+        if (e.target === backdrop) closeModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
+          closeModal();
+        }
+        // Focus trap
+        if (e.key === 'Tab' && backdrop.classList.contains('is-open')) {
+          var focusable = modal.querySelectorAll('button, input, [href], [tabindex]:not([tabindex="-1"])');
+          var first = focusable[0];
+          var last = focusable[focusable.length - 1];
+          if (e.shiftKey) {
+            if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+          } else {
+            if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+          }
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        modalBody.innerHTML =
+          '<div class="modal-confirmation">' +
+            '<div class="modal-icon">📬</div>' +
+            '<h2>Request received.</h2>' +
+            '<p>Your access request has been queued. A confirmation email will be sent after our Series A funding round closes.</p>' +
+            '<p>Current funding status:</p>' +
+            '<span class="funding-status">Pre-seed — Estimated timeline: optimistic</span>' +
+            '<p style="margin-top:1.5rem">In the meantime, WRAAS appreciates your patience. It has been noted. It has been evaluated. It has been filed.</p>' +
+          '</div>';
+        backdrop.querySelector('.modal-close').focus();
+      });
+    }
+  }
+
   // Shuffle capabilities cards
   var grid = document.querySelector('.features-grid');
   var cards = [].slice.call(grid.children);

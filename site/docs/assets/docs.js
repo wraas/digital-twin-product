@@ -5,6 +5,9 @@ console.log('%c Happy April Fools 2026 ', 'color:#c47d00;font-size:0.9rem;font-s
 console.log('%c https://wraas.click ', 'color:#666;font-size:0.85rem;text-decoration:underline;');
 console.log('%c You know the rules. ', 'color:#999;font-size:0.8rem;font-style:italic;');
 
+// Mark that the user has read at least one docs page
+try { localStorage.setItem('wraas-docs-read', '1'); } catch (e) {}
+
 // Mobile nav toggle
 var navToggle = document.querySelector('.nav-toggle');
 var navPanel = document.querySelector('.nav-panel');
