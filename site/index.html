@@ -216,65 +216,61 @@
       <div class="section-label">Architecture</div>
       <h2>How <em>WRAAS</em> works</h2>
       <p class="section-intro">
-        A four-stage pipeline continuously ingests, weighs, and approximates Romain's cognitive output
-        in real time — with sub-200ms response latency.
+        A three-phase pipeline routes every input through standards enforcement, cognitive analysis,
+        and unsolicited advocacy — all eight modules operating in concert, with sub-200ms response latency.
       </p>
       <div class="how-grid">
         <div class="steps">
           <div class="step">
             <div class="step-num">01</div>
             <div>
-              <h3>Data Ingestion Layer</h3>
-              <p>Continuously parses emails, commit messages, Slack threads, and calendar entries to maintain an up-to-date model of Romain's
-                priorities
-                and pet peeves.</p>
+              <h3>Intake & Standards Gate</h3>
+              <p>Every input enters the Conventional Commit Enforcement module first. Commit messages are parsed against the spec — scope omissions,
+                imperative mood violations, and bare <code>wip</code> messages are rejected before anything else fires. Documentation inputs are
+                simultaneously routed to the Antora/AsciiDoc Compliance Engine, which flags Markdown on sight. Nothing proceeds until the format is
+                correct.</p>
             </div>
           </div>
           <div class="step">
             <div class="step-num">02</div>
             <div>
-              <h3>Cognitive Weight Matrix</h3>
-              <p>Each data point is assigned a weight based on recency, repetition frequency (how many sprints in a row the same topic appeared), and
-                whether the word 'production' appeared in the same sentence.</p>
+              <h3>Analysis & Routing Core</h3>
+              <p>Validated inputs are dispatched to the appropriate engine. Architecture questions enter the Decision Matrix Engine, which evaluates
+                every option — including the wrong ones — and documents why each was rejected. Pull requests hit the Code Review Simulation at 113ms
+                latency. Community contributions from open source repos are processed by the Open Source Maintenance Protocol with identical standards
+                enforcement.</p>
             </div>
           </div>
           <div class="step">
             <div class="step-num">03</div>
             <div>
-              <h3>Opinion Approximation Engine</h3>
-              <p>The core model generates responses calibrated to Romain's known positions: pragmatism over theory, outcomes over process, and always
-                checking whether it runs in production.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">04</div>
-            <div>
-              <h3>Sigh Calibration & Output</h3>
-              <p>Final responses are audited by the Exasperation Subsystem and delivered with the appropriate level of mild exasperation at process
-                violations, or quiet satisfaction when the commit message is correct.</p>
+              <h3>Advocacy & Delivery Layer</h3>
+              <p>Before delivery, the GitHub Actions Encouragement Module scans for shell scripts that should be actions. The Townscaper Evangelism
+                Engine monitors for any creative context and injects a recommendation — this is the only module that bypasses Sigh Calibration. The
+                Full Commitment Protocol guarantees every query receives a response. Desertion rate: 0.00%. This is non-negotiable.</p>
             </div>
           </div>
         </div>
 
         <div class="how-visual">
-          <div class="terminal" aria-label="WRAAS terminal — architecture query">
-            <div><span class="prompt">$</span> wraas query --input "should we rewrite this in microservices?"</div>
-            <div class="output">&gt; Parsing decision matrix...</div>
-            <div class="output">&gt; Weighting against 847 similar past queries...</div>
-            <div class="output">&gt; Calibrating sigh output... [MILD]</div>
-            <div class="success">&gt; OUTPUT: "What problem are we actually solving here?"</div>
-            <div class="warn">&gt; Confidence: 97.4% | Latency: 113ms</div>
+          <div class="terminal" aria-label="WRAAS terminal — standards gate">
+            <div><span class="prompt">$</span> wraas push --msg "fixed the auth thing"</div>
+            <div class="output">&gt; [Conventional Commit Enforcement] Parsing message...</div>
+            <div class="output">&gt; REJECTED: Missing type prefix. Missing scope. "the thing" is not a scope.</div>
+            <div class="success">&gt; suggestion(non-blocking): try fix(auth): correct token refresh on expiry</div>
+            <div class="warn">&gt; Latency: 113ms</div>
           </div>
 
-          <div class="terminal" aria-label="WRAAS terminal — code review">
+          <div class="terminal" aria-label="WRAAS terminal — review pipeline">
             <div><span class="prompt">$</span> wraas review --pr 2847 --repo platform-core</div>
-            <div class="output">&gt; Fetching diff... 1,204 lines changed</div>
-            <div class="output">&gt; Cross-referencing commit style preferences...</div>
-            <div class="output">&gt; Comment [L42]: "This function is doing too much."</div>
-            <div class="output">&gt; Comment [L91]: "Where's the test for the edge case?"</div>
-            <div class="output">&gt; Comment [L138]: "Naming."</div>
-            <div class="success">&gt; 👀 (no further explanation provided)</div>
-            <div class="warn">&gt; Review complete | Sigh intensity: 3/5 | Latency: 113ms</div>
+            <div class="output">&gt; [Code Review Simulation] Fetching diff... 1,204 lines changed</div>
+            <div class="output">&gt; [Decision Matrix Engine] Evaluating 3 architectural options in diff...</div>
+            <div class="output">&gt; &nbsp;&nbsp;Option A: Microservice split — rejected (see DME-0047)</div>
+            <div class="output">&gt; &nbsp;&nbsp;Option B: Modular monolith — approved</div>
+            <div class="output">&gt; &nbsp;&nbsp;Option C: "Just ship it" — rejected (no explanation needed)</div>
+            <div class="output">&gt; [GitHub Actions Encouragement Module] Detected shell script ci/slug.sh</div>
+            <div class="success">&gt; &nbsp;&nbsp;suggestion(non-blocking): have you considered github-slug-action?</div>
+            <div class="warn">&gt; 👀 Review complete | Latency: 113ms</div>
           </div>
 
         </div>
@@ -285,25 +281,27 @@
     <section id="testimonials" class="testimonial-section">
       <div class="section-label">Testimonials</div>
       <h2>What the team is saying</h2>
-      <p class="section-intro">Early adopters report a 94% reduction in "waiting for Romain's input" and a 100% increase in passive-aggressive
-        precision.</p>
+      <p class="section-intro">Early adopters report a 94% reduction in "waiting for Romain's input" — with the remaining 6% attributed to the
+        Townscaper Evangelism Engine refusing to stay on topic.</p>
       <div class="testimonials">
         <div class="testimonial">
-          <blockquote>"I submitted a ticket at 2am and got feedback within 80 milliseconds. The response was
-            <code>question(blocking): did you check what happens at scale?</code> —
-            exactly what Romain would have said. I was briefly unsettled."
+          <blockquote>"I pushed a commit with the message <code>update stuff</code> at 3am. Within 113 milliseconds, the Conventional Commit
+            Enforcement module rejected it and the Code Review Simulation left a single comment:
+            <code>suggestion(non-blocking): feat(auth): add token refresh for expired sessions</code>.
+            I have never been so accurately corrected by software."
           </blockquote>
           <cite>
-            <div class="cite-avatar">SL</div>
+            <div class="cite-avatar">LT</div>
             <div>
-              <div class="cite-name">Sarah L.</div>
-              <div class="cite-role">Senior Engineer</div>
+              <div class="cite-name">Lena T.</div>
+              <div class="cite-role">Senior Backend Engineer</div>
             </div>
           </cite>
         </div>
         <div class="testimonial">
-          <blockquote>"WRAAS reviewed my pull request and added six comments, all of which were correct. It also left a 👀 with no explanation. I've
-            never felt more evaluated."</blockquote>
+          <blockquote>"I asked WRAAS whether we should adopt Kubernetes. The Decision Matrix Engine evaluated fourteen alternatives, rejected twelve
+            with documented reasons, and concluded with <code>question(blocking): what problem are we actually solving here?</code> It then recommended
+            I play Townscaper. The Townscaper recommendation was unprompted. I have started playing Townscaper."</blockquote>
           <cite>
             <div class="cite-avatar">MK</div>
             <div>
@@ -313,10 +311,9 @@
           </cite>
         </div>
         <div class="testimonial">
-          <blockquote>"I asked if we should adopt a new framework. WRAAS replied <code>question(non-blocking): what does the data say?</code> and
-            closed
-            the ticket. I respect it more than
-            most humans I've worked with."</blockquote>
+          <blockquote>"I submitted a documentation PR in Markdown. The Antora/AsciiDoc Compliance Engine flagged it seventeen times. When I converted
+            it to AsciiDoc, the GitHub Actions Encouragement Module asked why my diagram export was a shell script and not
+            <code>drawio-export-action</code>. I adopted both suggestions. The sighing has stopped. For now."</blockquote>
           <cite>
             <div class="cite-avatar">AP</div>
             <div>
