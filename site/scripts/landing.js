@@ -24,9 +24,25 @@
     });
   }
 
+  // April Fools badge reveal
+  var afBadge = document.getElementById('af-badge');
+  function revealAF() {
+    try { localStorage.setItem('wraas-af-revealed', '1'); } catch (e) {}
+    if (afBadge) afBadge.hidden = false;
+  }
+  try { if (localStorage.getItem('wraas-af-revealed') === '1' && afBadge) afBadge.hidden = false; } catch (e) {}
+
   // Update CTA button if user has read the docs
   var docsRead = false;
   try { docsRead = localStorage.getItem('wraas-docs-read') === '1'; } catch (e) {}
+
+  if (!docsRead) {
+    // Set AF flag before navigating to rickroll
+    var rickrollBtn = document.querySelector('.btn-skeptical');
+    if (rickrollBtn) {
+      rickrollBtn.addEventListener('click', function () { revealAF(); });
+    }
+  }
 
   if (docsRead) {
     var btn = document.querySelector('.btn-skeptical');
@@ -85,6 +101,7 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        revealAF();
         modalBody.innerHTML =
           '<div class="modal-confirmation">' +
             '<div class="modal-icon">📬</div>' +

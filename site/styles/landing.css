@@ -964,6 +964,19 @@ footer p {
   opacity: 0.6;
 }
 
+.footer-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: rgba(0, 200, 255, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  margin-left: 0.5rem;
+  opacity: 1;
+}
+
 .footer-copy {
   opacity: 0.4;
 }
