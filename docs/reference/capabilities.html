@@ -945,7 +945,7 @@
         <p>Validates pull requests against the <a href="https://www.conventionalcommits.org" target="_blank" rel="noopener">Conventional Commits
             specification</a> and produces review feedback using <a href="https://conventionalcomments.org" target="_blank"
             rel="noopener">Conventional Comments</a>. A bare <code>update</code> commit message will not pass. It has never passed. It will not pass
-          today.</p>
+          today. Operates at the throughput of a serial reviewer — multiple PRs per session, each evaluated to completion. The queue does not grow.</p>
 
         <h3>Commit Validation Flow</h3>
 
@@ -1088,6 +1088,7 @@
         <p>Every commit message entering the system is parsed against the <a href="https://www.conventionalcommits.org" target="_blank"
             rel="noopener">Conventional Commits specification</a>. Scope omission triggers a follow-up comment. Missing breaking-change footers are
           flagged. Imperative mood violations are noted with the same quiet persistence as the original source material. There is no appeal process.
+          WRAAS also flags single commits that appear to cover multiple concerns. A commit that touches authentication, rate limiting, and the README simultaneously generates a <code>suggestion(non-blocking): consider splitting this into focused commits</code>. The scope field exists for a reason. The reason is this.
         </p>
 
         <h3>Accepted Formats</h3>
