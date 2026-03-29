@@ -265,6 +265,35 @@ teardown() {
   [[ "$output" == *"scope"* ]]
 }
 
+# ── OSS ───────────────────────────────────────────────
+
+@test "oss missing --repo flag fails" {
+  run "$WRAAS" oss
+  [ "$status" -eq 1 ]
+  [[ "$output" == *"required"* ]]
+}
+
+@test "oss triages real repo" {
+  if ! command -v gh &>/dev/null || ! gh auth status &>/dev/null 2>&1; then
+    skip "gh CLI not authenticated"
+  fi
+  run "$WRAAS" oss --repo rlespinasse/github-slug-action
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"Scanning open issues"* ]]
+  [[ "$output" == *"Scanning open PRs"* ]]
+  [[ "$output" == *"113ms"* ]]
+}
+
+@test "oss json output for real repo" {
+  if ! command -v gh &>/dev/null || ! gh auth status &>/dev/null 2>&1; then
+    skip "gh CLI not authenticated"
+  fi
+  run "$WRAAS" oss --repo rlespinasse/github-slug-action --output json
+  [ "$status" -eq 0 ]
+  [[ "$output" == *'"repo": "rlespinasse/github-slug-action"'* ]]
+  [[ "$output" == *'"latency_ms": 113'* ]]
+}
+
 # ── Persistence ──────────────────────────────────────
 
 @test "query records last_query in state.json" {
