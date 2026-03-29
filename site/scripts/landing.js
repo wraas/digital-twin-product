@@ -122,14 +122,6 @@
     }
   }
 
-  // Shuffle capabilities cards
-  var grid = document.querySelector('.features-grid');
-  var cards = [].slice.call(grid.children);
-  for (var i = cards.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    grid.appendChild(cards[j]);
-    cards.splice(j, 1);
-  }
 })();
 
 console.log('%c W.R.A.A.S. ', 'background:#00c8ff;color:#050d1a;font-weight:900;font-size:1.4rem;padding:4px 14px;border-radius:3px;letter-spacing:0.1em;');

@@ -420,6 +420,13 @@ h2 em {
   line-height: 1.75;
 }
 
+.section-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
 /* ── Stats bar ── */
 .stats {
   background: var(--bg2);
@@ -535,22 +542,43 @@ h2 em {
   color: var(--accent);
 }
 
-.feature-card--premium {
+.feature-card--non-negotiable {
   border-color: rgba(184, 134, 11, 0.3);
 }
 
-.feature-badge-premium {
+.feature-badge {
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.15rem 0.45rem;
   border-radius: 3px;
-  background: #fffbee;
-  color: #b8860b;
-  border: 1px solid rgba(184, 134, 11, 0.3);
   vertical-align: middle;
   margin-left: 0.3rem;
+}
+
+.feature-badge--included {
+  background: #e8eef4;
+  color: #006080;
+  border: 1px solid rgba(0, 96, 128, 0.3);
+}
+
+.feature-badge--expected {
+  background: #eef4fb;
+  color: #2b5a8a;
+  border: 1px solid rgba(43, 90, 138, 0.3);
+}
+
+.feature-badge--encouraged {
+  background: #e8f5ee;
+  color: #1a6b3c;
+  border: 1px solid rgba(26, 107, 60, 0.3);
+}
+
+.feature-badge--non-negotiable {
+  background: #fffbee;
+  color: #8a6508;
+  border: 1px solid rgba(138, 101, 8, 0.3);
 }
 
 /* ── How it works ── */
