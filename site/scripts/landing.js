@@ -104,19 +104,56 @@
         revealAF();
         modalBody.innerHTML =
           '<div class="modal-confirmation">' +
-            '<div class="modal-icon">📬</div>' +
-            '<h2>Request received.</h2>' +
-            '<p>Your access request has been queued. A confirmation email will be sent after our Series A funding round closes.</p>' +
-            '<p>Current funding status:</p>' +
-            '<span class="funding-status">Pre-seed — Estimated timeline: optimistic</span>' +
-            '<p style="margin-top:1.5rem">In the meantime, WRAAS appreciates your patience. It has been noted. It has been evaluated. It has been filed.</p>' +
+            '<div class="modal-icon">✅</div>' +
+            '<h2 id="modal-title">Access granted.</h2>' +
+            '<p>No queue. No approval board. No Series A required.</p>' +
+
+            '<div class="modal-install" role="group" aria-labelledby="install-heading">' +
+              '<h3 id="install-heading" class="modal-install-heading">Install via Go</h3>' +
+              '<div class="terminal modal-terminal" role="region" aria-label="Install command">' +
+                '<div><span class="prompt" aria-hidden="true">$</span> <code id="install-cmd">go install github.com/wraas/digital-twin-product/cli@latest</code></div>' +
+                '<button type="button" class="copy-btn" data-target="install-cmd" aria-label="Copy install command">Copy</button>' +
+              '</div>' +
+              '<p class="modal-alt">Or download a binary from <a href="https://github.com/wraas/digital-twin-product/releases" target="_blank" rel="noopener">GitHub Releases</a>.</p>' +
+            '</div>' +
+
+            '<div class="modal-install" role="group" aria-labelledby="verify-heading">' +
+              '<h3 id="verify-heading" class="modal-install-heading">Verify</h3>' +
+              '<div class="terminal modal-terminal" role="region" aria-label="Verify commands">' +
+                '<div><span class="prompt" aria-hidden="true">$</span> <code>wraas init</code></div>' +
+                '<div class="output">&gt; Config written to ./wraas.yml</div>' +
+                '<div><span class="prompt" aria-hidden="true">$</span> <code>wraas status</code></div>' +
+                '<div class="success">&gt; Engine: RUNNING</div>' +
+                '<div class="warn">&gt; Latency: 113ms</div>' +
+              '</div>' +
+            '</div>' +
+
             '<hr style="border:none;border-top:1px solid rgba(0,200,255,0.15);margin:1.5rem 0">' +
-            '<p style="font-size:0.82rem">Can\u2019t wait? You can contact the real Romain directly. Note: his availability window is shorter than the estimated funding timeline. Significantly.</p>' +
+            '<p class="modal-alt">Questions? The real Romain is available. His response latency is higher than 113ms.</p>' +
             '<div class="modal-contact-links">' +
               '<a href="https://github.com/rlespinasse" target="_blank" rel="noopener" class="modal-contact">GitHub &rarr;</a>' +
               '<a href="https://www.linkedin.com/in/romain-lespinasse/" target="_blank" rel="noopener" class="modal-contact">LinkedIn &rarr;</a>' +
             '</div>' +
           '</div>';
+
+        // Wire up copy button
+        var copyBtn = modalBody.querySelector('.copy-btn');
+        if (copyBtn) {
+          copyBtn.addEventListener('click', function () {
+            var target = document.getElementById(copyBtn.getAttribute('data-target'));
+            if (target && navigator.clipboard) {
+              navigator.clipboard.writeText(target.textContent).then(function () {
+                copyBtn.textContent = 'Copied';
+                copyBtn.setAttribute('aria-label', 'Copied to clipboard');
+                setTimeout(function () {
+                  copyBtn.textContent = 'Copy';
+                  copyBtn.setAttribute('aria-label', 'Copy install command');
+                }, 2000);
+              });
+            }
+          });
+        }
+
         backdrop.querySelector('.modal-close').focus();
       });
     }

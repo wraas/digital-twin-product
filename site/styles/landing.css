@@ -959,6 +959,63 @@ h2 em {
   opacity: 0.8;
 }
 
+.modal-install {
+  text-align: left;
+  margin-top: 1.25rem;
+}
+
+.modal-install-heading {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.modal-terminal {
+  position: relative;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.modal-terminal code {
+  user-select: all;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.copy-btn:hover,
+.copy-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--fg);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.modal-alt {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.modal-alt a {
+  color: var(--accent);
+}
+
 /* ── Footer ── */
 footer {
   position: relative;
