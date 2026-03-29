@@ -3,10 +3,13 @@ package engine
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 
 	"github.com/wraas/digital-twin-product/cli/internal/llm"
 )
+
+var sighFromResponsePattern = regexp.MustCompile(`\[(SILENT|MILD|MODERATE|DEEP|EXISTENTIAL)\]`)
 
 // QueryInput holds the parsed input for a decision query.
 type QueryInput struct {
@@ -42,9 +45,10 @@ func RunQuery(ctx context.Context, provider llm.Provider, input QueryInput) (Que
 		input.IncludeWrongOptions = true
 	}
 
-	// Determine sigh level
+	// Determine sigh level — explicit override always wins
 	var sighLevel SighLevel
-	if input.SighOverride != "" && input.SighOverride != "auto" {
+	sighExplicit := input.SighOverride != "" && input.SighOverride != "auto"
+	if sighExplicit {
 		sighLevel = ParseSighLevel(input.SighOverride)
 	} else {
 		sighLevel = CalibrateSigh(input.Input)
@@ -73,6 +77,14 @@ func RunQuery(ctx context.Context, provider llm.Provider, input QueryInput) (Que
 
 	result.Response = resp.Content
 
+	// Extract sigh level from LLM response — overrides heuristic, but not explicit --sigh flag
+	if !sighExplicit {
+		if extracted := extractSighFromResponse(resp.Content); extracted != "" {
+			sighLevel = ParseSighLevel(extracted)
+			result.SighLevel = string(sighLevel)
+		}
+	}
+
 	// Log sigh
 	LogSigh(sighLevel, fmt.Sprintf("query: %s", truncate(input.Input, 80)))
 
@@ -80,6 +92,16 @@ func RunQuery(ctx context.Context, provider llm.Provider, input QueryInput) (Que
 	RecordQuery()
 
 	return result, nil
+}
+
+// extractSighFromResponse finds the last sigh level tag in the LLM response.
+// Uses the last match because the LLM typically states the final sigh level at the end.
+func extractSighFromResponse(response string) string {
+	matches := sighFromResponsePattern.FindAllStringSubmatch(response, -1)
+	if len(matches) == 0 {
+		return ""
+	}
+	return matches[len(matches)-1][1]
 }
 
 func truncate(s string, maxLen int) string {

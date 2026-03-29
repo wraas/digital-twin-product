@@ -200,10 +200,11 @@ teardown() {
   [[ "$output" == *"EXISTENTIAL"* ]]
 }
 
-@test "query wip input auto-calibrates to existential sigh" {
+@test "query wip input uses LLM sigh level over heuristic" {
   run env WRAAS_PROVIDER=mock "$WRAAS" query --input "wip"
   [ "$status" -eq 0 ]
-  [[ "$output" == *"EXISTENTIAL"* ]]
+  # LLM response contains [MILD], which overrides the heuristic's EXISTENTIAL
+  [[ "$output" == *"MILD"* ]]
 }
 
 @test "query json output is valid" {
