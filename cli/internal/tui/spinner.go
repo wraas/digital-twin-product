@@ -2,6 +2,7 @@ package tui
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/charmbracelet/bubbles/spinner"
@@ -65,7 +66,14 @@ func (m SpinnerModel) View() string {
 // RunWithSpinner runs a function while displaying a spinner.
 // Falls back to simple text output when no TTY is available.
 func RunWithSpinner(message string, fn func() (string, error)) (string, error) {
-	// Try TUI spinner first
+	// Check for terminal before starting bubbletea to avoid race conditions
+	// when the program falls back to non-TTY mode while a goroutine is running.
+	fi, _ := os.Stdout.Stat()
+	if fi == nil || fi.Mode()&os.ModeCharDevice == 0 {
+		fmt.Printf("  %s\n", message)
+		return fn()
+	}
+
 	var result string
 	var fnErr error
 
@@ -78,9 +86,8 @@ func RunWithSpinner(message string, fn func() (string, error)) (string, error) {
 	}()
 
 	if _, err := p.Run(); err != nil {
-		// TTY not available — fall back to simple output
+		// Unexpected TTY error — wait for goroutine to finish
 		fmt.Printf("  %s\n", message)
-		result, fnErr = fn()
 		return result, fnErr
 	}
 

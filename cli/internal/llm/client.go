@@ -75,9 +75,9 @@ func newAnthropicFromEnv() Provider {
 	return &AnthropicProvider{APIKey: apiKey, Model: model}
 }
 
-// IsConfigured returns true if an LLM provider is available (not demo mode).
+// IsConfigured returns true if an LLM provider is explicitly selected or detected.
 func IsConfigured() bool {
-	if os.Getenv("WRAAS_PROVIDER") == "claude-code" || os.Getenv("WRAAS_PROVIDER") == "api" {
+	if os.Getenv("WRAAS_PROVIDER") != "" {
 		return true
 	}
 	if os.Getenv("WRAAS_API_KEY") != "" || os.Getenv("ANTHROPIC_API_KEY") != "" {
