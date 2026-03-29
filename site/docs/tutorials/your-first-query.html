@@ -119,7 +119,7 @@
           Submitting a query to WRAAS is straightforward. The harder part is accepting the response.
         </p>
 
-        <h2>Step 1: Frame your question</h2>
+        <h2 id="step-1-frame-your-question">Step 1: Frame your question</h2>
         <p>
           Before submitting, ensure your question is well-scoped, includes the relevant context,
           and refers to a decision that has not already been made. Consulting existing Decision Matrix
@@ -136,7 +136,7 @@
           </div>
         </div>
 
-        <h2>Step 2: Submit</h2>
+        <h2 id="step-2-submit">Step 2: Submit</h2>
         <p>Use the <code>wraas query</code> command with the <code>--input</code> flag:</p>
         <div class="pre-title">Terminal</div>
         <pre><code><span class="token-prompt">$</span> wraas query --input <span class="token-string">"should we add a caching layer?"</span>
@@ -151,31 +151,55 @@
 <span class="token-dim">&gt;</span> OUTPUT: <span class="token-string">"What are the cache invalidation requirements?"</span>
 <span class="token-dim">&gt;</span> Confidence: <span class="token-value">94.2%</span> | Latency: <span class="token-value">113ms</span></code></pre>
 
-        <h2>Step 3: Interpret the output</h2>
+        <h2 id="step-3-interpret-the-output">Step 3: Interpret the output</h2>
         <p>
-          Each WRAAS response contains three signal components:
+          Each WRAAS response contains three signal components. The annotated output below highlights
+          where each appears:
         </p>
-        <dl class="doc-dl">
-          <dt>Confidence score</dt>
-          <dd>
-            The percentage reflects the Decision Matrix Engine's certainty in the selected output.
-            Scores above 90% indicate a clear recommendation or a well-formed clarifying question.
-            Scores below 75% indicate ambiguity in the query — consider resubmitting with additional
-            context before acting.
-          </dd>
-          <dt>Sigh intensity</dt>
-          <dd>
-            The bracketed intensity label (<code>MILD</code>, <code>MODERATE</code>, etc.) indicates
-            the calibrated exasperation signal for the current query. See
-            <a href="../tutorials/sigh-thresholds.html">Configuring Sigh Thresholds</a> for the full level reference.
-          </dd>
-          <dt>Rejection rationale references</dt>
-          <dd>
-            Options marked <em>rejected</em> include a DME entry ID. Full evaluation records — including
-            rejection confidence and revisit conditions — are documented in the
-            <a href="../reference/decisions.html">Decision Matrix Entries</a> reference.
-          </dd>
-        </dl>
+
+        <div class="pre-title">Annotated output</div>
+        <pre><code><span class="token-dim">&gt;</span> Option B: add a second database — <span class="token-err">documented, rejected</span> (reason: <span class="token-value">DME-0047</span>)  <span class="token-dim">← rejection rationale</span>
+<span class="token-dim">&gt;</span> Calibrating sigh output... [<span class="token-warn">MILD</span>]                          <span class="token-dim">← sigh intensity</span>
+<span class="token-dim">&gt;</span> Confidence: <span class="token-value">94.2%</span> | Latency: <span class="token-value">113ms</span>                         <span class="token-dim">← confidence score</span></code></pre>
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Signal</th>
+              <th scope="col">Location in output</th>
+              <th scope="col">How to read it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Confidence score</strong></td>
+              <td><code>Confidence: 94.2%</code></td>
+              <td>
+                The Decision Matrix Engine's certainty in the selected output.
+                Above 90% indicates a clear recommendation. Below 75% suggests
+                ambiguity — resubmit with additional context.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Sigh intensity</strong></td>
+              <td><code>[MILD]</code></td>
+              <td>
+                The calibrated exasperation level for the query.
+                Levels range from <code>SILENT</code> to <code>EXISTENTIAL</code>. See
+                <a href="../tutorials/sigh-thresholds.html">Configuring Sigh Thresholds</a>.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Rejection rationale</strong></td>
+              <td><code>DME-0047</code></td>
+              <td>
+                Each rejected option includes a DME entry ID linking to the full
+                evaluation record. See
+                <a href="../reference/decisions.html">Decision Matrix Entries</a>.
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="admonition tip">
           <span class="admonition-icon">💡</span>
@@ -196,6 +220,9 @@
       <div class="toc-title">On this page</div>
       <ul class="toc-list">
         <li><a href="#first-query" class="toc-link">Your First Query</a></li>
+        <li><a href="#step-1-frame-your-question" class="toc-link">Step 1: Frame your question</a></li>
+        <li><a href="#step-2-submit" class="toc-link">Step 2: Submit</a></li>
+        <li><a href="#step-3-interpret-the-output" class="toc-link">Step 3: Interpret the output</a></li>
       </ul>
     </aside>
 
