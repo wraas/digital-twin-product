@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'cli/**'
+      - '.releaserc.json'
+  pull_request:
+    paths:
+      - 'cli/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Go
+        uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6.3.0
+        with:
+          go-version-file: cli/go.mod
+
+      - name: Build
+        working-directory: cli
+        run: go build -o wraas .
+
+      - name: Unit tests
+        working-directory: cli
+        run: go test -v ./...
+
+  e2e:
+    needs: build
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Go
+        uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6.3.0
+        with:
+          go-version-file: cli/go.mod
+
+      - name: Build binary
+        run: cd cli && go build -o ../bin/wraas .
+
+      - name: Set up bats
+        uses: bats-core/bats-action@5b1e60c2ee94cb1b44a616ea4b1f466f9d6e38ef # v4.0.0
+
+      - name: Run E2E tests
+        run: bats cli/e2e_test.bats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  release-dry-run:
+    needs: e2e
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/release.yaml
+    with:
+      dry_run: true
+
+  goreleaser-dry-run:
+    needs: e2e
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/goreleaser.yaml
+    with:
+      dry_run: true
+
+  release:
+    needs: e2e
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/release.yaml
+
+  goreleaser:
+    needs: release
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/goreleaser.yaml
+    secrets: inherit
