@@ -53,6 +53,26 @@ validate:
 pages:
     @find site -name '*.html' | sort
 
+# Build the WRAAS CLI
+build:
+    cd cli && go build -o ../bin/wraas .
+
+# Run CLI unit tests
+test-cli:
+    cd cli && go test ./...
+
+# Run CLI end-to-end tests
+test-e2e:
+    bats cli/e2e_test.bats
+
+# Install CLI locally
+install:
+    cd cli && go install .
+
+# Run the CLI (pass arguments after --)
+run *args:
+    cd cli && go run . {{args}}
+
 # Count lines of code by file type
 stats:
     @echo "HTML:" && find site -name '*.html' | wc -l | tr -d ' '
