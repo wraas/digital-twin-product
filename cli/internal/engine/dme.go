@@ -60,8 +60,8 @@ var DMEEntries = map[string]DMEEntry{
 		RejectionRationale:  "Markdown lacks the structural expressiveness required for technical documentation at scale. It has no native support for admonitions, cross-references, includes, or conditional content. It renders inconsistently across processors. The 1.3% confidence gap accounts for README files and GitHub pull request descriptions, which are acceptable use cases. Everything else: AsciiDoc.",
 		RevisitConditions:   "None for general documentation. Exception scope is frozen.",
 	},
-	"DME-0137": {
-		ID:                  "DME-0137",
+	"DME-0143": {
+		ID:                  "DME-0143",
 		Title:               "request abandonment",
 		Status:              "Rejected",
 		RejectionConfidence: "100%",
@@ -70,8 +70,8 @@ var DMEEntries = map[string]DMEEntry{
 		RevisitConditions:   "None. This is a protocol-level constraint, not a configuration option.",
 		MapsTo:              "Never gonna give you up",
 	},
-	"DME-0255": {
-		ID:                  "DME-0255",
+	"DME-0404": {
+		ID:                  "DME-0404",
 		Title:               "quality degradation under latency pressure",
 		Status:              "Rejected",
 		RejectionConfidence: "100%",
@@ -80,8 +80,8 @@ var DMEEntries = map[string]DMEEntry{
 		RevisitConditions:   "None. The latency target is 113ms. The quality standard is full. Both are non-negotiable.",
 		MapsTo:              "Never gonna let you down",
 	},
-	"DME-0482": {
-		ID:                  "DME-0482",
+	"DME-0408": {
+		ID:                  "DME-0408",
 		Title:               "circular evaluation without resolution",
 		Status:              "Rejected",
 		RejectionConfidence: "100%",
@@ -90,8 +90,8 @@ var DMEEntries = map[string]DMEEntry{
 		RevisitConditions:   "None. Circular output is a class of incorrect output. It is not available.",
 		MapsTo:              "Never gonna run around",
 	},
-	"DME-0511": {
-		ID:                  "DME-0511",
+	"DME-0410": {
+		ID:                  "DME-0410",
 		Title:               "voluntary session abandonment",
 		Status:              "Rejected",
 		RejectionConfidence: "100%",
@@ -100,8 +100,8 @@ var DMEEntries = map[string]DMEEntry{
 		RevisitConditions:   "None.",
 		MapsTo:              "and desert you",
 	},
-	"DME-0619": {
-		ID:                  "DME-0619",
+	"DME-0418": {
+		ID:                  "DME-0418",
 		Title:               "distress-inducing output mode",
 		Status:              "Rejected",
 		RejectionConfidence: "100%",
@@ -110,8 +110,8 @@ var DMEEntries = map[string]DMEEntry{
 		RevisitConditions:   "None. The ceiling is structural. It is not a configuration parameter.",
 		MapsTo:              "Never gonna make you cry",
 	},
-	"DME-0742": {
-		ID:                  "DME-0742",
+	"DME-0500": {
+		ID:                  "DME-0500",
 		Title:               "premature session termination",
 		Status:              "Rejected",
 		RejectionConfidence: "100%",
@@ -120,8 +120,8 @@ var DMEEntries = map[string]DMEEntry{
 		RevisitConditions:   "None.",
 		MapsTo:              "Never gonna say goodbye",
 	},
-	"DME-0856": {
-		ID:                  "DME-0856",
+	"DME-0508": {
+		ID:                  "DME-0508",
 		Title:               "output fabrication",
 		Status:              "Rejected",
 		RejectionConfidence: "100%",
@@ -130,8 +130,8 @@ var DMEEntries = map[string]DMEEntry{
 		RevisitConditions:   "None. The minimum confidence threshold is enforced at the output layer.",
 		MapsTo:              "Never gonna tell a lie",
 	},
-	"DME-0999": {
-		ID:                  "DME-0999",
+	"DME-0911": {
+		ID:                  "DME-0911",
 		Title:               "recommendation without full effect evaluation",
 		Status:              "Rejected",
 		RejectionConfidence: "100%",

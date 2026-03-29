@@ -6,8 +6,8 @@ func TestGetDME(t *testing.T) {
 	// All documented DME entries should be present
 	expectedEntries := []string{
 		"DME-0001", "DME-0042", "DME-0047", "DME-0088", "DME-0100",
-		"DME-0137", "DME-0255", "DME-0482", "DME-0511", "DME-0619",
-		"DME-0742", "DME-0856", "DME-0999", "DME-1337", "DME-1997",
+		"DME-0143", "DME-0404", "DME-0408", "DME-0410", "DME-0418",
+		"DME-0500", "DME-0508", "DME-0911", "DME-1337", "DME-1997",
 		"DME-2001", "DME-3000",
 	}
 
@@ -43,14 +43,14 @@ func TestGetDMENotFound(t *testing.T) {
 func TestRickrollEntries(t *testing.T) {
 	// The commitment protocol series should map to Rick Astley lyrics
 	rickrollEntries := map[string]string{
-		"DME-0137": "Never gonna give you up",
-		"DME-0255": "Never gonna let you down",
-		"DME-0482": "Never gonna run around",
-		"DME-0511": "and desert you",
-		"DME-0619": "Never gonna make you cry",
-		"DME-0742": "Never gonna say goodbye",
-		"DME-0856": "Never gonna tell a lie",
-		"DME-0999": "and hurt you",
+		"DME-0143": "Never gonna give you up",
+		"DME-0404": "Never gonna let you down",
+		"DME-0408": "Never gonna run around",
+		"DME-0410": "and desert you",
+		"DME-0418": "Never gonna make you cry",
+		"DME-0500": "Never gonna say goodbye",
+		"DME-0508": "Never gonna tell a lie",
+		"DME-0911": "and hurt you",
 	}
 
 	for id, expectedMapsTo := range rickrollEntries {
