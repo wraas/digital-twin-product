@@ -45,3 +45,20 @@ var observer = new IntersectionObserver(function (entries) {
 }, { rootMargin: '-20% 0px -70% 0px' });
 
 sections.forEach(function (s) { observer.observe(s); });
+
+// GoatCounter analytics
+(function () {
+  window.goatcounter = { path: function () { return location.pathname + location.hash; } };
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = '//gc.zgo.at/count.js';
+  s.dataset.goatcounter = 'https://wraas.goatcounter.com/count';
+  document.body.appendChild(s);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href], button');
+    if (a && window.goatcounter && window.goatcounter.count) {
+      var name = a.dataset.event || a.textContent.trim().substring(0, 50);
+      window.goatcounter.count({ path: 'event/' + name, title: name, event: true });
+    }
+  });
+})();

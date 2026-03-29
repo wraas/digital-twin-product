@@ -137,3 +137,20 @@ console.log('%c We Rickroll Absolutely Anyone, Seriously. ', 'color:#00c8ff;font
 console.log('%c Happy April Fools 2026 ', 'color:#ffb300;font-size:0.9rem;font-style:italic;');
 console.log('%c https://wraas.click ', 'color:#6a8faf;font-size:0.85rem;text-decoration:underline;');
 console.log('%c You know the rules. ', 'color:#6a8faf;font-size:0.8rem;font-style:italic;');
+
+// GoatCounter analytics
+(function () {
+  window.goatcounter = { path: function () { return location.pathname + location.hash; } };
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = '//gc.zgo.at/count.js';
+  s.dataset.goatcounter = 'https://wraas.goatcounter.com/count';
+  document.body.appendChild(s);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href], button');
+    if (a && window.goatcounter && window.goatcounter.count) {
+      var name = a.dataset.event || a.textContent.trim().substring(0, 50);
+      window.goatcounter.count({ path: 'event/' + name, title: name, event: true });
+    }
+  });
+})();
