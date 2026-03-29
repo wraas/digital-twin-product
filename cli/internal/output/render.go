@@ -68,8 +68,8 @@ var (
 	blockquotePattern = regexp.MustCompile(`^>\s*(.*)$`)
 	boldPattern       = regexp.MustCompile(`\*\*([^*]+)\*\*`)
 	codeInlinePattern = regexp.MustCompile("`([^`]+)`")
-	viablePattern     = regexp.MustCompile(`\[VIABLE\]`)
-	rejectedPattern   = regexp.MustCompile(`\[REJECTED\]`)
+	viablePattern     = regexp.MustCompile(`\[VIABLE[^\]]*\]`)
+	rejectedPattern   = regexp.MustCompile(`\[REJECTED[^\]]*\]`)
 	dmePattern        = regexp.MustCompile(`(DME-\d{4})`)
 	confidencePattern = regexp.MustCompile(`(\d+\.?\d*%)`)
 	sighTagPattern    = regexp.MustCompile(`\[(SILENT|MILD|MODERATE|DEEP|EXISTENTIAL)\]`)
@@ -157,14 +157,16 @@ func renderInline(text string) string {
 
 // styleTokens applies WRAAS-specific token styling.
 func styleTokens(text string) string {
-	// [VIABLE] → green bold
+	// [VIABLE ...] → green bold (preserves trailing text like "— noted with mild appreciation")
 	text = viablePattern.ReplaceAllStringFunc(text, func(s string) string {
-		return viableStyle.Render("✓ VIABLE")
+		inner := s[1 : len(s)-1] // strip brackets
+		return viableStyle.Render("✓ " + inner)
 	})
 
-	// [REJECTED] → red bold
+	// [REJECTED ...] → red bold (preserves trailing text like "— see DME-0047")
 	text = rejectedPattern.ReplaceAllStringFunc(text, func(s string) string {
-		return rejectedStyle.Render("✗ REJECTED")
+		inner := s[1 : len(s)-1] // strip brackets
+		return rejectedStyle.Render("✗ " + inner)
 	})
 
 	// DME-XXXX → orange bold
