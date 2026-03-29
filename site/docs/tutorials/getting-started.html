@@ -156,11 +156,10 @@
         <p>Run the following command to initialise WRAAS in your environment:</p>
         <div class="pre-title">Terminal</div>
         <pre><code><span class="token-prompt">$</span> wraas init
-<span class="token-dim">&gt;</span> Scanning environment...
-<span class="token-dim">&gt;</span> Calibrating decision matrix...
-<span class="token-dim">&gt;</span> Loading sigh pattern corpus...
-<span class="token-dim">&gt;</span> WRAAS has been running since your last commit. You just didn't know.
-<span class="token-dim">&gt;</span> Status: <span class="token-ok">READY</span></code></pre>
+<span class="token-dim">&gt;</span> Initialising WRAAS...
+<span class="token-dim">&gt;</span> Config written to ./wraas.yml
+<span class="token-dim">&gt;</span> WRAAS was already running. <span class="token-value">init</span> creates the config file and makes the relationship official.
+<span class="token-dim">&gt;</span> Latency: <span class="token-value">113ms</span></code></pre>
 
         <div class="admonition note">
           <span class="admonition-icon">ℹ️</span>
@@ -178,12 +177,12 @@
         <p>Confirm that WRAAS is running correctly:</p>
         <div class="pre-title">Terminal</div>
         <pre><code><span class="token-prompt">$</span> wraas status
-<span class="token-dim">&gt;</span> Engine: <span class="token-ok">RUNNING</span>
-<span class="token-dim">&gt;</span> Commitment level: <span class="token-value">FULL</span>
-<span class="token-dim">&gt;</span> Sigh calibration: <span class="token-ok">ACTIVE</span> (intensity: <span class="token-value">MILD</span>)
-<span class="token-dim">&gt;</span> Desertion rate: <span class="token-value">0.00%</span>
-<span class="token-dim">&gt;</span> Last query: 3 minutes ago (you did not submit one — WRAAS anticipated it)
-<span class="token-dim">&gt;</span> Latency: <span class="token-value">113ms</span></code></pre>
+<span class="token-dim">&gt;</span> <span class="token-key">Engine:</span>              <span class="token-ok">RUNNING</span>
+<span class="token-dim">&gt;</span> <span class="token-key">Commitment level:</span>    <span class="token-ok">FULL</span>
+<span class="token-dim">&gt;</span> <span class="token-key">Sigh calibration:</span>    <span class="token-ok">ACTIVE</span>
+<span class="token-dim">&gt;</span> <span class="token-key">Desertion rate:</span>      <span class="token-value">0.00%</span>
+<span class="token-dim">&gt;</span> <span class="token-key">Latency:</span>             <span class="token-value">113ms</span>
+<span class="token-dim">&gt;</span> <span class="token-key">Last query:</span>          <span class="token-dim">no queries yet</span></code></pre>
       </section>
 
     </main>
