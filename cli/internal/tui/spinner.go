@@ -63,13 +63,16 @@ func (m SpinnerModel) View() string {
 	return fmt.Sprintf("%s %s", m.spinner.View(), m.message)
 }
 
+// Disabled controls whether the spinner animation is suppressed.
+var Disabled bool
+
 // RunWithSpinner runs a function while displaying a spinner.
-// Falls back to simple text output when no TTY is available.
+// Falls back to simple text output when no TTY is available or spinner is disabled.
 func RunWithSpinner(message string, fn func() (string, error)) (string, error) {
 	// Check for terminal before starting bubbletea to avoid race conditions
 	// when the program falls back to non-TTY mode while a goroutine is running.
 	fi, _ := os.Stdout.Stat()
-	if fi == nil || fi.Mode()&os.ModeCharDevice == 0 {
+	if Disabled || fi == nil || fi.Mode()&os.ModeCharDevice == 0 {
 		fmt.Printf("  %s\n", message)
 		return fn()
 	}
