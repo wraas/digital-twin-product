@@ -180,7 +180,8 @@ body {
 }
 
 .search-result-item:hover,
-.search-result-item:focus {
+.search-result-item:focus,
+.search-result-item.is-active {
   background: rgba(255, 255, 255, 0.08);
   outline: none;
 }

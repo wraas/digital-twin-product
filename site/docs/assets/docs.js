@@ -104,6 +104,8 @@ sections.forEach(function (s) { observer.observe(s); });
     }
     results.style.display = 'block';
     searchBox.setAttribute('aria-expanded', 'true');
+    activeIndex = -1;
+    searchBox.removeAttribute('aria-activedescendant');
   }
 
   searchBox.addEventListener('input', function () {
@@ -125,12 +127,40 @@ sections.forEach(function (s) { observer.observe(s); });
     }
   });
 
-  // Close on Escape
+  // Keyboard navigation
+  var activeIndex = -1;
+
+  function setActiveResult(index) {
+    var items = results.querySelectorAll('.search-result-item[role="option"]');
+    items.forEach(function (el) { el.classList.remove('is-active'); el.removeAttribute('id'); });
+    activeIndex = index;
+    if (index >= 0 && index < items.length) {
+      items[index].classList.add('is-active');
+      items[index].id = 'search-active-option';
+      searchBox.setAttribute('aria-activedescendant', 'search-active-option');
+      items[index].scrollIntoView({ block: 'nearest' });
+    } else {
+      searchBox.removeAttribute('aria-activedescendant');
+    }
+  }
+
   searchBox.addEventListener('keydown', function (e) {
+    var items = results.querySelectorAll('.search-result-item[role="option"]');
     if (e.key === 'Escape') {
       results.style.display = 'none';
       searchBox.setAttribute('aria-expanded', 'false');
+      activeIndex = -1;
+      searchBox.removeAttribute('aria-activedescendant');
       searchBox.blur();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (items.length > 0) setActiveResult(Math.min(activeIndex + 1, items.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (items.length > 0) setActiveResult(Math.max(activeIndex - 1, 0));
+    } else if (e.key === 'Enter' && activeIndex >= 0 && activeIndex < items.length) {
+      e.preventDefault();
+      items[activeIndex].click();
     }
   });
 })();
