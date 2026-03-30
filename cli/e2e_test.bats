@@ -188,6 +188,28 @@ teardown() {
   [[ "$output" == *"Demo mode"* ]]
 }
 
+@test "query --color always emits ANSI codes in pipe" {
+  run env WRAAS_PROVIDER=mock "$WRAAS" query --input "test" --color always --no-spinner
+  [ "$status" -eq 0 ]
+  # ANSI escape codes should be present (ESC[)
+  [[ "$output" == *$'\x1b['* ]]
+}
+
+@test "query --color never emits no ANSI codes" {
+  run env WRAAS_PROVIDER=mock "$WRAAS" query --input "test" --color never --no-spinner
+  [ "$status" -eq 0 ]
+  # Should not contain ANSI escape codes
+  [[ "$output" != *$'\x1b['* ]]
+}
+
+@test "query --no-spinner suppresses spinner animation" {
+  run env WRAAS_PROVIDER=mock "$WRAAS" query --input "test" --no-spinner
+  [ "$status" -eq 0 ]
+  # Should contain the static message instead of spinner frames
+  [[ "$output" == *"Generating full option space"* ]]
+  [[ "$output" == *"113ms"* ]]
+}
+
 @test "query --include-wrong-options=false triggers DME-0001" {
   run env WRAAS_PROVIDER=mock "$WRAAS" query --input "test" --include-wrong-options=false
   [ "$status" -eq 0 ]
