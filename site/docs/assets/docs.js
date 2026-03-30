@@ -46,6 +46,95 @@ var observer = new IntersectionObserver(function (entries) {
 
 sections.forEach(function (s) { observer.observe(s); });
 
+// Pagefind search
+(function () {
+  var searchBox = document.querySelector('.search-box');
+  if (!searchBox) return;
+
+  // Create results dropdown
+  var results = document.createElement('div');
+  results.className = 'search-results';
+  results.setAttribute('role', 'listbox');
+  results.setAttribute('aria-label', 'Search results');
+  searchBox.parentNode.style.position = 'relative';
+  searchBox.parentNode.appendChild(results);
+  searchBox.setAttribute('role', 'combobox');
+  searchBox.setAttribute('aria-expanded', 'false');
+  searchBox.setAttribute('aria-controls', 'search-results');
+  results.id = 'search-results';
+
+  var pagefind = null;
+  var debounce = null;
+
+  async function initPagefind() {
+    if (pagefind) return pagefind;
+    try {
+      // Resolve path relative to docs root
+      var base = document.querySelector('link[rel="stylesheet"][href*="docs.css"]');
+      var pagefindPath = base ? base.href.replace(/assets\/docs\.css$/, '_pagefind/pagefind.js') : '/_pagefind/pagefind.js';
+      pagefind = await import(pagefindPath);
+      await pagefind.init();
+    } catch (e) {
+      // Pagefind not available (local dev without index)
+      pagefind = null;
+    }
+    return pagefind;
+  }
+
+  async function doSearch(query) {
+    var pf = await initPagefind();
+    if (!pf) {
+      results.innerHTML = '<div class="search-result-item search-result-empty">Search index not available. Run: just index</div>';
+      results.style.display = 'block';
+      searchBox.setAttribute('aria-expanded', 'true');
+      return;
+    }
+    var search = await pf.search(query);
+    var items = await Promise.all(search.results.slice(0, 8).map(function (r) { return r.data(); }));
+
+    if (items.length === 0) {
+      results.innerHTML = '<div class="search-result-item search-result-empty">No results found.</div>';
+    } else {
+      results.innerHTML = items.map(function (item) {
+        return '<a class="search-result-item" href="' + item.url + '" role="option">' +
+          '<div class="search-result-title">' + item.meta.title + '</div>' +
+          '<div class="search-result-excerpt">' + item.excerpt + '</div>' +
+          '</a>';
+      }).join('');
+    }
+    results.style.display = 'block';
+    searchBox.setAttribute('aria-expanded', 'true');
+  }
+
+  searchBox.addEventListener('input', function () {
+    clearTimeout(debounce);
+    var query = searchBox.value.trim();
+    if (query.length < 2) {
+      results.style.display = 'none';
+      searchBox.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    debounce = setTimeout(function () { doSearch(query); }, 200);
+  });
+
+  // Close on click outside
+  document.addEventListener('click', function (e) {
+    if (!searchBox.contains(e.target) && !results.contains(e.target)) {
+      results.style.display = 'none';
+      searchBox.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close on Escape
+  searchBox.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      results.style.display = 'none';
+      searchBox.setAttribute('aria-expanded', 'false');
+      searchBox.blur();
+    }
+  });
+})();
+
 // GoatCounter analytics
 (function () {
   window.goatcounter = { path: function () { return location.pathname + location.hash; } };

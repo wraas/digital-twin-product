@@ -73,6 +73,10 @@ install:
 run *args:
     cd cli && go run . {{args}}
 
+# Build the search index with Pagefind
+index:
+    npx --yes pagefind --site site/docs --output-path site/docs/_pagefind
+
 # Count lines of code by file type
 stats:
     @echo "HTML:" && find site -name '*.html' | wc -l | tr -d ' '
