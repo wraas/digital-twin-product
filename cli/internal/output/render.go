@@ -77,12 +77,20 @@ var (
 )
 
 // RenderResponse colorizes an LLM response for terminal display.
-func RenderResponse(w io.Writer, response string) {
+// maxWidth limits line length (0 = no limit). The 2-char prefix is included
+// in the budget, so usable content width is maxWidth-2.
+func RenderResponse(w io.Writer, response string, maxWidth int) {
 	lines := strings.Split(response, "\n")
 
 	for _, line := range lines {
 		rendered := renderLine(line)
-		fmt.Fprintln(w, rendered)
+		if maxWidth > 0 {
+			for _, wrapped := range wrapRendered(line, rendered, maxWidth) {
+				fmt.Fprintln(w, wrapped)
+			}
+		} else {
+			fmt.Fprintln(w, rendered)
+		}
 	}
 }
 
@@ -187,4 +195,61 @@ func styleTokens(text string) string {
 	}
 
 	return text
+}
+
+// ansiLen returns the visible length of a string, ignoring ANSI escape sequences.
+var ansiEscape = regexp.MustCompile(`\x1b\[[0-9;]*m`)
+
+func visibleLen(s string) int {
+	return len([]rune(ansiEscape.ReplaceAllString(s, "")))
+}
+
+// wrapRendered word-wraps a rendered (ANSI-styled) line to maxWidth visible
+// characters. It falls back to re-rendering each wrapped segment from the
+// raw source so that ANSI sequences are never split mid-token.
+func wrapRendered(raw, rendered string, maxWidth int) []string {
+	if visibleLen(rendered) <= maxWidth {
+		return []string{rendered}
+	}
+
+	// Work on the raw (unstyled) text and re-render each chunk.
+	trimmed := strings.TrimSpace(raw)
+
+	// Preserve the 2-char indent prefix.
+	const prefix = "  "
+	contentWidth := maxWidth - len(prefix)
+	if contentWidth < 20 {
+		contentWidth = 20
+	}
+
+	words := strings.Fields(trimmed)
+	if len(words) == 0 {
+		return []string{rendered}
+	}
+
+	var result []string
+	var current []string
+	currentLen := 0
+
+	for _, word := range words {
+		wordLen := len([]rune(word))
+		if currentLen > 0 && currentLen+1+wordLen > contentWidth {
+			line := strings.Join(current, " ")
+			result = append(result, renderLine(line))
+			current = current[:0]
+			currentLen = 0
+		}
+		current = append(current, word)
+		if currentLen == 0 {
+			currentLen = wordLen
+		} else {
+			currentLen += 1 + wordLen
+		}
+	}
+	if len(current) > 0 {
+		line := strings.Join(current, " ")
+		result = append(result, renderLine(line))
+	}
+
+	return result
 }

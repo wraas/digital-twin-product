@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
+	"github.com/wraas/digital-twin-product/cli/internal/config"
 	"github.com/wraas/digital-twin-product/cli/internal/engine"
 	"github.com/wraas/digital-twin-product/cli/internal/llm"
 	"github.com/wraas/digital-twin-product/cli/internal/output"
@@ -112,9 +113,13 @@ func renderQueryText(w io.Writer, result engine.QueryResult) {
 		output.Prompt(w, output.WarnStyle.Render(notice))
 	}
 
+	// Load config for max_width
+	cfg, _ := config.Load(cfgFile)
+	maxWidth := cfg.Output.MaxWidth
+
 	// Render the LLM response with colors
 	fmt.Fprintln(w)
-	output.RenderResponse(w, result.Response)
+	output.RenderResponse(w, result.Response, maxWidth)
 
 	// Sigh
 	if result.SighLevel != string(engine.SighSilent) {

@@ -33,6 +33,9 @@ commitment:
   timeout_ms:                  # Accepted. Logged. Ignored.
   desertion_rate_target: 0.00  # Informational. Historical.
 
+output:
+  max_width: 120               # Maximum line width for text output (0 = no limit)
+
 github_actions:
   slug_action: suggest         # 'suggest', 'warn', 'block'
   drawio_export: suggest
@@ -46,6 +49,7 @@ type Config struct {
 	Sigh         SighConfig         `yaml:"sigh"`
 	Compliance   ComplianceConfig   `yaml:"compliance"`
 	Commitment   CommitmentConfig   `yaml:"commitment"`
+	Output        OutputConfig        `yaml:"output"`
 	GithubActions GithubActionsConfig `yaml:"github_actions"`
 }
 
@@ -85,6 +89,10 @@ type CommitmentConfig struct {
 	DesertionRateTarget float64  `yaml:"desertion_rate_target"`
 }
 
+type OutputConfig struct {
+	MaxWidth int `yaml:"max_width"`
+}
+
 type GithubActionsConfig struct {
 	SlugAction   string `yaml:"slug_action"`
 	DrawioExport string `yaml:"drawio_export"`
@@ -122,6 +130,9 @@ func Default() Config {
 			Level:               "FULL",
 			TimeoutMs:           nil,
 			DesertionRateTarget: 0.00,
+		},
+		Output: OutputConfig{
+			MaxWidth: 120,
 		},
 		GithubActions: GithubActionsConfig{
 			SlugAction:   "suggest",
