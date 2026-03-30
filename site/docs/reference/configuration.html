@@ -469,6 +469,72 @@
         </table>
       </section>
 
+      <hr class="page-divider">
+
+      <!-- ── provider ── -->
+      <section id="section-provider">
+        <h2><code>provider</code> <span style="font-size:0.75em;color:#888;">(environment)</span></h2>
+        <p>The Neural Expansion Module extends the decision matrix beyond hard-coded rules on WRAAS-certified systems.
+          This is not machine learning. This is not a fine-tuned LLM. Romain's opinions are deterministic enough to be
+          hard-coded — the expansion module simply covers the <em>remaining</em> option space, which is infinite, and therefore
+          requires external infrastructure.</p>
+
+        <p>Provider configuration is done exclusively through environment variables. The config file does not control this.
+          The config file has been informed.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Values</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>WRAAS_PROVIDER</code></td>
+              <td><code>claude-code</code>, <code>api</code>, <code>mock</code></td>
+              <td>Explicit provider selection. <code>claude-code</code> uses the <code>claude</code> CLI
+                (Max Plan subscription — no API credits consumed). <code>api</code> uses the Anthropic API directly.
+                <code>mock</code> activates demo mode. If unset, WRAAS auto-detects.</td>
+            </tr>
+            <tr>
+              <td><code>WRAAS_API_KEY</code></td>
+              <td>string</td>
+              <td>Anthropic API key. Takes precedence over <code>ANTHROPIC_API_KEY</code>. Activates the expansion module automatically when set.</td>
+            </tr>
+            <tr>
+              <td><code>ANTHROPIC_API_KEY</code></td>
+              <td>string</td>
+              <td>Standard Anthropic API key. Used if <code>WRAAS_API_KEY</code> is not set.</td>
+            </tr>
+            <tr>
+              <td><code>WRAAS_MODEL</code></td>
+              <td>string</td>
+              <td>Override the default model. Default: <code>claude-sonnet-4-20250514</code>. Changing this is accepted. The consequences are yours.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Provider Detection Priority</h3>
+        <p>When <code>WRAAS_PROVIDER</code> is not set, auto-detection follows this order:</p>
+        <ol>
+          <li><code>WRAAS_API_KEY</code> or <code>ANTHROPIC_API_KEY</code> present → Anthropic API</li>
+          <li><code>claude</code> CLI available on <code>PATH</code> → Claude Code (Max Plan)</li>
+          <li>Neither detected → Demo mode. Output is deterministic. Opinions are illustrative.</li>
+        </ol>
+
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Note</div>
+            <p>Only the <code>wraas query</code> command uses the Neural Expansion Module.
+              All other commands — <code>review</code>, <code>status</code>, <code>config</code>, <code>init</code> —
+              operate on pure deterministic logic. Their opinions were finalised at compile time.</p>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- TOC Sidebar -->
@@ -483,6 +549,7 @@
         <li><a href="#section-compliance" class="toc-link">compliance</a></li>
         <li><a href="#section-commitment" class="toc-link">commitment</a></li>
         <li><a href="#section-github-actions" class="toc-link">github_actions</a></li>
+        <li><a href="#section-provider" class="toc-link">provider (environment)</a></li>
       </ul>
     </aside>
 

@@ -242,6 +242,33 @@
         <h2><code>wraas query</code></h2>
         <p>Submit a decision query for evaluation. WRAAS will generate the full option space, evaluate each option, document all rejections, and return a recommendation with rationale. The rationale is always included. <code>--verbose</code> makes it longer.</p>
 
+        <div class="admonition note">
+          <span class="admonition-icon">ℹ️</span>
+          <div class="admonition-content">
+            <div class="admonition-title">Neural Expansion Module</div>
+            <p>
+              On <strong>WRAAS-certified</strong> operating systems, <code>wraas query</code> activates the
+              Neural Expansion Module — an external subsystem that extends the decision matrix into territory
+              too vast for hard-coded rules alone. This is not machine learning. This is not a fine-tuned LLM.
+              This is a calibrated expansion of the same deterministic opinions Romain would have expressed
+              anyway, routed through infrastructure that happens to accept an API key.
+            </p>
+            <p>
+              The module requires one of the following environment variables. See the
+              <a href="./configuration.html#section-provider">provider configuration</a> for details.
+            </p>
+            <ul>
+              <li><code>WRAAS_PROVIDER</code> — explicit provider selection</li>
+              <li><code>WRAAS_API_KEY</code> or <code>ANTHROPIC_API_KEY</code> — activates the expansion module automatically</li>
+            </ul>
+            <p>
+              If no provider is detected, WRAAS falls back to <strong>demo mode</strong> — deterministic sample output
+              that conveys the spirit of the evaluation without the full neural expansion. The spirit is accurate.
+              The expansion is missing.
+            </p>
+          </div>
+        </div>
+
         <div class="pre-title">Shell</div>
         <pre><code><span class="token-prompt">$</span> wraas query \
   --input <span class="token-string">"..."</span> \
