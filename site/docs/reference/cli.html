@@ -103,7 +103,7 @@
     </nav>
 
     <!-- Main Article -->
-    <main class="article" id="main-content">
+    <main class="article" id="main-content" data-pagefind-body>
 
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <a href="../index.html">WRAAS</a><span class="sep">/</span>
@@ -149,6 +149,16 @@
               <td><code>--verbose</code></td>
               <td>bool</td>
               <td>Include full decision matrix in output. Long.</td>
+            </tr>
+            <tr>
+              <td><code>--color</code></td>
+              <td>string</td>
+              <td>Color output mode: <code>auto</code> (default), <code>always</code>, <code>never</code>. Use <code>always</code> to force ANSI colours when piping output (e.g. to <code>freeze</code> for screenshots).</td>
+            </tr>
+            <tr>
+              <td><code>--no-spinner</code></td>
+              <td>bool</td>
+              <td>Disable the animated spinner. Replaces it with a single static line. Useful for piped output and CI environments.</td>
             </tr>
             <tr>
               <td><code>--help</code></td>

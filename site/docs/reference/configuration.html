@@ -103,7 +103,7 @@
     </nav>
 
     <!-- Main Article -->
-    <main class="article" id="main-content">
+    <main class="article" id="main-content" data-pagefind-body>
 
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <a href="../index.html">WRAAS</a><span class="sep">/</span>
@@ -153,6 +153,9 @@
   <span class="token-key">level:</span> <span class="token-value">FULL</span>                  <span class="token-comment"># Accepted. Enforced. Not configurable.</span>
   <span class="token-key">timeout_ms:</span> <span class="token-value">null</span>             <span class="token-comment"># Accepted. Logged. Ignored.</span>
   <span class="token-key">desertion_rate_target:</span> <span class="token-value">0.00</span>  <span class="token-comment"># Informational. Historical.</span>
+
+<span class="token-key">output:</span>
+  <span class="token-key">max_width:</span> <span class="token-value">120</span>               <span class="token-comment"># Maximum line width for text output (0 = no limit)</span>
 
 <span class="token-key">github_actions:</span>
   <span class="token-key">slug_action:</span> <span class="token-value">suggest</span>         <span class="token-comment"># 'suggest', 'warn', 'block'</span>
@@ -435,6 +438,35 @@
 
       <hr class="page-divider">
 
+      <!-- ── output ── -->
+      <section id="section-output">
+        <h2><code>output</code></h2>
+        <p>Controls the formatting of text output. Applies to the <code>query</code> command's rendered response.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>max_width</code></td>
+              <td>integer</td>
+              <td><code>120</code></td>
+              <td>Maximum visible line width for text output. Set to <code>0</code> to disable wrapping.</td>
+              <td>Lines exceeding this width are word-wrapped and re-rendered. The 2-character indent prefix counts toward the budget. Useful for piping output to tools like <code>freeze</code> for screenshot generation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="page-divider">
+
       <!-- ── github_actions ── -->
       <section id="section-github-actions">
         <h2><code>github_actions</code></h2>
@@ -548,6 +580,7 @@
         <li><a href="#section-sigh" class="toc-link">sigh</a></li>
         <li><a href="#section-compliance" class="toc-link">compliance</a></li>
         <li><a href="#section-commitment" class="toc-link">commitment</a></li>
+        <li><a href="#section-output" class="toc-link">output</a></li>
         <li><a href="#section-github-actions" class="toc-link">github_actions</a></li>
         <li><a href="#section-provider" class="toc-link">provider (environment)</a></li>
       </ul>
