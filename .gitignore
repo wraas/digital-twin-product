@@ -2,3 +2,4 @@ bin/
 cli/wraas
 site/docs/_pagefind/
 .lighthouseci/
+.lighthouseci-local/

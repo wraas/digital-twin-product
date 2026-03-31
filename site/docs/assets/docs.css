@@ -26,10 +26,10 @@
   --border: #ddd;
   --code-bg: #f4f4f5;
   --adm-note: #0065b3;
-  --adm-tip: #2e8b57;
-  --adm-warn: #c47d00;
+  --adm-tip: #1a7042;
+  --adm-warn: #8b5c00;
   --adm-important: #c0392b;
-  --adm-caution: #b8860b;
+  --adm-caution: #7a5900;
 }
 
 html {
@@ -439,7 +439,7 @@ pre code {
 .token-ok      { color: #a6e3a1; }
 .token-err     { color: #f38ba8; }
 .token-warn    { color: #f9e2af; }
-.token-dim     { color: #6c7086; }
+.token-dim     { color: #9399b2; }
 .token-prompt  { color: #89dceb; }
 
 /* ── Admonitions ── */
