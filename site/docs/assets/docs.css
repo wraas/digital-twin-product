@@ -342,7 +342,7 @@ body {
 }
 
 .breadcrumb .sep {
-  color: var(--border);
+  color: #767676;
 }
 
 h1.page-title {
