@@ -2,7 +2,7 @@
 
 April Fools 2026 joke site for **WRAAS** (Weighted Romain Algorithmic Approximation Software) — a fictional high-fidelity neural network delivering the exact same brilliant insights, and signature sighs, as Romain himself.
 
-Live at [wraas.click](https://wraas.click).
+Live at [wraas.click/digital-twin-product](https://wraas.click/digital-twin-product).
 
 ## Development
 
