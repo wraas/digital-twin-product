@@ -1,0 +1,119 @@
+name: Lighthouse
+
+on:
+  pull_request:
+    paths:
+      - 'site/**'
+      - '.github/workflows/lighthouse.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install just
+        uses: extractions/setup-just@f8a3cce218d9f83db3a2ecd90e41ac3de6cdfd9b # v3
+
+      - name: Build search index
+        run: just index
+
+      - name: Lighthouse audit
+        id: lighthouse
+        run: just lighthouse-all 2>&1 | tee lighthouse-output.txt
+
+      - name: Comment on PR
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const passed = '${{ job.status }}' === 'success';
+            const header = passed
+              ? '## :white_check_mark: Lighthouse audit passed'
+              : '## :rotating_light: Lighthouse audit failed';
+
+            // Parse LHCI JSON reports
+            const dir = '.lighthouseci';
+            const reportFiles = fs.existsSync(dir)
+              ? fs.readdirSync(dir).filter(f => f.startsWith('lhr-') && f.endsWith('.json'))
+              : [];
+
+            if (reportFiles.length === 0) {
+              const output = fs.readFileSync('lighthouse-output.txt', 'utf8');
+              const body = [header, '', '```', output.slice(-3000), '```'].join('\n');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.issue.number, body,
+              });
+              return;
+            }
+
+            const reports = reportFiles.map(f =>
+              JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'))
+            );
+
+            // Aggregate category scores (median across pages)
+            const cats = ['performance', 'accessibility', 'best-practices', 'seo'];
+            const catEmoji = { performance: '⚡', accessibility: '♿', 'best-practices': '✅', seo: '🔍' };
+            const scoreRows = cats.map(cat => {
+              const scores = reports
+                .map(r => r.categories[cat]?.score)
+                .filter(s => s != null)
+                .sort((a, b) => a - b);
+              const median = scores[Math.floor(scores.length / 2)] ?? 0;
+              const pct = Math.round(median * 100);
+              const icon = pct >= 90 ? '🟢' : pct >= 50 ? '🟠' : '🔴';
+              return `| ${catEmoji[cat]} ${cat} | ${icon} ${pct} |`;
+            });
+
+            // Top improvement opportunities (audits scoring < 1, ranked by pages affected)
+            const auditHits = {};
+            for (const report of reports) {
+              for (const [id, audit] of Object.entries(report.audits)) {
+                if (audit.score != null && audit.score < 1 && audit.score >= 0) {
+                  if (!auditHits[id]) auditHits[id] = { title: audit.title, pages: 0, displayValues: new Set() };
+                  auditHits[id].pages++;
+                  if (audit.displayValue) auditHits[id].displayValues.add(audit.displayValue);
+                }
+              }
+            }
+
+            const topImprovements = Object.values(auditHits)
+              .sort((a, b) => b.pages - a.pages)
+              .slice(0, 10)
+              .map(a => {
+                const example = [...a.displayValues][0] ? ` — ${[...a.displayValues][0]}` : '';
+                return `| ${a.title}${example} | ${a.pages} |`;
+              });
+
+            const body = [
+              header,
+              '',
+              '### Scores (median across pages)',
+              '| Category | Score |',
+              '|---|---|',
+              ...scoreRows,
+              '',
+              '### Improvement opportunities',
+              '| Audit | Pages affected |',
+              '|---|---|',
+              ...(topImprovements.length ? topImprovements : ['| — | — |']),
+              '',
+              `_${reports.length} pages audited. Run \`just lighthouse-all\` locally to reproduce._`,
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });

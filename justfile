@@ -77,6 +77,34 @@ run *args:
 index:
     npx --yes pagefind --site site/docs --output-path site/docs/_pagefind
 
+# Run Lighthouse audit on specific pages (space-separated)
+lighthouse +pages="index.html":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    urls=""
+    for p in {{pages}}; do
+        urls="$urls --collect.url=/$p"
+    done
+    npx --yes @lhci/cli@0.14.x autorun \
+        --collect.staticDistDir=site/docs \
+        $urls \
+        --upload.target=filesystem \
+        --upload.outputDir=.lighthouseci
+
+# Run Lighthouse audit on all site pages
+lighthouse-all:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    urls=""
+    for f in $(find site/docs -name '*.html' | sort); do
+        urls="$urls --collect.url=/${f#site/docs/}"
+    done
+    npx --yes @lhci/cli@0.14.x autorun \
+        --collect.staticDistDir=site/docs \
+        $urls \
+        --upload.target=filesystem \
+        --upload.outputDir=.lighthouseci
+
 # Count lines of code by file type
 stats:
     @echo "HTML:" && find site -name '*.html' | wc -l | tr -d ' '
