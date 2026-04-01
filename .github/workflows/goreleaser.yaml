@@ -51,7 +51,7 @@ jobs:
         if: inputs.dry_run || steps.check.outputs.match == 'true'
         uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6.3.0
         with:
-          go-version-file: cli/go.mod
+          go-version-file: wraas/go.mod
 
       - name: Run GoReleaser
         if: inputs.dry_run || steps.check.outputs.match == 'true'
@@ -59,6 +59,6 @@ jobs:
         with:
           version: latest
           args: ${{ inputs.dry_run && 'release --snapshot --clean' || 'release --clean' }}
-          workdir: cli
+          workdir: wraas
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

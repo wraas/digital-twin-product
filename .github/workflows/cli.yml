@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths:
-      - 'cli/**'
+      - 'wraas/**'
       - '.releaserc.json'
   pull_request:
     paths:
-      - 'cli/**'
+      - 'wraas/**'
   workflow_dispatch:
 
 permissions:
@@ -27,14 +27,14 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6.3.0
         with:
-          go-version-file: cli/go.mod
+          go-version-file: wraas/go.mod
 
       - name: Build
-        working-directory: cli
+        working-directory: wraas
         run: go build -o wraas .
 
       - name: Unit tests
-        working-directory: cli
+        working-directory: wraas
         run: go test -v ./...
 
   e2e:
@@ -49,16 +49,16 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6.3.0
         with:
-          go-version-file: cli/go.mod
+          go-version-file: wraas/go.mod
 
       - name: Build binary
-        run: cd cli && go build -o ../bin/wraas .
+        run: cd wraas && go build -o ../bin/wraas .
 
       - name: Set up bats
         uses: bats-core/bats-action@5b1e60c2ee94cb1b44a616ea4b1f466f9d6e38ef # v4.0.0
 
       - name: Run E2E tests
-        run: bats cli/e2e_test.bats
+        run: bats wraas/e2e_test.bats
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

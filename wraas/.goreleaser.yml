@@ -16,7 +16,7 @@ builds:
       - arm64
     ldflags:
       - -s -w
-      - -X github.com/wraas/digital-twin-product/cli/cmd.version={{.Version}}
+      - -X github.com/wraas/digital-twin-product/wraas/cmd.version={{.Version}}
 
 archives:
   - format: tar.gz

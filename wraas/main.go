@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/wraas/digital-twin-product/cli/cmd"
+	"github.com/wraas/digital-twin-product/wraas/cmd"
 )
 
 func main() {

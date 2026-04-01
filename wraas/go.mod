@@ -1,4 +1,4 @@
-module github.com/wraas/digital-twin-product/cli
+module github.com/wraas/digital-twin-product/wraas
 
 go 1.26.1
 

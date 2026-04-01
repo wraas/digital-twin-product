@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/wraas/digital-twin-product/cli/internal/llm"
+	"github.com/wraas/digital-twin-product/wraas/internal/llm"
 )
 
 var sighFromResponsePattern = regexp.MustCompile(`\[(SILENT|MILD|MODERATE|DEEP|EXISTENTIAL)\]`)

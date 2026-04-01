@@ -7,7 +7,7 @@ import (
 	"github.com/charmbracelet/lipgloss"
 	"github.com/muesli/termenv"
 	"github.com/spf13/cobra"
-	"github.com/wraas/digital-twin-product/cli/internal/tui"
+	"github.com/wraas/digital-twin-product/wraas/internal/tui"
 )
 
 // version is injected at build time via ldflags. Default for local dev builds.

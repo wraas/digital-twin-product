@@ -111,7 +111,7 @@
             '<div class="modal-install" role="group" aria-labelledby="install-heading">' +
               '<h3 id="install-heading" class="modal-install-heading">Install via Go</h3>' +
               '<div class="terminal modal-terminal" role="region" aria-label="Install command">' +
-                '<div><span class="prompt" aria-hidden="true">$</span> <code id="install-cmd">go install github.com/wraas/digital-twin-product/cli@latest</code></div>' +
+                '<div><span class="prompt" aria-hidden="true">$</span> <code id="install-cmd">go install github.com/wraas/digital-twin-product/wraas@latest</code></div>' +
                 '<button type="button" class="copy-btn" data-target="install-cmd" aria-label="Copy install command">Copy</button>' +
               '</div>' +
               '<p class="modal-alt">Or download a binary from <a href="https://github.com/wraas/digital-twin-product/releases" target="_blank" rel="noopener">GitHub Releases</a>.</p>' +

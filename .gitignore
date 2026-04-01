@@ -1,5 +1,5 @@
 bin/
-cli/wraas
+wraas/wraas
 site/docs/_pagefind/
 .lighthouseci/
 .lighthouseci-local/

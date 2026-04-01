@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/wraas/digital-twin-product/cli/internal/config"
-	"github.com/wraas/digital-twin-product/cli/internal/engine"
-	"github.com/wraas/digital-twin-product/cli/internal/output"
+	"github.com/wraas/digital-twin-product/wraas/internal/config"
+	"github.com/wraas/digital-twin-product/wraas/internal/engine"
+	"github.com/wraas/digital-twin-product/wraas/internal/output"
 )
 
 var configCmd = &cobra.Command{

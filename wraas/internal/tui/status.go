@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/lipgloss"
-	"github.com/wraas/digital-twin-product/cli/internal/engine"
+	"github.com/wraas/digital-twin-product/wraas/internal/engine"
 )
 
 var (
