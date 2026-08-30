@@ -4,7 +4,32 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    cooldown:
+      default-days: 5
+    commit-message:
+      prefix: 'build'
+      include: 'scope'
     groups:
       dependencies:
         patterns:
           - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+  - package-ecosystem: 'gomod'
+    directory: '/wraas'
+    schedule:
+      interval: 'weekly'
+    cooldown:
+      default-days: 5
+    commit-message:
+      prefix: 'build'
+      include: 'scope'
+    groups:
+      dependencies:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
